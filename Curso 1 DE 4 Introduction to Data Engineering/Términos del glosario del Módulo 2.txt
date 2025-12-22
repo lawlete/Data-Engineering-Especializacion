@@ -1,0 +1,53 @@
+Términos del glosario del Módulo 2
+Estado: Traducido automáticamente del Inglés
+Traducido automáticamente del Inglés
+Glosario de términos del Curso 1, Módulo 2
+
+Información agregada: Datos procedentes de un número significativo de usuarios que ha eliminado la información personal
+
+Inteligencia artificial (IA): Se refiere a sistemas informáticos capaces de realizar tareas que normalmente requieren inteligencia humana
+
+Anonimización de datos: Proceso de protección de los datos privados o sensibles de las personas mediante la eliminación de la PII
+
+Administración de datos: Las prácticas de una organización que garantizan que los datos sean accesibles, utilizables y seguros
+
+Computación periférica: Una forma de distribuir tareas informáticas entre un grupo de procesadores cercanos (es decir, ordenadores) que es buena para la velocidad y la capacidad de recuperación y no depende de una única fuente de potencia informática
+
+Hackathon: Evento en el que programadores y profesionales de los datos se reúnen para trabajar en un proyecto
+
+Sin ánimo de lucro: Un grupo organizado con fines distintos a la generación de beneficios; a menudo tiene como objetivo promover una causa social o proporcionar un beneficio al público
+
+Datos abiertos: Datos a disposición del público y de uso gratuito, con orientación sobre cómo navegar por los conjuntos de datos y reconocer la fuente
+
+Información de identificación personal (PII): Información que permite deducir la identidad de una persona por medios directos o indirectos
+
+Muestra: Segmento de una población, a menudo utilizado para inferir parámetros de toda la población
+Términos y definiciones del módulo anterior
+D
+
+Profesional de los datos: Cualquier persona que trabaje con datos y/o tenga conocimientos de datos
+
+Ciencia de datos: La disciplina de hacer que los datos sean útiles
+
+Administración de datos: Prácticas de una organización que garantizan que los datos sean accesibles, utilizables y seguros
+E
+
+Computación periférica: Forma de distribuir tareas informáticas entre un grupo de procesadores cercanos (es decir, ordenadores) que favorece la velocidad y la resistencia y no depende de una única fuente de potencia informática
+J
+
+Notebook de Jupyter: Aplicación web de código abierto utilizada para crear y compartir documentos que contienen código en vivo, ecuaciones, visualizaciones y texto narrativo
+M
+
+Aprendizaje automático: El uso y desarrollo de algoritmos y modelos estadísticos para enseñar a los sistemas informáticos a analizar patrones en los datos
+
+Métricas: Métodos y criterios utilizados para evaluar datos
+P
+
+Python: Un lenguaje de programación de propósito general
+T
+
+Tableau: Una plataforma de inteligencia empresarial y análisis que ayuda a las personas a visualizar, comprender y tomar decisiones con los datos
+
+
+En esta sección del curso, exploramos muchas facetas diferentes de las carreras relacionadas con los datos. Aprendió que el término profesional de datos es un término amplio que abarca diferentes funciones y responsabilidades en el espacio de datos. Descubrió que el trabajo que realizamos en este campo implica innumerables posibilidades, como determinar los flujos de datos importantes, identificar y centrarse en los objetivos empresariales futuros y reimaginar los procesos internos y externos. También reflexionó sobre algunas de las formas en que los profesionales de datos están transformando las organizaciones y cómo estas personas con talento utilizan sus habilidades para impactar positivamente en las comunidades de todo el mundo. Ya has llegado muy lejos, pero hay mucho más que aprender. Gracias por acompañarme en esta emocionante exploración, y pronto volveré a encontrarme con ustedes.
+

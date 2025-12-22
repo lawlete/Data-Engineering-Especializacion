@@ -1,0 +1,459 @@
+EC2SessionManagerConnectURL
+S3BucketName
+Contenido del laboratorio
+
+    Lab overview
+    Start lab
+    Task 1: S3 Bucket Configuration and Object Management
+    Task 2: CloudWatch Dashboard Creation and Metric Configuration
+    Task 3: CloudWatch Alarm Implementation
+    Task 4: Practical Monitoring Demonstration
+    Conclusion
+    End lab
+
+Configure Metrics and Alarms in Amazon CloudWatch
+
+SPL-TF-100-MGCWMA-1 - Version 1.0.0
+
+© 2025 Amazon Web Services, Inc. or its affiliates. All rights reserved. This work may not be reproduced or redistributed, in whole or in part, without prior written permission from Amazon Web Services, Inc. Commercial copying, lending, or selling is prohibited. All trademarks are the property of their owners.
+
+Note: Do not include any personal, identifying, or confidential information into the lab environment. Information entered may be visible to others.
+
+Corrections, feedback, or other questions? Contact us at AWS Training and Certification.
+Lab overview
+
+In cloud environments, monitoring and responding to operational changes are critical skills for maintaining robust infrastructure. As a cloud professional at AnyCompany, you’ll encounter scenarios where proactive monitoring can prevent potential service disruptions and security incidents. This lab provides hands-on experience with Amazon CloudWatch, focusing on practical techniques for tracking and alerting on AWS resource metrics.
+
+You configure monitoring solutions that give you real-time visibility into your infrastructure, starting with an Amazon Simple Storage Service (Amazon S3) bucket and expanding to broader system observability. By creating custom metrics, dashboards, and alarms, you’ll learn how to detect and respond to unusual activity, such as unexpected increases in API calls or potential security anomalies. These skills directly translate to real-world cloud operations, where rapid detection and response are essential for maintaining service reliability.
+
+The lab simulates common operational challenges you might encounter in production environments. You’ll set up monitoring that goes beyond basic metrics, demonstrating how to create meaningful alerts that provide actionable insights. By the end of the exercise, you’ll understand how to use CloudWatch as a powerful tool for maintaining operational awareness and implementing proactive infrastructure management strategies.
+
+Your newfound skills help you address critical monitoring needs across AWS services. Whether you’re tracking storage access patterns, monitoring application performance, or establishing early warning systems for potential issues, the techniques you’ll learn are fundamental to effective cloud infrastructure management. These competencies are increasingly valuable as organizations rely more heavily on cloud technologies and require sophisticated monitoring approaches.
+Objectives
+
+By the end of this lab, you can:
+
+    Configure basic S3 storage resources by creating buckets and uploading test objects using the AWS Management Console.
+    Set up S3 bucket metrics and filters to monitor object-level activities within the bucket.
+    Create and customize CloudWatch dashboards to visualize S3 metrics and monitor bucket performance.
+    Configure CloudWatch alarms with specific thresholds to monitor S3 ListObject API calls.
+
+Technical knowledge prerequisites
+
+Familiarity with cloud monitoring concepts and basic understanding of AWS services like Amazon S3 and CloudWatch are recommended. You should be comfortable with using the AWS Management Console and executing basic AWS CLI commands.
+Icon key
+
+Various icons are used throughout this lab to call attention to different types of instructions and notes. The following list explains the purpose for each icon:
+
+    Warning: An action that is irreversible and could potentially impact the failure of a command or process (including warnings about configurations that cannot be changed after they are made).
+    Copy edit: A time when copying a command, script, or other text to a text editor (to edit specific variables within it) might be easier than editing directly in the command line or terminal.
+    Consider: A moment to pause to consider how you might apply a concept in your own environment or to initiate a conversation about the topic at hand.
+    Task complete: A conclusion or summary point in the lab.
+    Learn more: Where to find more information.
+    Note: A hint, tip, or important guidance.
+    Refresh: A time when you might need to refresh a web browser page or list to show new information.
+
+Start lab
+
+    To launch the lab, at the top of the page, choose Start Lab.
+
+    Caution: You must wait for the provisioned AWS services to be ready before you can continue.
+
+    To open the lab, choose Open Console
+
+    .
+
+    You are automatically signed in to the AWS Management Console in a new web browser tab.
+
+    Warning: Do not change the Region unless instructed.
+
+Common sign-in errors
+Error: Choosing Start Lab has no effect
+
+In some cases, certain pop-up or script blocker web browser extensions might prevent the Start Lab button from working as intended. If you experience an issue starting the lab:
+
+    Add the lab domain name to your pop-up or script blocker’s allow list or turn it off.
+    Refresh the page and try again.
+
+Services used in this lab
+Amazon Simple Storage Service (Amazon S3)
+
+Amazon S3 is a scalable object storage service that allows users to store and retrieve any amount of data from anywhere on the web. In this lab, S3 is used to create a bucket with advanced monitoring capabilities, including versioning, encryption, and object lock. The service provides a flexible and secure way to store and manage data in the cloud, with built-in features for tracking and monitoring bucket operations.
+Amazon CloudWatch
+
+CloudWatch is a monitoring and observability service that provides detailed metrics, logs, and alarms for AWS resources. In this lab, CloudWatch is used to create custom dashboards, set up metric filters, and configure alarms for tracking S3 bucket operations, particularly ListObjects API calls. The service enables proactive monitoring, helping users gain insights into their cloud infrastructure’s performance and detect potential issues in real-time.
+Amazon Elastic Compute Cloud (Amazon EC2)
+
+Amazon EC2 is a web service that provides resizable compute capacity in the cloud. In this lab, an EC2 instance is used to interact with the S3 bucket, perform ListObjects operations, and demonstrate how to generate and analyze CloudWatch metrics. EC2 provides the computational resources needed to perform monitoring tasks and simulate real-world cloud infrastructure interactions.
+Amazon Simple Notification Service (SNS)
+
+Amazon SNS is a fully managed messaging service that enables you to decouple and scale microservices, distributed systems, and serverless applications. In this lab, SNS is used to create a notification topic for the CloudWatch alarm, allowing email alerts to be sent when specific metric thresholds are exceeded. This service helps in establishing proactive monitoring and notification mechanisms for AWS resources.
+AWS Identity and Access Management (IAM)
+
+IAM is a web service that helps you securely control access to AWS resources. While not explicitly detailed in the lab instructions, IAM plays a crucial role in managing permissions for accessing and interacting with S3 buckets, EC2 instances, and CloudWatch services. It ensures that only authorized users and resources can perform specific actions in the AWS environment.
+AWS services not used in this lab
+
+AWS service capabilities used in this lab are limited to what the lab requires. Expect errors when accessing other services or performing actions beyond those provided in this lab guide.
+Task 1: S3 Bucket Configuration and Object Management
+
+In this task, you configure a S3 bucket with advanced monitoring capabilities, laying the groundwork for comprehensive CloudWatch tracking and create a request per metric filter to track all object operations.
+Task 1.1: Create a filter that applies to all objects
+
+Building on the foundational CloudWatch monitoring setup, this subtask focuses on retrieving specific metrics for the S3 bucket. Participants explore the intricacies of CloudWatch metric retrieval by requesting detailed information about ListObjects API calls, which provides critical insights into bucket access patterns and operational behavior. By examining these metrics, learners gain practical experience in extracting meaningful performance and usage data directly from their AWS S3 resources, enhancing their ability to monitor and analyze cloud storage interactions effectively.
+
+    At the top of the AWS Management Console, in the search bar, search for and choose 
+
+S3
+.
+
+Choose the S3 bucket that matches the S3BucketName name listed to the left of these instructions.
+
+Choose the Metrics tab.
+
+Note: The Metrics tab provides a comprehensive view of your S3 bucket’s performance and usage statistics.
+
+Under the Metrics tab, in the Bucket metrics section, choose View additional charts.
+
+Choose Request metrics tab.
+
+Choose Create filter.
+
+On the Create metric filter page:
+
+    In the Name section, for Filter name, enter 
+
+        ListObjectOperations
+        In the Scope section, for Choose a filter scope, choose This filter applies to all objects in the bucket.
+
+    Choose Create filter.
+
+    Learn more: Request metrics provide detailed insights into the API operations performed on your S3 bucket, including the number and type of requests made.
+
+    Choose Request metrics tab.
+
+    Expected output: You should see List requests metric which is triggered by ListObjects API calls, which track how many times objects have been listed in the bucket.
+
+    Consider: How might these metrics help you understand the usage patterns of your S3 bucket? What insights can you gain about access frequency and operational behaviors?
+
+    Verify that the metric is configured and displaying data by checking the graphical representation and numerical values.
+
+    Warning: It usually takes about 15 minutes for the metrics to showup, but it has been observed that the delay could be close to 45 minutes. In the meanwhile, proceed with the next steps.
+
+    Security: Monitoring ListObjects metrics can help you detect unusual access patterns or potential unauthorized listing attempts on your S3 bucket.
+
+Task 1.2: Upload minimum of three test objects
+
+This subtask focuses on populating the bucket with test objects to enable comprehensive metric tracking and monitoring. Participants strategically upload multiple objects to simulate real-world data scenarios, which serves as the foundation for subsequent CloudWatch metric configurations and analysis. By introducing varied content and sizes of objects, learners prepare the environment for practicing advanced monitoring techniques and setting up meaningful CloudWatch alarms that track bucket activity and performance.
+
+    From the breadcrumbs at the top of the screen, choose the lab-bucket-* link to return to the Objects tab.
+
+    Note: You can see there is already a file named HappyFace.jpg uploaded.
+
+    Choose Upload.
+
+    Choose Add files.
+
+    From your local machine, select at least three different files of varying types and sizes. These could be text documents, images, or small data files.
+
+    Note: If you do not have files readily available, you can create simple text files with different content. For example, create files named 
+
+report1.txt
+,
+sales-data.csv
+, and
+
+    logo.png
+    to provide variety.
+
+    After selecting the files, choose Upload.
+
+    Expected output: The files should appear in the bucket’s objects list with a successful upload confirmation.
+
+    Choose Close.
+
+    Verify that at least four objects are now present in the bucket by checking the objects list. This includes the HappyFace.jpg file which was pre-uploaded.
+
+    Consider: How might these different file types and sizes potentially impact your monitoring and metrics in future steps of the lab?
+
+    Caution: Ensure that the files you upload do not contain sensitive or personal information, as this is a lab environment. Upload at least three different files to the designated S3 bucket, verifying their successful addition to the bucket’s objects list.
+
+Task complete: You successfully configured a S3 bucket with advanced monitoring capabilities, laying the groundwork for comprehensive CloudWatch tracking and created a request per metric filter to track all object operations.
+Task 2: CloudWatch Dashboard Creation and Metric Configuration
+
+In this task, you configure a CloudWatch dashboard to monitor and visualize metrics for your S3 bucket and EC2 instance.
+
+By enabling detailed metrics for the S3 bucket, creating custom widgets, and applying metric filters, you develop a comprehensive monitoring solution that provides insights into resource performance and usage. The task builds upon your previous S3 bucket configuration, expanding your understanding of how CloudWatch can help you track and analyze key operational metrics across different AWS services.
+Task 2.1: Create CloudWatch dashboard with appropriate layout
+
+Building on the previous configuration tasks, this subtask focuses on designing an effective CloudWatch dashboard that provides a comprehensive view of your AWS resource metrics. You strategically organize and arrange metrics from your S3 bucket and EC2 instance to create an intuitive, informative monitoring layout. By carefully selecting and positioning different metric widgets, you construct a dashboard that enables quick visual assessment of system performance, helping you understand the health and operational status of your resources at a glance.
+
+    At the top of the AWS Management Console, in the search bar, search for and choose 
+
+CloudWatch
+.
+
+In the left navigation pane, choose Dashboards.
+
+Choose Create dashboard
+
+In the Create new dashboard pop-up box, for Dashboard name, enter
+
+    s3-dashboard
+    .
+
+    Choose Create dashboard
+
+    In the Add widget dialog, choose Line.
+
+    Choose Next
+
+    In the Metrics tab, under Browse, navigate to S3.
+
+    Choose Request Metrics Per Filter.
+
+    Choose the following S3 metrics to the widget:
+    BucketName 	FilterId 	Metric Name
+    lab-bucket-123456789 	ListObjectOperations 	AllRequests
+
+    Note: Make sure the BucketName value matches the S3BucketName value listed to the left of these instructions.
+
+    Warning: As mentioned earlier, these metric values can usually take about 15 minutes or sometimes even up to 45 minutes to show up. If the metric values are still missing, wait for them to show up. Do not proceed with further steps.
+
+    Refresh: Keep refreshing the cloudwatch webpage once in a while to check if the metric values are appearing.
+
+    Choose Create widget.
+
+    Note: The dashboard layout will help you quickly visualize the performance and activity of your S3 bucket.
+
+    To save the dashboard, choose Save.
+
+    Consider: How might this dashboard help you proactively monitor your AWS resources and identify potential performance issues or unusual activity?
+
+    Learn more: About CloudWatch dashboards and how to customize them for your specific monitoring needs by referring to the AWS CloudWatch documentation. Creates a CloudWatch dashboard by adding line and number widgets displaying S3 bucket and EC2 instance metrics, configuring metrics for AllRequests, GetRequests, PutRequests, CPUUtilization, NetworkIn, NetworkOut, and ListRequests, and then saving the dashboard.
+
+Task 2.2: Add S3 ListRequests metric to dashboard
+
+As you continue exploring CloudWatch monitoring capabilities, you progress to tracking specific S3 bucket operations by adding the ListObjects API call metric to your CloudWatch dashboard. This subtask focuses on creating a custom metric representation that captures the frequency of ListObjects calls, enabling you to visualize and monitor access patterns for your S3 bucket. By integrating this metric into your dashboard, you gain granular insights into bucket interaction trends and establish a foundation for understanding S3 resource utilization and potential security considerations. Here are the steps to complete the subtask:
+
+    Choose +.
+
+    In the Add widget dialog, choose Line.
+
+    Choose Next
+
+    In the Metrics tab, under Browse, navigate to S3.
+
+    Choose Request Metrics Per Filter.
+
+    Choose the following S3 metrics to the widget:
+
+BucketName 	FilterId 	Metric Name
+lab-bucket-123456789 	ListObjectOperations 	ListRequests
+
+    Choose Create widget.
+
+    Note: The dashboard layout helps you quickly visualize the performance and activity of your S3 bucket.
+
+    To save the dashboard, choose Save.
+
+    Learn more: The ListRequests metric provides insights into the frequency of List operations on your S3 bucket, which can help you understand access patterns and potential security implications.
+
+    Consider: How might tracking List operations help you identify unusual access patterns or potential security risks in your S3 bucket? Navigate to CloudWatch, selects the existing dashboard, adds a new ListRequests metric widget for the S3 bucket, configures the widget with Sum statistic and 5-minute period, and saves the updated dashboard.
+
+Task complete: You successfully Configured CloudWatch dashboard and metrics by enabling detailed S3 bucket metrics, creating custom widgets for S3 and EC2 performance tracking, adding ListRequests metric, and applying Storage Lens filters to gain comprehensive insights into resource operations and performance.
+Task 3: CloudWatch Alarm Implementation
+
+In this task, you configure a CloudWatch alarm for the S3 bucket that triggers when ListObjects API calls exceed a specific threshold.
+
+By establishing this precise monitoring mechanism, you transform passive observation into an active alerting system that provides immediate insights into bucket access patterns. The task guides you through creating a targeted alarm with a threshold of 3 calls, setting up an SNS notification topic, and verifying the alarm’s configuration and responsiveness. This practical exercise demonstrates how to implement proactive monitoring strategies that enhance your ability to detect and respond to potential unauthorized or unusual S3 bucket activities in real-time.
+Task 3.1: Configure alarm with correct threshold (>3 calls)
+
+Building on the previous configuration of S3 bucket metrics, participants now focus on creating a precise CloudWatch alarm that triggers when ListObjects API calls exceed a threshold of 3 calls. This subtask demonstrates the critical process of establishing proactive monitoring by setting up an alert mechanism that immediately notifies administrators when S3 bucket access patterns deviate from expected norms. By configuring this specific alarm, learners gain practical experience in translating monitoring requirements into actionable CloudWatch alerting strategies, reinforcing their ability to maintain vigilant oversight of cloud resources and potential unauthorized access attempts.
+
+    In the left navigation pane, under Alarms, choose All alarms.
+
+    Note: If the navigation pane is collapsed, choose the menu icon in the top-left corner to reveal it.
+
+    Choose Create alarm.
+
+    On the Specify metric and conditions page, in the Metric section, choose Select metric.
+
+    In the Browse tab, choose S3.
+
+    Select the Request Metrics Per Filter tab.
+
+    Choose the following S3 metrics:
+
+BucketName 	FilterId 	Metric Name
+lab-bucket-123456789 	ListObjectOperations 	ListRequests
+
+    Choose Select metric.
+
+    In the Metric section, choose the following:
+
+    For Statistic, select Sum.
+    For Period, select 1 minute.
+
+    In the Conditions section:
+
+    For Threshold type, select Static.
+    For Whenever ListRequests is…, select Greater/Equal.
+    For than, enter 
+
+    3
+    .
+
+    Expand the Additional configuration section:
+
+    Set Datapoints to alarm to 
+
+    1 out of 1
+    .
+    Set Missing data treatment to Treat missing data as good (not breaching threshold).
+
+    Choose Next.
+
+    For Send a notification to the following SNS topic, choose Create a new topic.
+
+    Note: If notification option is not available on the Configure actions page, in the Notification section, choose Add notification.
+
+    For Create a new topic…, enter 
+
+S3-ListObjects-Alarm-Topic
+.
+
+For Email endpoints that will receive the notification…, enter an email address where you want to receive alarm notifications.
+
+Choose Create topic.
+
+Choose Next.
+
+On the Add alarm details page, for the Alarm name, enter
+
+S3-ListObjects-Threshold-Alarm
+.
+
+Choose Next.
+
+Review the alarm configuration and choose Create alarm.
+
+Open the inbox of the email address you entered for the subscription.
+
+Locate a recent message from
+
+    AWS Notifications <no-reply@sns.amazonaws.com>
+    .
+
+    Note: It may take up to 5 minutes to receive the email depending on your email server.
+
+    Select the Confirm subscription hyperlink contained in the email.
+
+    Close the Amazon SNS topic subscription confirmation page.
+
+    Note: You receive a confirmation email to the address you specified. You must confirm the subscription to receive alarm notifications.
+
+    Note: The alarm triggers when more than 3 ListObjects API calls are made to the S3 bucket within the specified evaluation period.
+
+    Consider: How might you adjust this alarm threshold based on your organization’s specific monitoring requirements and expected S3 bucket usage patterns? Configures a CloudWatch alarm for the S3 bucket that triggers notifications when ListRequests exceed 3 calls, using a static threshold and creating a new SNS topic for email alerts.
+
+Task 3.2: Verify alarm state
+
+Building upon the previous tasks of configuring CloudWatch metrics and dashboards, participants now focus on verifying the alarm state and understanding how CloudWatch tracks and reports operational thresholds. This subtask guides learners through the critical process of examining an alarm’s current condition, confirming its configuration, and interpreting the real-time status of the monitoring system, which provides essential insights into the health and performance of AWS resources.
+
+    In the left navigation pane, under Alarms, choose All alarms.
+
+    Locate the alarm named S3-ListObjects-Threshold-Alarm that you created earlier.
+
+    Choose the alarm name to view its detailed configuration and current state.
+
+    Note: The alarm’s state depends on whether the ListObjects API calls have exceeded the threshold you configured in previous tasks.
+
+    In the Alarm details section, review the following key information:
+        Metric name
+        Threshold value
+        Evaluation periods
+        Current state
+
+    Warning: If the alarm is not in the expected state, double-check your previous configuration steps.
+
+Task complete: You successfully Configured a CloudWatch alarm for the S3 bucket that triggered notifications when ListRequests exceeded 3 calls, created an SNS topic for email alerts, and verified the alarm’s configuration and responsiveness.
+Task 4: Practical Monitoring Demonstration
+
+In this task, you perform a practical monitoring demonstration by connecting to the EC2 instance and generating metric data through ListObjects operations.
+
+You interact directly with the AWS environment to trigger CloudWatch metrics, verify alarm configurations, and document the monitoring process. By performing multiple S3 bucket ListObjects calls and analyzing the resulting CloudWatch dashboard, you gain hands-on experience in monitoring AWS resources, understanding metric behavior, and interpreting real-time performance data. This task bridges theoretical monitoring concepts with practical implementation, allowing you to explore how CloudWatch provides visibility into your cloud infrastructure’s operational status.
+Task 4.1: Connect to EC2 instance via Session Manager
+
+    Copy and paste EC2SessionManagerConnectURL value listed to the left of these instructions in a new browser tab.
+
+A new browser tab opens with an integrated terminal connected directly to your EC2 instance.
+
+    Command: Run the following command to perform multiple ListObjects operations to potentially trigger the alarm:
+
+        Replace the LAB_BUCKET placeholder value with the S3BucketName value listed to the left of these instructions.
+
+        for i in {1..5}; do aws s3 ls s3://LAB_BUCKET; sleep 2; done
+
+    Expected output: You should see the objects which were uploaded in Task 1 being called for 5 times.
+
+Task 4.2: Verify alarm triggering
+
+As you progress through the CloudWatch monitoring configuration, you now focus on verifying the alarm triggering mechanism. This critical step demonstrates how CloudWatch translates predefined thresholds into actionable alerts, ensuring that your monitoring strategy responds effectively to potential operational anomalies.
+
+By testing the alarm you previously configured, you validate the integration between CloudWatch metrics, defined alarm conditions, and the notification system, reinforcing your understanding of proactive infrastructure monitoring and operational alerting in AWS environments.
+
+    Go back to the AWS management console tab.
+
+    The S3-ListObjects-Threshold-Alarm alarm page should be open. If not, in the left navigation pane, choose All alarms.
+
+    From the list of alarms, choose S3-ListObjects-Threshold-Alarm.
+
+    Note: Initially, the alarm state might be in an OK status since you have not yet triggered the ListObjects threshold.
+
+    After running multiple ListObjects command in earlier task, the alarm state should transition from OK to ALARM.
+
+    Note: Change of alarm state might take sometime for changes to reflect, keep monitoring.
+
+    Note: The alarm state change demonstrates that your CloudWatch configuration successfully detects and responds to excessive S3 API calls.
+
+    Security: This exercise demonstrates the importance of setting appropriate monitoring thresholds to detect potential unauthorized or excessive API calls to your S3 buckets. Deliberately trigger the CloudWatch alarm by repeatedly running ListObjects commands on the S3 bucket and verify the alarm state transitions from OK to ALARM in the CloudWatch console.
+
+    You should also receive a notification email in your inbox about the Alarm getting triggered.
+
+Task 4.3: View cloudwatch dashboard
+
+    In the left navigation pane, choose Dashboards.
+
+    Choose the s3-dashboard link.
+
+    Observe the two created widgets for AllRequests and ListRequests metrics. You should see some values appear in the graphs.
+
+    Note: These values were triggered as a result of the ListObjects API call in earlier tasks.
+
+Task complete: You successfully performed a practical monitoring demonstration by connecting to the EC2 instance and generating metric data through ListObjects operations.
+Conclusion
+
+You have successfully done the following:
+
+    Configured basic S3 storage resources by creating buckets and uploading test objects using the AWS Management Console.
+    Set up S3 bucket metrics and filters to monitor object-level activities within the bucket.
+    Created and customize CloudWatch dashboards to visualize S3 metrics and monitor bucket performance.
+    Configured CloudWatch alarms with specific thresholds to monitor S3 ListObject API calls.
+
+End lab
+
+Follow these steps to close the console and end your lab.
+
+    Return to the AWS Management Console.
+
+    At the upper-right corner of the page, choose AWSLabsUser, and then choose Sign out.
+
+    Choose End Lab and then confirm that you want to end your lab.
+
+For more information about AWS Training and Certification, see https://aws.amazon.com/training/.
+
+Your feedback is welcome and appreciated.
+If you would like to share any feedback, suggestions, or corrections, please provide the details in our AWS Training and Certification Contact Form.
+¡Buen trabajo! Ayúdanos a mejorar Builder Labs, solo te llevará 2 minutos.
+Iniciar encuesta
+PrivacidadCondiciones del sitio web

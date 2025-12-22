@@ -1,0 +1,199 @@
+¡Hola de nuevo! Analicemos algunos de los elementos del curso que encontrará en su viaje de aprendizaje. En este programa, codificarás en Python, descubrirás las historias que contienen los datos, desarrollarás imágenes de datos, usarás herramientas estadísticas, crearás modelos e incluso incursionarás en el aprendizaje automático. A lo largo del camino, crearás una cartera llena de proyectos de datos, además de la piedra angular de este programa. Ya sea que quieras cambiar de profesión, empezar una nueva, mejorar tus habilidades o avanzar más allá de tu puesto actual en una empresa, los certificados profesionales de Google pueden ayudarte a avanzar hacia nuevas oportunidades. Hemos reunido a algunos instructores increíbles para que te apoyen en tu viaje y ahora quieren presentarse: ¡Hola! Soy Adrian y soy ingeniero de clientes en Google. Juntos exploraremos uno de los lenguajes de programación de más rápido crecimiento, Python. Aprenderá los conceptos básicos, que lo ayudarán a escribir guiones que realicen una serie de operaciones matemáticas clave en conjuntos de datos, todos diseñados para ayudarlo a descubrir las historias que contienen los datos. ¡Hola! Soy Robb. Soy líder en productos de consumo. Trabajo en proyectos de marketing aquí en Google. Me entusiasma hablar con usted sobre cómo contar historias utilizando datos. Analizaremos las seis prácticas del análisis exploratorio de datos y cómo identificar las tendencias y patrones en él. También conoceremos la importancia de diseñar y presentar visualizaciones de datos con Python y Tableau, que pueden ayudarlo a comprender sus datos y transmitirlos a otros. ¡Hola! Me llamo Evan. Soy economista y consulto a varios equipos de Google. Las estadísticas ayudan a generar ideas más complejas a partir de los propios datos. Durante el tiempo que pasamos juntos, descubrirás cómo puedes generar información, sacar conclusiones, hacer inferencias, crear estimaciones y hacer predicciones. ¡Hola! Soy Tiffany, soy directora de ciencias de marketing y trabajo con datos de marketing en Google. Lo guiaré a través del proceso de modelar las relaciones entre variables. Juntos, exploraremos diferentes modelos de regresión y pruebas de hipótesis. También hablaremos sobre las suposiciones, la construcción, la evaluación y la interpretación de los modelos como medios para responder a las preguntas basadas en datos. ¡Hola! Soy Susheela. Soy científico de datos y trabajo en proyectos para YouTube aquí en Google. Lo guiaré a través de sistemas de construcción que puedan aprender y adaptarse sin un conjunto específico de instrucciones. Analizaremos cómo el aprendizaje automático está transformando el proceso de análisis de datos, a medida que construyes tus propios modelos. ¡Hola! Soy Tiffany y dirijo equipos que se centran en desarrollar la IA de manera responsable en Google. Te presentaré los recursos profesionales y los proyectos de portafolio, y te guiaré a través del curso final al final del programa. Lo ayudaré con diferentes oportunidades y herramientas que lo prepararán para el éxito en el mercado laboral. Y, por supuesto, ya sabes que te guiaré en el primer curso. Este es un buen momento para crecer y avanzar en su carrera como profesional de datos. ¡Tu camino hacia una carrera llena de nuevas oportunidades te espera!
+
+El discurso de los datos a lo largo de los años
+Estado: Traducido automáticamente del Inglés
+Traducido automáticamente del Inglés
+
+A lo largo de este programa encontrará los términos "Ciencia de datos" y "Analítica de datos". Aunque estas disciplinas pueden ser muy diferentes en su ámbito de aplicación, los profesionales del sector suelen utilizarlas indistintamente. Es importante examinar las similitudes y diferencias entre la Ciencia de datos y la Analítica de datos para comprender mejor el campo profesional de los datos y dónde encajan tus habilidades. En esta lectura, aprenderás más sobre la ciencia de datos, la analítica de datos y cómo ha evolucionado la profesión de los datos a lo largo del tiempo.
+¿Qué es la Ciencia de datos frente a la Analítica de datos?
+
+Ciencia de datos es todo un campo dedicado a hacer que los datos sean más útiles. Un científico de datos es un profesional que utiliza datos en bruto para desarrollar nuevas formas de modelar datos y comprender lo desconocido. A menudo, sus responsabilidades laborales incorporan varios componentes de informática, análisis predictivo, estadística y aprendizaje automático. Las colecciones de información con las que trabajan los científicos de datos pueden ser bastante grandes, lo que requiere experiencia para organizarlas y navegar por ellas.
+
+La Analítica de datos es un subcampo de la Ciencia de datos. El objetivo de la Analítica de datos es crear métodos para capturar, procesar y organizar los datos con el fin de descubrir perspectivas procesables para los problemas actuales. Los analistas se centran en procesar la información almacenada en los conjuntos de datos existentes y en establecer la mejor manera de presentar estos datos. Los analistas de datos se basan en la estadística y el modelado de datos para resolver problemas y ofrecer recomendaciones que pueden conducir a mejoras inmediatas.
+
+La siguiente tabla presenta una comparación por separado:
+
+Ciencia de datos
+	
+
+Analítica de datos
+
+    Produce ideas generales que se concentran en las preguntas que deben hacerse sobre los datos
+
+	
+
+    Hace hincapié en descubrir respuestas a las preguntas que se plantean.
+
+    Afronta lo desconocido utilizando técnicas avanzadas para hacer predicciones sobre el futuro.
+
+	
+
+    Determina perspectivas procesables que pueden aplicarse inmediatamente basándose en consultas existentes
+
+    Trata de responder a preguntas como "¿Qué ocurrirá?" y "¿Cómo podemos hacer que ocurra X?"
+
+	
+
+    Busca responder a preguntas como "¿Qué ha pasado?" y "¿Por qué ha pasado?"
+
+Conexiones entre la Ciencia de datos y la Analítica de datos
+
+Ciencia de datos y Analítica de datos comparten un objetivo fundamental: descubrir perspectivas que puedan utilizarse para llevar a una organización a mejorar y crecer. Están estrechamente relacionados con la información recopilada a través de interacciones dentro del mundo medible. A medida que los proyectos de datos se complican, las organizaciones descubren las ventajas de formar equipos de datos que reúnan a analistas y científicos de datos. En estos entornos de trabajo altamente colaborativos, los científicos y analistas de datos trabajan en tareas comunes utilizando paquetes de software, herramientas y lenguajes de programación similares. Además, las responsabilidades de los científicos y analistas de datos se ven afectadas por los recursos de la empresa, las limitaciones presupuestarias y otros factores que varían en función de la organización y el sector. Los puntos en común entre la Ciencia de datos y la Analítica de datos en el lugar de trabajo explican por qué los profesionales del sector suelen utilizar los dos títulos indistintamente. Esto también se ha extendido a las ofertas de empleo.
+El profesional de los datos en el espacio profesional de los datos
+
+Este programa utiliza varios términos para referirse a los profesionales de la Ciencia de datos y la Analítica de datos. El término profesional de datos se utiliza para referirse a los científicos y analistas de datos de forma colectiva. Analítica de datos profesional se utiliza para destacar puestos en los que la mayoría de las tareas se centran en procesos de análisis de datos. El espacio profesional de datos funciona como un término inclusivo que hace referencia al espectro de empleos y carreras en la ciencia de datos y áreas relacionadas. La intención de estos descriptores es servir como etiquetas inclusivas que permitan la agrupación más amplia posible de empleos y títulos relacionados con la Ciencia de datos y la Analítica de datos.
+
+Las oportunidades laborales para los profesionales de los datos abarcan un amplio abanico de sectores. Cada uno con sus necesidades, exigencias y responsabilidades individualizadas. Es posible que dos empleados con el mismo cargo en dos organizaciones distintas tengan funciones y tareas diferentes. Para ayudar a aclarar cómo se describen en este programa las profesiones relacionadas con la Ciencia de datos y la Analítica de datos, el espacio profesional de los datos se utiliza para referirse colectivamente a la variedad de profesiones y oportunidades laborales disponibles para aquellos con conocimientos de Ciencia de datos.
+El espacio profesional de los datos a lo largo del tiempo
+
+Hasta ahora, has estado considerando cómo la Ciencia de datos y la Analítica de datos trabajan juntas en el espacio profesional de los datos. Este campo también ha ido evolucionando y cambiando con el tiempo a medida que lo han hecho la tecnología, el almacenamiento de datos, el análisis de datos y la comunicación. El progreso en este campo significa que los profesionales de los datos necesitan aprender a adaptarse y evolucionar para construir y definir carreras dentro de este espacio, y comprender cómo ha evolucionado el espacio profesional de los datos hasta ahora puede ayudarte a hacerlo.
+1965
+
+En 1965, la población mundial era de 3.300 millones de habitantes. La nave espacial Mariner 4 tomó las primeras imágenes en primer plano de Marte. El primer satélite comercial de comunicaciones permitió el contacto casi instantáneo entre Europa y Norteamérica.
+
+Campo
+	
+
+Resumen
+
+Tecnología
+	
+
+Los cálculos aún se hacían a mano; las empresas empezaban a invertir en nuevas tecnologías informáticas para ayudar a los analistas. Las primeras calculadoras programables de sobremesa sustituyeron a los ordenadores del tamaño de una habitación. Los usuarios podían realizar operaciones matemáticas complejas en tarjetas magnéticas e imprimir los resultados.
+
+Almacenamiento de datos
+	
+
+Unas sencillas tarjetas perforadas almacenaban la información de programación. Estas tarjetas se cargaban en un orden específico para dar órdenes. Las empresas asignaban espacio físico para almacenar los miles de tarjetas perforadas de datos que generaba el uso habitual de los ordenadores. Las empresas más grandes se pasaron a carretes de cinta magnética que podían almacenar el equivalente a 50.000 tarjetas perforadas, es decir, unos 3 megabytes. Pero estos carretes seguían necesitando mucho espacio de almacenamiento en una oficina.
+
+Análisis de datos
+	
+
+A medida que se reducía el tamaño y el coste de la tecnología informática, más empresas empezaron a dejar de hacer los cálculos a mano.
+
+Comunicación
+	
+
+La máquina de escribir eléctrica transformó la documentación y la correspondencia, y los documentos y mensajes se entregaban a mano en las oficinas. Los nuevos sistemas telefónicos permiten múltiples líneas entrantes y salientes, botones programables para guardar números de teléfono y capacidad de intercomunicación para hasta 30 extensiones.
+1985
+
+En 1985, la población mundial era de 4.800 millones de habitantes. Se creó el sistema de nombres de dominio de Internet. Se descubre un agujero en la capa de ozono sobre la Antártida. Se utiliza por primera vez el ADN en un caso penal.
+
+Campo
+	
+
+Resumen
+
+Tecnología
+	
+
+Las líneas telefónicas se convierten en las superautopistas de la comunicación. En la década de 1980, el fax escaneado se convierte en una necesidad para las empresas, ya que les permite enviar y recibir documentos rápidamente. Los ordenadores de sobremesa eran ya lo suficientemente pequeños como para que los usuarios dispusieran de un ordenador personal. Se lanza Windows 1.0.
+
+Almacenamiento de datos
+	
+
+El formato de disquete sustituyó a las tarjetas perforadas de datos, permitiendo 360 kilobytes de almacenamiento de datos. La capacidad media de los discos duros internos era de 10 megabytes.
+
+Análisis de datos
+	
+
+La organización de datos se revolucionó con el desarrollo de las hojas de cálculo electrónicas. Estos programas emulaban por primera vez los libros de contabilidad tradicionales.
+
+Comunicación
+	
+
+Las agencias gubernamentales, las universidades y las industrias militares y de defensa utilizaban los mensajes electrónicos internos o el correo electrónico para comunicarse.
+2005
+
+En 2005, la población mundial era de 6.500 millones de habitantes. Se subió el primer vídeo a YouTube. La sonda espacial Deep Impact de la NASA impactó contra un cometa en movimiento.
+
+Campo
+	
+
+Resumen
+
+Tecnología
+	
+
+Las conexiones telefónicas se sustituyen por conectividad de alta velocidad. Los dispositivos inteligentes dan acceso a Internet a un número cada vez mayor de personas, especialmente en las zonas urbanas. Las empresas toman conciencia de la utilidad de los datos que recogen de sus usuarios.
+
+Almacenamiento de datos
+	
+
+Las grandes empresas empiezan a digitalizar y almacenar datos en servicios en la nube. Los archivadores llenos de documentación se fueron convirtiendo poco a poco en archivos de datos. Las memorias USB llegaron al mercado, ofreciendo un gigabyte de almacenamiento portátil que cabía fácilmente en un bolsillo.
+
+Análisis de datos
+	
+
+Las empresas empleaban el análisis de datos y el modelado predictivo como elementos principales del negocio. La interacción con los clientes genera conjuntos de datos y oportunidades de análisis de datos, creando grandes depósitos de Datos no estructurados. Las redes sociales aumentaron significativamente la necesidad de herramientas, tecnologías y técnicas de análisis para recopilar información útil a partir de datos no estructurados.
+
+Comunicación
+	
+
+La colaboración entre departamentos, el correo electrónico en todo el mundo y la mensajería instantánea pasaron a estar disponibles en los dispositivos inteligentes.
+En la actualidad
+
+En la actualidad, la población mundial ronda los 8.000 millones de habitantes. El telescopio espacial James Webb está ampliando nuestros conocimientos sobre los primeros momentos del universo.
+
+Campo
+	
+
+Resumen
+
+Tecnología
+	
+
+La realidad aumentada y virtual ofrecen experiencias interactivas, enriquecidas con información generada por ordenador. La Internet de las cosas (IoT) conecta un número creciente de dispositivos y sistemas. La Computación periférica se está convirtiendo en una práctica común; es una forma de distribuir tareas computacionales entre muchos procesadores cercanos (es decir, ordenadores) que favorece la velocidad y la resiliencia y no depende de una única fuente de potencia computacional.
+
+Almacenamiento de datos
+	
+
+La informática cuántica, un tipo de computación que emplea las propiedades colectivas de la mecánica cuántica, se está desarrollando para aumentar el procesamiento y el almacenamiento y resolver problemas demasiado complejos para los ordenadores clásicos. Proseguirán los esfuerzos internacionales para construir sistemas de computación cuántica dotados de los necesarios sistemas de refrigeración, interfaces de usuario, redes y capacidades de almacenamiento.
+
+Análisis de datos
+	
+
+La Inteligencia artificial está contribuyendo a acelerar el ritmo de la innovación al aumentar las capacidades humanas. Esta tecnología reside en la intersección entre lo social y lo tecnológico. Los avances tecnológicos siguen inspirándose en los conocimientos biológicos y psicológicos sobre cómo los seres humanos procesan y aprenden la información.
+
+Comunicación
+	
+
+Las reuniones virtuales y la mensajería en línea se han convertido en algo habitual. El software de gestión de tareas está ayudando a las organizaciones a facilitar la finalización de proyectos, permitiendo a trabajadores de todo el mundo trabajar de forma asíncrona.
+Puntos clave
+
+Ciencia de datos y Analítica de datos son campos distintos pero conectados que se han desarrollado con el tiempo en el espacio profesional de los datos en evolución. Las organizaciones a menudo utilizan estos términos indistintamente a la hora de contratar, por lo que ser capaz de reconocer las similitudes y diferencias entre las dos profesiones le ayudará a identificar las oportunidades que están alineados con su conjunto de habilidades particulares. Por eso, a lo largo de este curso, aprenderás más sobre el espacio profesional de los datos en su conjunto y cómo trabajan los profesionales de la Analítica de datos dentro de ese espacio.
+
+Todas las profesiones requieren un conjunto determinado de herramientas para tener éxito, y el trabajo basado en datos no es diferente. En este vídeo, abriremos nuestra caja de herramientas de análisis y veremos algunos de los elementos más comunes. Antes de empezar, quiero hacer hincapié en que cada uno de los artículos tiene su propio propósito individual. Sin embargo, cuando se usan juntas, ayudan a crear y contar historias con datos que pueden informar, influir e influir en las decisiones empresariales. Los lenguajes de programación son las primeras herramientas que investigaremos. Permiten a los profesionales de datos trabajar de manera eficiente dentro de grandes conjuntos de datos y analizarlos. La mayoría de los lenguajes se han desarrollado con el tiempo y cada profesional de datos tiene sus propias preferencias. Mencionaremos dos en este vídeo que se han vuelto muy populares para el análisis de datos. El lenguaje de programación R y Python. R es un lenguaje de programación que los investigadores y académicos utilizan ampliamente. Era mi idioma principal durante mis estudios de posgrado en estadística y algunas personas dicen que R captura la mentalidad de los estadísticos. Yo diría que hay algo en ese sentimiento. Si busca implementar los últimos avances estadísticos, R es un excelente lugar para buscar. Pero se usa para algo más que para estadísticas, encontrarás muchas nuevas tecnologías e ideas programadas con él. Una de las mejores características de R es que puede crear modelos estadísticos complejos a partir de unas pocas líneas de código. Si sientes curiosidad por R o necesitas un repaso, asegúrate de consultar nuestro certificado de Google Data Analytics, que también se ofrece aquí en esta plataforma. Este programa enseña el lenguaje de programación Python. Es una gran elección por varias razones. En primer lugar, hace hincapié en la legibilidad, lo que lo convierte en uno de los lenguajes de programación más fáciles de aprender y escribir. En segundo lugar, a diferencia de R, Python no nació en la comunidad de datos. Si bien esto puede parecer un inconveniente, también puede ser una gran ventaja. En el mundo moderno, los datos se utilizan de formas cada vez más creativas. Aprender un lenguaje de programación que no solo sea capaz de manejar los datos tiene una enorme ventaja, sino que también se puede usar para crear e implementar las aplicaciones que alimentarán los datos. Aunque R fue mi primer amor, en estos días me he dado cuenta de que me inclino más por Python debido a su flexibilidad. Python puede realizar una amplia variedad de tareas relacionadas con los datos, lo que lo hace muy popular entre los profesionales de datos. Si eres novato o eres nuevo en la codificación completa, Python es un lenguaje muy accesible. Su formato es visualmente ordenado. Es uno de los idiomas más amigables para los principiantes y tiene enormes comunidades en línea y muchos recursos para ayudarte si te quedas atascado. Interactuaremos con Python dentro de una plataforma informática basada en la web, también llamada Jupyter Notebooks, que permite ejecutar código en tiempo real y ayuda a identificar errores fácilmente. Para visualizar las historias de los datos, le enseñaremos cómo compartir datos complejos a través de una interfaz gráfica. Quienes hayan probado nuestro programa de análisis de datos estarán familiarizados con una plataforma llamada Tableau. En este programa, analizaremos con más detalle cómo esta poderosa herramienta puede ayudar a otros a entender los resultados de su análisis. Además, analizaremos la comunicación eficaz en las carreras impulsadas por los datos. A primera vista, puede parecer menos preocupante, pero describir los procesos, a veces complejos, del análisis de datos a las partes interesadas no técnicas puede ser una de las habilidades más importantes que puede tener un profesional de datos. Ya que la comunicación es algo que todos hacemos con regularidad. Es fácil olvidar la importancia de cómo los profesionales de datos comparten y procesan las historias de datos. Nuestro objetivo aquí es fortalecer las habilidades comunicativas que ya posee, para que pueda salir de este programa preparado para sobresalir. En este curso específicamente, y en otros segmentos de este programa, la comunicación será un componente clave que está directamente relacionado con el trabajo que realizará como profesional de datos. Los lenguajes de programación permiten a los profesionales de datos interactuar con los datos e interpretarlos. Las herramientas de datos visuales, como Tableau, enriquecen las historias que contienen los datos con elementos visuales que centran la atención en detalles específicos. Pero el elemento más importante de cualquier historia es el narrador. Ese eres tú. Sus experiencias y conocimientos previos son la base de sus habilidades narrativas, y sus antecedentes distintivos son los que lo diferenciarán de los demás en estos roles. Independientemente de su posible trayectoria profesional, mantener la determinación y desarrollar las habilidades adecuadas es esencial para la transformación personal y profesional, y las herramientas que le ofrecemos en este programa también lo ayudarán en el camino. Estoy encantado de continuar junto a ti en tu viaje. Lo mejor está por llegar. Te veré pronto
+
+Prepárese para evaluar su preparación para el Certificado de Analítica de Datos Avanzada de Google
+Estado: Traducido automáticamente del Inglés
+Traducido automáticamente del Inglés
+
+El Certificado en Análisis Avanzado de Datos de Google es un programa para todos aquellos interesados en conceptos avanzados en análisis de datos. Sin embargo, una formación en análisis de datos es una base útil para muchos de los conceptos que se enseñarán en estos cursos. Hemos creado un cuestionario que le permitirá evaluar su grado de preparación y decidir si desea seguir adelante con el certificado o repasar primero algunos fundamentos.
+
+El cuestionario le preguntará si se siente cómodo con los siguientes conceptos de análisis de datos:
+
+    Principios generales de la analítica de datos y tipos de datos
+
+    Estrategia de datos
+
+    Integridad y limpieza de datos
+
+    Lenguajes de programación
+
+    Visualización de datos, cuadros de mando y cómo compartir información con otras personas
+
+Si viene a este programa desde el Certificado en análisis de datos de Google o ha trabajado en un campo de análisis de datos, es posible que ya esté familiarizado con estos conceptos. ¡Estupendo! Este cuestionario es sólo una forma de comprobar que está preparado para tener éxito. Además, le proporcionará algunos recursos para refrescar la memoria antes de seguir adelante. 
+
+Para ayudarle a decidir si está preparado para este curso
+
+    Realice el cuestionario de preparación opcional.
+
+    Consulte la guía de puntuación para determinar si está preparado para el contenido de Análisis avanzado de datos. Una puntuación del 80% o superior es el objetivo de preparación para estos cursos.
+
+    En función de su puntuación individual, siga las recomendaciones de la guía de puntuación para sus próximos pasos.
+
+Si está seguro de que posee los conocimientos y la experiencia necesarios para obtener este certificado, puede omitir el cuestionario de preparación después de esta lectura y pasar directamente a la siguiente actividad, que es el vídeo de recapitulación semanal situado al principio de la siguiente lección.
+
+
+

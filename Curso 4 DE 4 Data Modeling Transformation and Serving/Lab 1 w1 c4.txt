@@ -1,0 +1,34 @@
+Lab 1 w1 c4
+AWSAccount
+	
+716571704501
+	
+This is the current AWS Account for this tutorial
+	
+-
+AWSRegion
+	
+us-east-1
+	
+This is the current AWS Region for this tutorial
+	
+-
+PostgresEndpoint
+	
+de-c4w1a1-rds.chmoyk60owyd.us-east-1.rds.amazonaws.com
+	
+RDS endpoint for Postgres DB instance
+	
+-
+PostgresJDBCConnectionString
+	
+jdbc:mysql://de-c4w1a1-rds.chmoyk60owyd.us-east-1.rds.amazonaws.com:5432
+	
+JDBC connection string for Postgres database
+	
+-
+PostgresUser
+	
+postgresuser
+	
+user name for Postgres DB instance

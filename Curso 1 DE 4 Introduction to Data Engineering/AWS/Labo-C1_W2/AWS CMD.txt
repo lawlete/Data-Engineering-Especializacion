@@ -1,0 +1,5 @@
+aws rds describe-db-instances --query "DBInstances[?DBInstanceIdentifier=='de-c1w2-rds'].Endpoint.Address" --output text
+
+
+aws glue start-job-run --job-name de-c1w2-etl-job
+

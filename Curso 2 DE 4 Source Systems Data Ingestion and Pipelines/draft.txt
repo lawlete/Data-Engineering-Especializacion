@@ -1,0 +1,20 @@
+38084256712
+378.190,04
+
+
+MYSQL_CONNECTION_STRING: mysql+pymysql://admin:adminpwrd@de-c2w3a1-rds.cdi6y0y2yhrw.us-east-1.rds.amazonaws.com:3306/taxi_trips
+
+
+GXArtifactsS3Bucket
+	
+de-c2w3a1-891377276567-us-east-1-gx-artifacts
+	
+This is the S3 Bucket for GX Artifacts
+
+
+GXDocsS3Bucket
+	
+de-c2w3a1-891377276567-us-east-1-gx-docs
+	
+This is the S3 Bucket for GX Docs
+

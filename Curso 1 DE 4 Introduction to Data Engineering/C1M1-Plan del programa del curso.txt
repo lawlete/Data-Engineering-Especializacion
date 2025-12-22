@@ -1,0 +1,57 @@
+Enhorabuena por completar la primera parte de este programa. Has comenzado oficialmente tu viaje hacia nuevas oportunidades en el campo de los datos. Volvamos a repasar lo que hemos cubierto hasta ahora. En primer lugar, hemos cubierto la logística básica de lo que se incluye en el certificado. Has conocido a cada uno de tus instructores y hemos previsto algunos de los diferentes temas del curso con los que te encontrarás. A continuación, analizamos los aspectos básicos del trabajo centrado en los datos y algunos de los sectores que están incorporando estadísticas. También hablamos sobre el futuro de las profesiones basadas en los datos. Además de explorar cómo es trabajar en el Campo de los Datos, también hablamos sobre la caja de herramientas de los profesionales de los datos y las habilidades que este Programa te ayudará a desarrollar. Enhorabuena por tu progreso hasta ahora. Estoy deseando verte en el próximo vídeo.
+
+Participe en las encuestas del programa
+Estado: Traducido automáticamente del Inglés
+Traducido automáticamente del Inglés
+
+Durante este programa de certificado, se le pedirá que complete unas breves encuestas. Éstas forman parte de un estudio de investigación para conocer la eficacia del certificado para satisfacer sus necesidades de formación profesional. Siga leyendo para obtener un resumen de lo que tratará cada encuesta.
+
+Su participación en la encuesta es opcional pero extremadamente útil para que este curso sea lo más eficaz posible. Todos los datos se mantienen confidenciales y se agregan para su revisión. Su nombre se separa de sus datos cuando se almacenan.
+
+No hay respuestas correctas o incorrectas, y sus respuestas o datos personales:
+
+    No afectarán a su experiencia en el curso, a sus puntuaciones ni a su capacidad para recibir un certificado u oferta de trabajo
+
+    No se compartirán fuera de nuestro equipo de investigación a menos que usted dé permiso para compartir su información de contacto con socios de contratación
+
+¡Gracias por su consideración y su tiempo!
+Encuesta de entrada
+
+A continuación, tendrá la oportunidad de enviar una breve encuesta para ayudarnos a entender por qué se inscribió en este programa de certificación. Si no rellena la encuesta ahora, recibirá una invitación para rellenarla después de completar su primera clase o tarea.
+
+La encuesta le preguntará sobre sus experiencias previas a este curso y los objetivos que espera alcanzar. Se trata de información fundamental para asegurarnos de que podemos satisfacer las necesidades de alumnos como usted y seguir ofreciendo este programa en el futuro.
+Comentarios individuales sobre el curso
+
+Después de completar la última tarea calificada dentro de un curso individual, es posible que se le pida que complete una encuesta en la que se repasan preguntas anteriores y se le pregunta qué ha aprendido hasta ese momento en el programa. Una vez más, rellenar esta información es voluntario pero extremadamente beneficioso para el programa y para los futuros alumnos.
+Encuesta de finalización del certificado
+
+Después de completar la última tarea calificada en el curso final del certificado, se le pedirá que complete una encuesta que revisa algunas preguntas anteriores y le pregunta qué ha aprendido a lo largo de la duración del programa. Esta encuesta también le pregunta si desea compartir su información de contacto con posibles empleadores. Rellenar la encuesta y compartir su información de contacto con posibles empleadores es completamente opcional y no afectará en modo alguno a su experiencia en el curso, sus puntuaciones o su capacidad para recibir un certificado o una oferta de trabajo.
+
+
+
+
+Hola, me llamo Loianne y soy responsable de inteligencia industrial en Google. Esto significa que ayudo a que tanto nuestros equipos internos como nuestros socios y anunciantes conozcan mejor la industria en la que trabajan. Al principio de mi carrera en analítica, me sentía bastante sola, por lo que tenía una gran necesidad de conectarme. No pude encontrar trabajo inmediatamente después de terminar la universidad, y había hecho muchas cosas, trabajado en diferentes lugares y no había establecido conexiones lo suficientemente profundas como para tener una comunidad de personas en esta área. Al principio, empecé a unirme a algunas redes. La creación de redes es fundamental al entrar en un nuevo campo. Para mí, lo más discordante de esta nueva cosa era la novedad de ser nueva, ¿verdad? Así que te sientes como pez fuera del agua. También estás sujeto a ese molesto síndrome del impostor. No soy lo suficientemente bueno para estar aquí, me vas a descubrir. Así que tener una red que pudiera frenarme y decir: no, estás cualificado, y estas son todas las razones por las que estás cualificado y, de hecho, así es como estas otras habilidades que tienes te convierten en un activo aquí, fue inmensamente valioso. En mi puesto actual, colaboro con muchísimas personas diferentes. En el análisis de datos, la colaboración es importante porque hay muchas partes diferentes de la historia. Por lo tanto, se necesitan personas que estén dispuestas y sean capaces de hacer las preguntas que son, ya sabes, ¿qué es exactamente lo que buscamos? ¿Estamos buscando en el lugar correcto? Se necesitan personas que luego puedan consultar y encontrar un conjunto de datos, encontrar la aguja en el pajar. Necesitas que otras personas encuentren el patrón y descubran cuál es la información a partir de los datos. Y luego necesitas personas que cuenten la historia. Practicar la curiosidad es algo que siempre te ayudará en cualquier puesto en el que te encuentres, especialmente cuando trabajas con datos. Y más allá de eso, ya sabes, tienes la oportunidad de conectarte con tu cohorte. Usted es la próxima generación de profesionales de análisis de datos avanzados. Por eso, conocerse, entender lo que todos piensan e incluso, ya saben, abrir la puerta para innovar juntos es una oportunidad muy importante y emocionante.
+
+Como usted sabe, este Programa le pide que complete una evaluación calificada al final de cada sección y curso, y ahora es el momento de prepararse para la primera. Esta evaluación verificará eficazmente su comprensión de los conceptos clave de la Analítica de datos. También le ayudará a construir confianza en su comprensión del análisis de datos mientras identifica cualquier área en la que pueda seguir mejorando. Las evaluaciones a veces pueden resultar abrumadoras, pero abordarlas con estrategia las hace más manejables. Aquí tienes una lista de consejos para prepararte para el éxito. Antes de realizar una evaluación, revisa tus notas y los vídeos, lecturas y el glosario más reciente para refrescar el contenido. Durante la evaluación, tómate tu tiempo, revisa todo el test antes de rellenar las respuestas. A continuación, responde a las preguntas fáciles, sáltate las que no sepas responder de inmediato. Para las preguntas de opción múltiple, céntrate en eliminar primero las respuestas incorrectas. También es buena idea leer cada pregunta dos veces, a menudo hay pistas que podrías pasar por alto la primera vez. Si empiezas a sentirte ansioso, cálmate con algunos ejercicios mentales. Una forma de hacerlo es completar mentalmente un problema matemático sencillo o escribir tu nombre al revés, esto también te ayuda a recordar la información más fácilmente. Antes de presentar la evaluación, comprueba tu trabajo pero ten confianza. A veces la gente cambia una respuesta porque le parece incorrecta pero en realidad es correcta, tu primer instinto suele ser el mejor. Por último, recuerda confiar en ti mismo, a menudo la gente sabe mucho más de lo que cree. Todos aprendemos a diferentes velocidades y de diferentes maneras, pero es importante mantener el ritmo. Así que tómate el tiempo que necesites y cuando te sientas preparado, sigue avanzando. Lo tienes.
+
+Términos del glosario del Módulo 1
+Estado: Traducido automáticamente del Inglés
+Traducido automáticamente del Inglés
+Términos y definiciones del Curso 1, Módulo 1
+
+Profesional de los datos: Cualquier persona que trabaje con datos y/o tenga conocimientos de datos
+
+Ciencia de datos: La disciplina de hacer útiles los datos
+
+Administración de datos: Las prácticas de una organización que garantizan que los datos sean accesibles, utilizables y seguros
+
+Computación de borde: Una forma de distribuir tareas computacionales entre un grupo de procesadores cercanos (es decir, ordenadores) que es buena para la velocidad y la resistencia y no depende de una única fuente de potencia computacional
+
+Cuaderno Jupyter: Una aplicación web de código abierto utilizada para crear y compartir documentos que contienen código en vivo, ecuaciones, visualizaciones y texto narrativo
+
+Aprendizaje automático: El uso y desarrollo de algoritmos y modelos estadísticos para enseñar a los sistemas informáticos a analizar patrones en los datos
+
+Métricas: Métodos y criterios utilizados para evaluar datos
+
+Python: Un lenguaje de programación de uso general
+

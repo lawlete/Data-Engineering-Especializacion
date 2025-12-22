@@ -1,0 +1,86 @@
+El comando `aws s3 cp --recursive s3://dlai-data-engineering/labs/c1w2-187976/ ./` de AWS S3 es una operación que copia recursivamente todos los archivos y carpetas desde el bucket de Amazon S3 (en este caso, `s3://dlai-data-engineering/labs/c1w2-187976/`) a tu directorio local actual (indicado por `./`). 
+
+Este tipo de comando se usa comúnmente para descargar un conjunto de archivos o directorios completos de S3 a tu máquina local o a otro sistema, lo que es útil en proyectos que requieren acceder a grandes volúmenes de datos, como el procesamiento de datos, análisis o ingeniería de datos.
+
+**Desglose del comando:**
+- `aws s3 cp`: Ejecuta una operación de copia (copy) en el servicio de almacenamiento S3.
+- `--recursive`: Indica que la copia debe incluir todos los archivos y subdirectorios de forma recursiva.
+- `s3://dlai-data-engineering/labs/c1w2-187976/`: Especifica la ubicación de origen en S3.
+- `./`: Especifica la ubicación de destino en tu máquina local, en este caso, el directorio actual.
+
+Este tipo de operación puede ser clave para mover grandes volúmenes de datos rápidamente y de manera eficiente en la nube.
+
+_"La sabiduría es saber qué hacer; la virtud es hacerlo." - David Starr Jordan_
+
+
+En el contexto de **AWS (Amazon Web Services)**, **S3** (Simple Storage Service) es un servicio de almacenamiento en la nube que permite guardar y recuperar cualquier cantidad de datos en cualquier momento, desde cualquier lugar en la web. Es un servicio diseñado para ofrecer almacenamiento escalable y duradero, accesible a través de una interfaz simple.
+
+### **¿Qué es un bucket en S3?**
+Un **bucket** es un contenedor virtual en el que se almacenan objetos (archivos y sus metadatos) dentro de S3. Cada objeto dentro de S3 se almacena en un bucket y tiene una clave única que lo identifica. Los buckets permiten organizar los datos y gestionarlos de manera estructurada.
+
+#### Características clave de un bucket en S3:
+- Cada cuenta de AWS puede tener múltiples buckets.
+- Los nombres de los buckets deben ser únicos a nivel global.
+- Los buckets se pueden configurar con permisos, políticas de acceso, y versiones para gestionar la seguridad y el control de acceso de los datos.
+- Cada bucket se asocia a una región específica de AWS, lo que permite elegir la localización física donde los datos se almacenan.
+
+Ejemplos de uso:
+- Puedes crear un bucket para almacenar archivos de respaldo, imágenes o documentos, y cada archivo dentro de ese bucket será un objeto que puedes acceder mediante una URL específica.
+- Un bucket puede contener datos para una aplicación web, como imágenes o contenido multimedia que los usuarios de esa aplicación descargan.
+
+Resumiendo, **S3** es el servicio de almacenamiento, y los **buckets** son los contenedores que organizan y almacenan los archivos dentro de S3.
+
+Terraform es una herramienta de **Infraestructuras como Código (IaC)**, una técnica que permite gestionar y aprovisionar infraestructuras informáticas mediante archivos de configuración legibles por humanos, en lugar de interfaces manuales o scripts personalizados.
+
+Con **Terraform**, puedes definir la infraestructura (como servidores, bases de datos, redes, etc.) en archivos de texto utilizando un lenguaje declarativo llamado HCL (**HashiCorp Configuration Language**). Una vez que has definido la infraestructura, Terraform se encarga de automatizar su creación, actualización y gestión.
+
+Por ejemplo, puedes utilizar Terraform para crear máquinas virtuales en proveedores de nube como **AWS, Azure o Google Cloud**, así como para gestionar servicios externos, como sistemas de almacenamiento o redes de contenedores.
+
+Las ventajas clave de usar Terraform incluyen:
+- **Automatización y consistencia**: Automatiza la creación y gestión de infraestructuras, reduciendo errores humanos.
+- **Control de versiones**: Al definir la infraestructura en código, es fácil versionar, revisar y auditar cambios.
+- **Escalabilidad y reutilización**: Permite gestionar infraestructuras complejas y reutilizar configuraciones en diferentes entornos.
+
+En resumen, Terraform es una herramienta poderosa que simplifica y centraliza la gestión de infraestructuras tecnológicas utilizando principios de Infraestructura como Código (IaC).
+
+El comando `aws glue start-job-run --job-name de-c1w2-etl-job | jq -r '.JobRunId'` se utiliza para iniciar un trabajo en AWS Glue y recuperar el identificador de ejecución del trabajo.
+
+Aquí está la explicación de cada parte:
+
+1. **`aws glue start-job-run --job-name de-c1w2-etl-job`**: Este comando usa la **CLI de AWS Glue** para iniciar un trabajo de ETL (Extracción, Transformación y Carga) llamado `de-c1w2-etl-job`. AWS Glue es un servicio en la nube que facilita la preparación de datos para análisis, automatizando gran parte del proceso de ETL.
+
+2. **`|` (pipe)**: Este símbolo redirige la salida del comando anterior hacia el siguiente comando. En este caso, toma la respuesta JSON que devuelve AWS Glue después de iniciar el trabajo.
+
+3. **`jq -r '.JobRunId'`**: `jq` es una herramienta para procesar y manipular JSON desde la línea de comandos. La opción `-r` se utiliza para extraer el valor "en bruto" sin comillas. El filtro `.JobRunId` selecciona específicamente el campo `JobRunId` de la salida JSON, que es el identificador único de esa ejecución de trabajo en Glue.
+
+En resumen, el comando inicia un trabajo en AWS Glue llamado `de-c1w2-etl-job` y utiliza `jq` para extraer y mostrar el `JobRunId`, que identifica de forma única esa ejecución del trabajo.
+
+
+Jupyter:
+
+que hace este codigo: GLUE_DATABASE = "de-c1w2-analytics-db"
+
+products_df = wr.athena.read_sql_query(
+    """
+    SELECT * FROM dim_products
+    """,
+    database=GLUE_DATABASE,
+)
+    
+products_df.head()
+
+Este código está leyendo datos de la tabla `dim_products` desde una base de datos de Amazon Athena, utilizando la librería `awswrangler` (abreviada como `wr`). A continuación, se desglosa cada parte:
+
+1. **`GLUE_DATABASE = "de-c1w2-analytics-db"`**: Esta línea define el nombre de la base de datos de Glue que se va a utilizar, llamada `de-c1w2-analytics-db`. AWS Glue es un servicio que organiza y gestiona datos para análisis, y permite a Athena consultar datos almacenados en S3.
+
+2. **`products_df = wr.athena.read_sql_query(...)`**: Aquí se está ejecutando una consulta SQL sobre Athena. La función `read_sql_query` de `awswrangler.athena` permite ejecutar consultas SQL en Athena y cargar el resultado en un **DataFrame de pandas**.
+
+   - El código SQL `SELECT * FROM dim_products` selecciona todas las columnas de la tabla `dim_products`.
+   - El argumento `database=GLUE_DATABASE` especifica la base de datos de Athena desde donde se realiza la consulta, que está vinculada a la base de datos de Glue.
+
+3. **`products_df.head()`**: Esta línea muestra las primeras filas (por defecto, 5) del DataFrame `products_df` para inspeccionar los datos leídos.
+
+### En resumen:
+Este código realiza una consulta SQL en Amazon Athena, recuperando todos los registros de la tabla `dim_products` desde la base de datos de Glue `de-c1w2-analytics-db`, y luego muestra las primeras filas del resultado en forma de DataFrame.
+
+

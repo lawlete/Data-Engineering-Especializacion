@@ -1,0 +1,6 @@
+1 - Introduction to Data Engineering
+2 - Source Systems, Data Ingestion, and Pipelines
+3 - Data Storage and Queries
+4 - Data Modeling, Transformation, and Serving
+
+

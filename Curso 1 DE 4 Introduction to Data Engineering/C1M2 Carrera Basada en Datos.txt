@@ -1,0 +1,378 @@
+Es genial tenerte de vuelta. Estoy encantado de ser su guía mientras continúa su camino para convertirse en un profesional de los datos. Como ha ido descubriendo, los datos se pueden utilizar de muchas maneras. Pero independientemente de cómo se aplique, la clave a tener en cuenta es que el conocimiento es poder, el poder de mejorar tu negocio, tu trabajo, tu vida personal y el mundo que te rodea. Con todos los datos que nos rodean, hay mucho potencial esperando a ser desbloqueado. Me alegra que hayas elegido aprender más y ser parte de ello. A propósito de su proceso de aprendizaje, en esta sección del curso, comenzaremos por obtener más información sobre las carreras relacionadas con los datos, exploraremos diferentes sectores y examinaremos algunas aplicaciones directas del trabajo basado en datos, investigaremos algunas de las funciones dentro de las profesiones relacionadas con los datos y analizaremos más de cerca las categorías generales con las que se encuentre. También analizaremos las responsabilidades de los diferentes profesionales de datos. Me emociona que empieces. Vamos.
+
+¿Cómo va todo? Me llamo Adrian y soy ingeniero de clientes en Google. Un ingeniero de clientes de Google es el puente entre los componentes o aspectos técnicos y empresariales de las empresas estadounidenses. Ayudamos a los clientes a aprovechar nuestra tecnología para satisfacer sus necesidades empresariales. Uno de los proyectos más interesantes e incluso interesantes en los que trabajé fue crear un registro unificado de pacientes. Este proyecto era para una empresa de diagnóstico de laboratorio que realmente quería crear una vista de 360 grados de un paciente. Nuestro proyecto se centró en consolidar la información en diferentes sistemas. Imagínese tomar los datos de diagnóstico de laboratorio para su análisis de sangre de rutina más reciente, o incluso algo un poco más específico. La diabetes o una prueba de glucagón, tomar esa y toda la información que ha proporcionado en términos de datos biológicos, centralizarla y estandarizarla en un solo entorno para que, si es su médico el que está analizando los datos o sus radiólogos o nutricionistas, tengan una visión completa de todos sus datos y no solo puedan acceder a ellos, sino que también puedan visualizarlos en tiempo real. Uno de los componentes clave de este proyecto fue el uso de cascos de realidad virtual como principal componente de visualización. Para mí, lo que esto significaba era que tenía la posibilidad de diseñar algunos juegos, crear algunas máscaras humanas en términos del cuerpo y usar diferentes colores y funciones de programación para indicar, por ejemplo, que el sistema tiene un aspecto saludable o si parece que necesita preocupación o intervención. Con el tiempo podemos ver cómo han cambiado los resultados de las pruebas de diagnóstico y el impacto que esto tiene en nuestros pacientes. Al final del día, lo que teníamos era un proyecto que unificaba todos los datos del paciente y ofrecía a los profesionales médicos clave una forma de visualizarlos. El mejor consejo que tengo para ti es que sigas confiando en ti mismo. Si bien es posible que seas nuevo en este nuevo puesto o en esta nueva empresa, tienes habilidades que se pueden repetir y transferir. Ya sea por la forma en que abordas y resuelves los problemas, por la relación que puedes establecer con las partes interesadas y las habilidades sociales y por garantizar que puedes construir esas relaciones o incluso cuando se trata de comunicarte y escribir un correo electrónico conciso y conciso. Serán formas en las que tomarás lo que has hecho antes y lo aplicarás en tu nueva función. Puede que tengas que pensar de forma innovadora, pero lo lograrás.
+
+Los profesionales de datos son muy valiosos para sus empresas. Determinan qué flujos de datos son más importantes para proyectos , desafíos e iniciativas empresariales específicos. Identificaron los objetivos clave para el futuro. Brindan a sus organizaciones la capacidad de tomar medidas significativas al reimaginar los procesos y mejorar las operaciones. Para hacer todo esto, los equipos de datos necesitan personas con diversas habilidades, conocimientos e intereses. Por lo tanto, existen innumerables funciones, responsabilidades y tipos de proyectos diferentes centrados en los datos, que se diferencian aún más según las industrias y las empresas a las que apoyan. Entre todas estas posibilidades, las carreras relacionadas con los datos pueden clasificarse de manera general en dos tipos de trabajo complementarios: técnico y estratégico. En este vídeo, investigaremos ambos aspectos y también consideraremos algunos ejemplos de cómo los profesionales de datos utilizan su experiencia para transformar las industrias. Primero, averigüemos sobre las personas cuyo trabajo requiere un gran énfasis en las habilidades técnicas. Algunos ejemplos de estos profesionales son los ingenieros de aprendizaje automático y los estadísticos. Gracias a su experiencia en matemáticas, estadística e informática, crean modelos y hacen predicciones. Con herramientas como R y Python, ayudan a sus equipos a extraer valor de los conjuntos de datos empresariales. El resultado es una solución que tiene un impacto positivo directo. Otra función altamente técnica es la del analista de datos experto, cuyo trabajo consiste en explorar conjuntos de datos vastos y complejos para identificar las direcciones que vale la pena seguir en primer lugar. Garantizan que los esfuerzos de ciencia de datos de una organización se dirijan de la manera más eficiente posible. Reducir la brecha entre otros profesionales de datos técnicos y el trabajo estratégico que abordaremos en breve. Ahora consideremos a los profesionales de datos desde el punto de vista más estratégico. Estas personas incluyen profesionales de inteligencia empresarial y gerentes de proyectos técnicos, por nombrar algunos. Los profesionales de datos estratégicos utilizan sus habilidades para interpretar la información que afecta a las operaciones, las finanzas, la investigación y el desarrollo de una organización, y mucho más. Su trabajo se alinea estrechamente con la estrategia empresarial general e implica buscar soluciones a los problemas mediante el análisis de datos. En resumen, los profesionales de datos estratégicos maximizan la información para guiar el funcionamiento de una empresa. A veces, encontrará que una empresa tiene funciones que combinan conocimientos técnicos especializados con experiencia en datos estratégicos, a menudo de una manera inusual y muy creativa. Pronto conoceremos más sobre algunas de estas oportunidades, así como sobre las funciones técnicas y estratégicas más especializadas. Ahora, consideremos algunos ejemplos de cómo los profesionales de datos utilizan su experiencia para transformar industrias como las finanzas, la atención médica, la fabricación y la agricultura. En primer lugar, el mundo de las grandes finanzas fue uno de los primeros en adoptar el poder de la ciencia de datos. Con la forma en que la información impulsa esta industria, es fácil entender por qué. Los profesionales de datos ayudan a las instituciones financieras a evaluar los riesgos de inversión , supervisar las tendencias del mercado, detectar anomalías para reducir el fraude y crear un sistema financiero más estable en general. Analítica de datos también es clave para el cuidado de la salud. En este caso, los beneficios de los datos pueden salvar vidas. La Analítica de datos ayuda a las organizaciones de atención médica a procesar grandes cantidades de datos clínicos, lo que contribuye a la detección temprana de una afección de salud y conduce a un diagnóstico más preciso. En tercer lugar, los datos tienen un gran impacto en la fabricación. Los profesionales de datos predicen cuándo realizar un mantenimiento preventivo para evitar averías en la línea de producción, utilizan los datos para maximizar la garantía de calidad y el seguimiento de los defectos, y los modelos de inteligencia artificial ayudan a responder a los problemas logísticos y a reducir las millas recorridas por carretera de los camiones de reparto, lo que contribuye a los objetivos clave de sostenibilidad. En una época en la que las cadenas de suministro, en todos los rincones del mundo, los datos permiten una comunicación clara y casi en tiempo real con los proveedores , minoristas y otros socios de la red. Los profesionales de los datos también están avanzando en los enfoques de la agricultura. Con la información de los datos, los agricultores desarrollan nuevas formas de abordar la producción de cultivos, el cuidado del ganado, la silvicultura y la agricultura. La inclusión de maquinaria, tractores y sistemas de riego autónomos también está mejorando las tecnologías de cosecha. Si quieres seguir aprendiendo sobre cómo los distintos sectores utilizan el análisis de datos, consulta los recursos del curso sobre este tema. He aquí un pequeño consejo para mí. No pierdas la oportunidad de aprender de alguien en la vida real. Me encanta preguntar a los propietarios de negocios, gerentes de tiendas y profesionales de atención al cliente sobre cómo usan los datos todos los días. Quién sabe, una de estas conversaciones podría abrirte la puerta a una oportunidad futura.
+
+Perfiles de profesionales de datos
+Estado: Traducido automáticamente del Inglés
+Traducido automáticamente del Inglés
+
+Ha estado aprendiendo sobre los profesionales de datos y lo valioso que es su trabajo para las empresas que los emplean. También ha aprendido cuáles son las funciones técnicas y estratégicas de los profesionales de la Analítica de datos. Los analistas de datos que desempeñan funciones técnicas transforman los datos en bruto en algo útil para la toma de decisiones. Los profesionales de la Analítica de datos estratégica se centran en maximizar la información para guiar a las empresas para las que trabajan. En esta lectura, aprenderás más sobre el espacio profesional de los analistas de datos y verás ejemplos de algunas categorías generales de funciones de los analistas de datos.
+
+Las clasificaciones de las funciones de los profesionales de datos que se presentan aquí son una introducción muy general a las carreras disponibles dentro del espacio profesional de datos. Cuando empieces a buscar trabajo, es posible que encuentres puestos de nivel básico, medio y superior dentro de cada una de estas categorías generales.
+Científico de datos y Analista de datos
+
+El científico de datos y el Analista de datos son funciones que trabajan directamente con datos. Estos profesionales recopilan, limpian, analizan y comparten información a partir de los datos con las partes interesadas. Cada vez son más los sectores que recurren al análisis de datos para crear perspectivas que sirvan de base a diversas tareas, como orientar la toma de decisiones, identificar las preferencias de los usuarios o determinar cómo utilizar los recursos de forma más eficaz. Cada vez son más los sectores que buscan profesionales de datos, por lo que es muy probable que encuentre uno que se ajuste a sus intereses.
+Atributos clave
+
+    Qué hacen: Descubrir tendencias, patrones y perspectivas a partir de los datos
+
+    Cómo lo hacen: Emplean técnicas avanzadas de modelado y análisis estadístico
+
+    Los puestos de analista o científico de datos de nivel inicial pueden no requerir una experiencia considerable en análisis de datos y ser menos restrictivos a la hora de exigir a los contratados una titulación tradicional.
+
+Ejemplos de puestos
+
+    Científico de datos
+
+    Analista de marketing
+
+    Analista de datos
+
+    Analista de IA
+
+    Analista de negocio
+
+Administración de datos e infraestructura
+
+Los profesionales de datos que trabajan en funciones de gestión de datos e infraestructuras son los principales responsables de los sistemas que distribuyen los datos y mantienen su integridad. Trabajan junto a profesionales de Analítica de datos y ayudan en su trabajo. Su principal responsabilidad es garantizar la funcionalidad de los sistemas de datos y el cumplimiento de la normativa local, estatal y federal en materia de seguridad y ética de los datos.
+Atributos clave
+
+    Qué hacen: Gestionar las fuentes de datos y la infraestructura general de datos
+
+    Cómo lo hacen Trabajan con las herramientas y bases de datos utilizadas para gestionar los datos dentro de una empresa
+
+Ejemplos de puestos
+
+    Ingeniero de datos
+
+    Ingeniero tecnológico
+
+    Gestor de datos
+
+    Administrador de datos
+
+    Arquitecto informático
+
+Inteligencia empresarial
+
+Analítica de datos e Inteligencia empresarial tienen muchos puntos en común. Ambos campos cuentan con profesionales que utilizan los datos para crear perspectivas que sirvan de base a la toma de decisiones. Una diferencia importante es que la inteligencia empresarial se centra más en la creación de procesos y canales de información que transforman los datos relevantes. Los profesionales de la inteligencia empresarial crean tablas, informes y cuadros de mando que capacitan a las partes interesadas, dándoles acceso a los datos que necesitan para fundamentar todo el proceso de toma de decisiones de forma continua. Estas funciones suelen complementar a las de los principales profesionales de análisis de datos y ciencia de datos.
+Atributos clave
+
+    Qué hacen: Realizan análisis predictivos que permiten a las organizaciones determinar las tendencias futuras probables
+
+    Cómo lo hacen Crean tablas, informes y cuadros de mando que capacitan a su organización
+
+Ejemplos de puestos
+
+    Arquitecto de BI
+
+    Analista de BI
+
+    Desarrollador de soluciones de BI
+
+    Ingeniero de software de BI
+
+    Analista de datos y BI
+
+Funciones adicionales para los profesionales de datos
+Equipos de desarrollo de productos
+
+Los profesionales que desempeñan estas funciones gestionan una cartera de proyectos e iniciativas analíticas de clientes y partes interesadas. A menudo gestionan la estrategia analítica de la organización. En estas funciones, lo más probable es que se requiera experiencia, y las responsabilidades son mayores y más globales.
+Atributos clave
+
+    Qué hacen: Gestionar la estrategia analítica dentro de un equipo de proyecto.
+
+    Cómo lo hacen: Son menos prácticos con el análisis de datos, sirviendo como la persona a la que un científico de datos o analistas reportarían
+
+Ejemplos de puestos
+
+    Director de producto
+
+    Desarrollador de productos
+
+    Jefe de producto
+
+    Gestor de productos digitales
+
+    Gestor de productos para clientes
+
+C-suite
+
+Esta clasificación de funciones engloba a los altos ejecutivos de una organización. La "C" de c-suite significa jefe. En general, la c-suite tiende a integrar en sus procesos la toma de decisiones basada en datos. Se espera que las personas que desempeñan estas funciones en los equipos de dirección de las organizaciones estén familiarizadas con los datos y la analítica.
+Atributos clave
+
+    Qué hacen: Son responsables de los datos y de los profesionales de datos de toda la organización
+
+    Cómo lo hacen: Son responsables de la toma de decisiones que se encuentran en el extremo superior de la jerarquía de una empresa
+
+Ejemplos de puestos
+
+    Director de Marketing
+
+    Director de Datos
+
+    Director de Análisis
+
+    Director de información
+
+    Científico jefe de datos
+
+Puntos clave
+
+Existe una gran variedad de funciones y responsabilidades en la carrera de los profesionales de datos. Más adelante, aprenderás cómo estos roles trabajan juntos y colaboran con grupos de profesionales con conocimientos diversos en proyectos de análisis de datos. Tener un conocimiento general de las funciones y responsabilidades de los profesionales de datos puede ayudarte en tu búsqueda de empleo. Esta información puede servirte como referencia para comprender las necesidades y expectativas de las empresas mientras navegas por las ofertas de empleo. Haga inventario de las Habilidades transferibles que ya posea por su formación o experiencia profesional.
+
+Donde los datos marcan la diferencia para el futuro
+Estado: Traducido automáticamente del Inglés
+Traducido automáticamente del Inglés
+Información:
+Este elemento incluye contenido que aún no se tradujo a tu idioma preferido.
+
+ASÍ COMO has ido aprendiendo, el campo de la Analítica de datos es dinámico y abarca una gran variedad de sectores. Tanto para ti como para otros profesionales de los datos que busquen nuevas perspectivas laborales, existen grandes oportunidades en una amplia gama de campos profesionales. Cuando empiece a pensar en su futuro papel en el análisis de datos, puede resultarle útil investigar cómo se utilizan los datos en los distintos sectores. En esta lectura, estudiará algunos ejemplos de sectores y cómo la Analítica de datos ayuda a orientarlos. También analizarás el futuro de la Analítica de datos y cómo sigue evolucionando este campo.
+
+Son muchos los sectores que aprovechan las ventajas de la Analítica de datos de formas muy diversas. He aquí una muestra de algunos de estos sectores y de cómo utilizan los datos:
+
+Industria
+	
+
+Visión general
+	
+
+Cómo se utilizan los datos
+
+Empresas basadas en aplicaciones (servicios de economía colaborativa)
+	
+
+Facilita que los usuarios adquieran, proporcionen o compartan el acceso a bienes y servicios, a menudo a través de comunidades en línea o basadas en aplicaciones
+	
+
+    Mantenimiento de aplicaciones para dispositivos móviles en funcionamiento
+
+    Entrega de contenido personalizado basado en el historial del usuario, incluidos descuentos
+
+    Uso de modelos de Aprendizaje automático para enviar notificaciones en momentos clave o incluso lugares
+
+Automoción
+	
+
+Incluye las industrias asociadas a la producción, venta al por mayor, venta al por menor y mantenimiento de vehículos de motor.
+	
+
+    Obtención de un mayor control sobre sus cadenas de suministro
+
+    Mejorar el rendimiento de las líneas de producción y diseñar vehículos nuevos y más eficientes
+
+    Mejora de la seguridad de los vehículos y nuevas prestaciones
+
+Ciberseguridad
+	
+
+Protege las redes, los dispositivos y los datos de accesos no autorizados o usos delictivos y la práctica de mantener la Confidencialidad, integridad y disponibilidad de la información
+	
+
+    Localización de puntos débiles en redes y sistemas mediante Analítica predictiva
+
+    Defensa contra ataques a la seguridad
+
+    Detección de violaciones de datos a través de la lógica, modelos y herramientas de datos
+
+    Mejorar la capacidad de identificar ataques y responder a ellos con Inteligencia artificial (IA)
+
+Marketing digital
+	
+
+Ayuda en los esfuerzos publicitarios y promocionales de las empresas que utilizan internet y las tecnologías en línea
+	
+
+    Traducir la interacción con el cliente en datos empresariales procesables
+
+    Predecir los comportamientos de los usuarios para personalizar contenidos y ofertas
+
+    Identificar patrones y tendencias que guíen las innovaciones
+
+    Determinar el Retorno de la inversión (ROI) de los esfuerzos de marketing
+
+Energía
+	
+
+Incluye empresas que exploran, producen, refinan, comercializan, almacenan y transportan recursos energéticos renovables y no renovables
+	
+
+    Análisis de datos en tiempo real procedentes de sistemas de energía y dispositivos de control
+
+    Optimización de tecnologías, supervisión de redes eléctricas y predicción de fallos
+
+    Prevención de accidentes y averías
+
+Juegos
+	
+
+Acoge a unos 2.700 millones de jugadores en todo el mundo, facilitando la interacción de jugadores de todo el planeta
+	
+
+    Diseño de sistemas de creación de mundos y personajes.
+
+    Control de la participación de los personajes y de la reacción del entorno a las acciones de los jugadores
+
+    Optimización de la jugabilidad mediante la identificación de posibles nuevas funciones o mejoras
+
+    Regulación de las compras en el juego y sistemas de detección del fraude.
+
+    Personalización de campañas de marketing
+
+Streaming multimedia y de entretenimiento
+	
+
+Proporciona acceso a contenidos en directo y grabados a la carta, enviados a través de Internet a ordenadores, dispositivos inteligentes y dispositivos móviles
+	
+
+    Análisis y seguimiento de las interacciones de los usuarios para comprender mejor la opinión de los clientes
+
+    Puesta en contacto de los usuarios con los anunciantes mediante análisis en tiempo real
+
+    Orientar futuras decisiones sobre contenidos
+
+    Personalización de campañas de marketing
+
+Telecomunicaciones
+	
+
+Principalmente implica operar y proporcionar acceso a instalaciones para la transmisión de voz, datos, texto, sonido y vídeo
+	
+
+    Asistencia en el despliegue, la optimización y el mantenimiento predictivo de las redes de telecomunicaciones
+
+    Optimización de los modelos de tarificación
+
+    Orientación de campañas publicitarias y de incentivos, así como detección de actividades fraudulentas
+
+    Análisis de los datos de los clientes para personalizar los planes de los abonados
+
+Viajes y turismo
+	
+
+Abarca una variedad de servicios que van desde el transporte, el alojamiento, las atracciones y las reservas, entre otros
+	
+
+    Marketing dirigido a particulares en función de sus viajes anteriores o destinos buscados
+
+    Dirigir sistemas de Aprendizaje automático que puedan ajustar el itinerario de un viajero en función de factores establecidos como el tiempo y la disponibilidad
+
+    Generación de recomendaciones basadas en preferencias personales y descuentos basados en la ubicación
+
+    Gestión de reservas y procesamiento de transacciones
+
+Tendencias de datos para el futuro
+
+Como puede deducirse, la Analítica de datos es un campo emergente con un amplio abanico de interesantes oportunidades. Y aún más emocionante es el hecho de que Big data está creciendo. La necesidad de personas que comprendan, prioricen, gestionen y analicen esa información no se ralentiza en ningún sector. Las empresas seguirán dependiendo de la toma de decisiones basada en datos, impulsada tanto por simples análisis de tendencias como por técnicas más complejas, como los modelos predictivos y las previsiones.
+
+Además, cada vez más empresas almacenan todos sus datos en grandes repositorios accesibles a toda la organización. A medida que las empresas se vuelvan más dependientes de la información generada por estos datos, habrá muchas oportunidades para que los profesionales del análisis de datos utilicen sus habilidades y conocimientos para organizar esa información y hacerla útil.
+Tecnologías innovadoras
+
+Las innovaciones en el acceso a estos datos están dando lugar a nuevos enfoques en la interconexión de datos, lo que significa que todavía hay formas nuevas y en evolución en que las empresas de diferentes sectores van a utilizar los datos en el futuro. La tecnología también cambia constantemente y se adapta a estas nuevas necesidades. Por ello, siempre habrá nuevas herramientas y soluciones de datos que explorar.
+
+La Inteligencia artificial seguirá teniendo un gran impacto en los negocios, ayudando a racionalizar muchas áreas. Por ejemplo, se entiende que el aumento de las ventas es un resultado directo de la previsión de la demanda de productos. La Inteligencia artificial ayuda a las empresas a garantizar el suministro de los almacenes, mantener los artículos en stock, reducir el tiempo de entrega y aumentar la eficiencia operativa mediante la automatización de los procesos.
+
+Además, la inteligencia artificial se combinará con el aprendizaje automático, la inteligencia empresarial y la automatización para ofrecer servicios más personalizados a los clientes.
+
+La oferta de servicios adicionales impulsará la innovación, acercando físicamente las aplicaciones informáticas y las fuentes de datos almacenados. Este concepto se denomina Computación periférica. Al cerrar la brecha entre los datos y la computación, mejora la velocidad. Esto se traduce en un mayor apoyo a la Analítica en tiempo real y a la automatización necesaria para dar soporte al creciente número de dispositivos que se están conectando a través de la Internet de las cosas
+
+.
+
+Se automatizará un número cada vez mayor de tareas de Analítica de datos mediante la creación, gestión y análisis de datos en entornos de borde. Los sistemas de Inteligencia artificial y Aprendizaje automático sólo son tan equitativos e inclusivos como las personas que crean y forman estos sistemas. Aprenderá más sobre cómo usted, como profesional de la analítica de datos, tendrá que tomar medidas para garantizar la equidad en el futuro.
+Puntos clave
+
+A medida que avances en tu carrera como profesional del análisis de datos, tendrás que mantenerte al día de las últimas tendencias y tecnologías utilizadas en los distintos sectores. La única certeza sobre el futuro de la analítica de datos es que se seguirá generando una cantidad cada vez mayor de datos y que se seguirán desarrollando nuevos sistemas e innovaciones, lo que brindará a los profesionales de los datos la oportunidad de aprender, crecer y desarrollar nuevas habilidades.
+
+Recientemente, ha aprendido cómo las empresas utilizan los datos para guiar la toma de decisiones, responder preguntas y resolver problemas. En este vídeo, investigaremos cómo las organizaciones sin fines de lucro utilizan el análisis de datos para alcanzar sus objetivos únicos. Los grupos sin fines de lucro se crean para promover una causa social o brindar beneficios al público. Como su nombre indica, su objetivo principal no es obtener ganancias, sino fomentar una ventaja colectiva, pública o social. Hay algunas oportunidades muy gratificantes e inspiradoras para los profesionales de datos del sector sin fines de lucro. En particular, los datos se pueden aplicar para ayudar a estos grupos a anticipar y responder de manera más eficaz a las áreas de mayor necesidad. Por ejemplo, tal vez una organización benéfica estadounidense que proporciona bicicletas a los niños quiera determinar qué barrios son los más necesitados. Podrían pedirle a su profesional de datos que acceda a la Oficina del Censo de los EE. UU. El profesional utilizaría sus talentos para navegar por la base de datos del censo, identificar las métricas clave y resumir los hallazgos con análisis y visualizaciones de datos. Este informe destacaría dónde hay un mayor número de niños en edad escolar necesitados que se beneficiarían de los recursos de este programa. Ahí lo tiene, la información de los datos lleva a tomar decisiones informadas sobre dónde esta organización sin fines de lucro puede hacer más bien. Ahora, las organizaciones sin fines de lucro hacen más que usar datos. Muchos de ellos también lo coleccionan. Como probablemente sepa, las entidades públicas y las agencias gubernamentales pueden ser excelentes recursos para obtener datos útiles. Gran parte de ellos son datos abiertos que están disponibles para uso general. Como probablemente sepa, los datos abiertos son datos que están disponibles para el público. Es de uso gratuito y se proporciona orientación para ayudar a navegar por los conjuntos de datos y reconocer la fuente. Si bien obtener datos abiertos es una buena forma de interactuar con los datos por su cuenta. Hay otras oportunidades que le permiten perfeccionar sus habilidades y, al mismo tiempo, ayudar a los demás. Los voluntarios de datos contribuyen a muchos proyectos que ayudan a las organizaciones sin fines de lucro a beneficiar a las comunidades de todo el mundo. Para obtener más información, estas son algunas organizaciones que puede consultar. En primer lugar, la fundación Data Science for Social Good se creó en la Universidad de Chicago en 2013. En 2020, unieron fuerzas con UNICEF para analizar varios aspectos de la contaminación del aire en todo el mundo a fin de ayudar a controlar la salud de los niños. DataKind se lanzó en 2011 en la ciudad de Nueva York con capítulos en el Reino Unido, Bangalore, San Francisco, Singapur y Washington DC. Esta organización analiza el costo de la limpieza ambiental en diferentes comunidades desatendidas para guiar los esfuerzos de restauración. Puede ver ambos esfuerzos de Fundamentos a través de los enlaces y la transcripción de este video. Otra opción para hacer un buen uso de tus habilidades con los datos son los hackatones. Un hackathon es un evento en el que profesionales de datos y programadores se reúnen y colaboran en un proyecto en particular. El objetivo es crear una solución a un problema existente mediante el uso de la tecnología. Algunos ejemplos incluyen el desarrollo de mejores herramientas para predecir fenómenos meteorológicos extremos, la creación de tecnología para ayudar a los niños de primaria a aprender importantes habilidades de lectura y la identificación de formas en que los grupos de desarrollo comunitario pueden usar sus datos para mejorar la accesibilidad y la asequibilidad de los hogares. Ofrecer voluntariamente sus habilidades de datos en proyectos públicos es una excelente manera de contribuir al bien común y, al mismo tiempo, adquirir experiencia y establecer contactos con otras personas en su campo. Próximamente, analizaremos más a fondo algunos proyectos orientados a los datos en el sector público y cómo están teniendo un impacto en todo el mundo.
+
+Las principales competencias necesarias para una carrera en el sector de los datos
+
+Todos los profesionales de datos comparten el amor por los datos y el deseo de resolver problemas. Mientras usan su sombrero de análisis, los profesionales de datos exponen la historia que están tentados a contar. Luego, lo analizan desde varios ángulos con investigaciones de seguimiento para ver si se mantiene firme antes de llevarlo a los responsables de la toma de decisiones. Al hacerlo, confían en sus habilidades de programación e investigación para guiar a otros hacia decisiones informadas. Los profesionales de datos también combinan el conocimiento sobre cómo realizar tareas prácticas con la conciencia de lo que hace que la comunicación y la colaboración sean exitosas. Más adelante, profundizaremos en los elementos de la comunicación y analizaremos las formas en que la comunicación mejora y estructura su trabajo como profesional de datos. Por ahora, examinemos algunas habilidades y atributos que son aplicables en las carreras basadas en datos. Trabajar en el análisis de datos requiere una combinación de sentido empresarial y conocimiento a la hora de recopilar , manipular y analizar datos. Nuestro objetivo es prepararlo para desarrollar las competencias necesarias para tener éxito. Empecemos por hablar de algunas habilidades interpersonales. A menudo, estas habilidades se denominan habilidades de las personas. Se centran en la comunicación y la construcción de relaciones. Habilidades interpersonales son fundamentales. En este campo, existe un alto grado de interacción entre las partes interesadas. Esto es especialmente relevante ahora que los miembros del equipo suelen trabajar en colaboración en todo el mundo. Con mucha frecuencia, las conversaciones laborales son el punto de partida y el combustible que impulsa los proyectos. Debido a los procesos cíclicos del análisis de datos, la comunicación siempre es continua. Otra habilidad importante es la escucha activa. Esto significa permitir que los miembros del equipo , los jefes y otras partes interesadas de la colaboración compartan sus propios puntos de vista antes de ofrecer respuestas para que cada intercambio mejore el entendimiento mutuo. De hecho, puedes practicar la escucha activa. La próxima vez que hables con alguien, esfuérzate más por escuchar más allá de sus palabras. Concéntrese en lo que intentan comunicar. Sus habilidades de escucha y comunicación desempeñarán un papel importante para ayudarlo a capturar información efectiva y tomar decisiones informadas. Examinaremos más de cerca la comunicación un poco más adelante en este curso. Hay otras cosas que tendrás que tener en cuenta. Como profesional de datos, buscará información oculta en grandes cantidades de datos mediante la aplicación de habilidades de pensamiento crítico. A lo largo del camino, investigará las conexiones entre una variedad de fuentes de datos diferentes mientras busca tendencias e indicadores. Piensa en ti mismo como un detective de datos. Los datos del proyecto pueden provenir directamente de su organización o de otras fuentes. Puede que tengas suerte y recibas una hoja de cálculo o base de datos bien formateada, pero muy a menudo tendrás que preparar los datos para empezar. Este proceso se conoce como limpieza de datos. Aquí es donde se reorganizan y reformatean los datos. El objetivo es eliminar cualquier cosa que pueda crear un error durante el análisis. Este proceso incluye etiquetar y consolidar duplicados, entradas irrelevantes, errores estructurales y espacios vacíos. Una vez que tengas todo en el formato adecuado, puedes filtrar el material no deseado. Ahora, sus datos están listos para ser analizados. Es el momento de buscar tendencias y tendencias. A menudo es muy útil renderizar los datos de forma visual para revelar información adicional a través de gráficos, paneles e informes. Las herramientas gráficas son muy útiles para identificar patrones, así como para compartir información con otros. Explorará esto con mayor detalle más adelante y también tendrá la oportunidad de practicar la compilación de visualizaciones. También aprenderá sobre habilidades más avanzadas, como la creación de modelos y algoritmos de aprendizaje automático. Estas herramientas lo ayudarán a usted y a otros profesionales de datos a evaluar la precisión de la información, analizar segmentos de datos específicos y predecir los resultados empresariales futuros. Su arduo trabajo ayudará a los líderes y a otros responsables de la toma de decisiones de su empresa, proporcionándoles acceso a una gran variedad de perspectivas sobre diferentes conjuntos de información. Con el aumento de la demanda de análisis de datos en todo tipo de empresas y negocios, es probable que encuentre oportunidades en una industria que le interese personalmente. A continuación, veremos cómo trabajar en el campo de los datos.
+
+Cualidades ideales para los profesionales del análisis de datos
+Estado: Traducido automáticamente del Inglés
+Traducido automáticamente del Inglés
+Información:
+Este elemento incluye contenido que aún no se tradujo a tu idioma preferido.
+
+Usted ha estado aprendiendo acerca de las habilidades que pueden ayudarle a entrar y sobresalir en el espacio de carrera de datos. En este programa, desarrollarás las habilidades técnicas necesarias antes de buscar oportunidades en el campo de la Analítica de datos. Las ofertas de empleo incluirán una lista de las habilidades técnicas requeridas en un lugar destacado. Muy a menudo, las organizaciones también tomarán nota de las habilidades y rasgos adicionales que van más allá de trabajar con datos en un ordenador. En esta lectura, explorará ejemplos de aptitudes y rasgos adicionales que buscan los empleadores cuando buscan profesionales del análisis de datos.
+
+A medida que comienzas a buscar oportunidades de empleo, muchos empleadores buscan habilidades adicionales que no son exclusivas de los campos digitales. En las secciones siguientes, aprenderá más sobre estos rasgos a través de extractos que se encuentran en las ofertas de empleo de análisis de datos.
+Ser entrenable
+
+Los individuos entrenables son capaces de recibir feedback y utilizar esa información para mejorar. Una actitud positiva y la capacidad de autorreflexión y de tomar medidas para crecer son la clave para ser entrenable. Las personas que son entrenables suelen tener una mentalidad de crecimiento, es decir, la creencia de que el trabajo duro y la determinación pueden hacerles mejorar. Por ello, ven las opiniones de sus colegas y supervisores como una oportunidad para mejorar sus habilidades.
+Pasión por el Análisis de datos
+
+Los empleadores suelen buscar candidatos cuyo compromiso con el análisis de datos vaya más allá de sus obligaciones profesionales. Ofrecer voluntariamente sus conocimientos de datos para ayudar a una organización sin ánimo de lucro es sólo un ejemplo, pero no es la única forma de demostrar su compromiso con el análisis de datos. El Análisis de datos es aplicable fuera del lugar de trabajo, pero a menudo no es obvio. Los proyectos comunitarios, ayudar a una escuela local a organizar datos y desarrollar tu propio proyecto paralelo son algunos ejemplos de cómo puedes demostrar tu pasión por el análisis de datos fuera del lugar de trabajo.
+
+Otra forma de explorar tu pasión por el análisis de datos es ponerte en contacto con otros analistas de datos apasionados y enfrentarte a retos relacionados con los datos. Un sitio web estupendo para explorar el análisis de datos es Kaggle.com
+
+, que alberga una activa comunidad en línea para científicos de datos y entusiastas del aprendizaje automático. Los usuarios pueden colaborar con otros usuarios, publicar conjuntos de datos, utilizar cuadernos integrados en la GPU y competir con otros científicos de datos para resolver retos de ciencia de datos. Participar en actividades organizadas por una comunidad en línea de ciencia de datos como Kaggle puede avivar tu pasión por el análisis de datos y proporcionar artefactos para tu cartera.
+
+Los empleadores buscan candidatos apasionados. Las ofertas de empleo que identifican a candidatos apasionados por el análisis de datos suelen incluir expresiones como:
+
+    Buscamos un científico de datos apasionado.
+
+    Buscamos un candidato con una profunda curiosidad orientada hacia diversos intereses de investigación.
+
+    Impulsado. La perspectiva de centrarse en el impacto medioambiental de las empresas como dominio de datos le entusiasma y le motiva personalmente.
+
+Consejo profesional: Incluye en tu carpeta tu pasión por el Análisis de datos. Proporcione ejemplos de proyectos que le apasionen, trabajo voluntario o análisis fuera del empleo para transmitir su compromiso con el análisis de datos. Si realiza análisis de datos en su tiempo libre, dice mucho de su pasión.
+Aprendizaje permanente
+
+Antes ha leído sobre algunos cambios generacionales en los espacios de trabajo de datos. Tal vez recuerde que estos cambios han incluido avances tecnológicos en las interfaces informáticas, el almacenamiento de datos y el papel del análisis de datos en las organizaciones. De hecho, el único elemento constante en todas estas épocas fue el cambio. A medida que avance en su carrera, seguirá aprendiendo nuevas técnicas, herramientas y formas de interactuar con otros profesionales. Como ya has aprendido, estar al día de las últimas tecnologías y técnicas es esencial para los profesionales de los datos. Estos son algunos ejemplos extraídos de un puesto de trabajo real:
+
+    Los candidatos deben equilibrar su trabajo práctico con el deseo de mantenerse al día de las tendencias.
+
+    Se buscan candidatos con aptitudes y entusiasmo para desarrollar nuevas habilidades y áreas de especialización.
+
+    Se buscan candidatos con ganas de aprender y dominar nuevas tecnologías y técnicas.
+
+Consejo profesional: manténgase al día leyendo blogs relacionados con datos y asistiendo a talleres. Visite sitios web de redes empresariales para conectar con expertos en la materia y aprender de ellos.
+Habilidades interpersonales sólidas
+
+Tal vez recuerde que los profesionales de datos y los de Inteligencia empresarial interactúan estrechamente; juntos, influyen en la toma de decisiones de una organización. A lo largo de un proyecto, un Analista de datos interactuará con muchas partes interesadas, de diferentes áreas de una organización. A menudo, estas interacciones incluirán a clientes, usuarios o representantes de otras empresas. Además, los profesionales de datos trabajarán en estrecha colaboración con otros profesionales como miembros de un Equipo multidisciplinar. Ejemplos de ofertas de empleo que incluyen requisitos de habilidades interpersonales para los candidatos incluyen este tipo de afirmaciones:
+
+    Buscamos empleados que puedan establecer relaciones internas para transferir conocimientos, consultar con otros científicos y analistas de datos para orientar el análisis y entregar proyectos de mayor envergadura.
+
+    Queremos contratar a personas con capacidad para negociar cuestiones complejas o delicadas y mantener buenas relaciones laborales.
+
+    Nuestros profesionales de datos valoran el establecimiento de relaciones sólidas con colegas y socios.
+
+Consejo profesional: incluya las Habilidades interpersonales en la lista de cualificaciones de su currículum. Repase el material de este programa (incluido el material sobre comunicación que se le presentará más adelante en este curso). Encuentre oportunidades para añadir ejemplos de trabajo en equipo, empatía, liderazgo, mediación y escucha activa.
+Comunicación
+
+Se espera que los profesionales que trabajan con datos, negocios y tecnología sean comunicadores fluidos. La eficacia de tu trabajo dependerá en gran medida de tu capacidad para inspirar a la gente a través de los resultados de tus análisis. Las ofertas de empleo pueden contener requisitos como los siguientes:
+
+    Los candidatos deben tener excelentes dotes de comunicación y una personalidad afable y accesible.
+
+    Usted es un narrador convincente que puede comunicar de manera sucinta e inspiradora a audiencias con variada experiencia en ciencia de datos para influir en las decisiones sobre productos o características del mundo real.
+
+    Un contador de historias. Sabe que ningún dato habla por sí solo y se enorgullece de las visualizaciones y la narrativa que construye para comunicar su cuidadoso análisis.
+
+Consejo profesional: asegúrate de que toda la correspondencia que intercambies sea profesional y no contenga errores gramaticales ni ortográficos. Incluye en tu carpeta ejemplos de comunicación escrita, como artículos de reflexión, resúmenes o propuestas de proyectos, entre otros. No olvide incluir ejemplos escritos o entradas de blog en línea que describan cómo se ha comunicado en situaciones anteriores.
+Resuelve problemas
+
+La capacidad de resolver problemas es una parte importante de ser un profesional de la analítica de datos, ya sea tratando con datos incompletos, resolviendo problemas dentro de un análisis o encontrando la mejor manera de comunicar sus resultados a su audiencia. También es importante que cuantifique los resultados de los problemas que ha resuelto. Las organizaciones que buscan profesionales de datos han incluido la resolución de problemas en la descripción de sus puestos, por ejemplo:
+
+    Se buscan profesionales de datos que tengan la capacidad y el fuerte deseo de resolver problemas desde el desarrollo del concepto, la interacción del cliente y la transición tecnológica.
+
+    Los candidatos deben ser persistentes y tener una excelente capacidad analítica y de resolución de problemas.
+
+    Un gran pensador. Comienza con el "por qué" al abordar un nuevo problema y siempre quiere generalizar, sintetizar y resumir.
+
+Consejo profesional: Convierte tus responsabilidades laborales anteriores en tareas que hayas sido capaz de realizar. Para ello, haga hincapié en los resultados finales de sus acciones. Detalla cómo tu acción o tarea tuvo un impacto directo en la organización. Si hay un cambio medido o empírico asociado a tus acciones, asegúrate de incluirlo. Ejemplo: Analizar los datos de más de 3.000 usuarios para optimizar los sistemas, lo que condujo a un aumento del 32% en la satisfacción del cliente.
+Puntos clave
+
+Las empresas de diversos sectores están deseosas de contratar a profesionales de datos que posean algo más que conocimientos técnicos. Puedes destacar tus habilidades no técnicas para posibles empleadores de varias maneras. Descubra formas de comunicar con éxito y eficacia lo que le apasiona. Demostrando su compromiso con el crecimiento profesional y compartiendo ejemplos de su capacidad para resolver problemas, puede diferenciarse de otros candidatos.
+
+
+https://www.kaggle.com/ 
+
+Enhorabuena por terminar este primer curso de la especialización en ingeniería de datos. Con este curso, ha completado algunos pasos realmente importantes para convertirse en un ingeniero de datos exitoso. En la primera semana de este curso, analizamos el panorama general. Hablé un poco sobre la historia de la ingeniería de datos y cómo llegamos a donde estamos hoy. Analizamos una definición de ingeniería de datos y el ciclo de vida de la ingeniería de datos, y concluimos esa primera semana con un marco para pensar como un ingeniero de datos, que puede utilizar como referencia a medida que pasa de recopilar los requisitos a la implementación de sus sistemas de datos. En la segunda semana, analizamos en profundidad las etapas del ciclo de vida de la ingeniería de datos, desde la generación de datos y los sistemas fuente hasta la ingestión, el almacenamiento, la transformación y, por último, el servicio de datos para casos de uso finales como el análisis, el aprendizaje automático y la ETL inversa. También analizamos las corrientes subyacentes del ciclo de vida de la ingeniería de datos, incluidas la seguridad, la administración de datos, DataOps, la orquestación de la arquitectura de datos y la ingeniería de software. Sé que se trataba de mucha teoría, pero he visto a muchos ingenieros de datos intentar diseñar arquitecturas de datos sin entender este marco mental de alto nivel. Y en muchos de estos casos, se ha traducido en sistemas de datos rotos , infracciones de seguridad o algo peor. Y ahora que comprende este marco, verá cómo las etapas del ciclo de vida de la ingeniería de datos y sus corrientes subyacentes ayudan a guiar su trabajo como ingeniero de datos en los próximos cursos. En la tercera semana, nos centramos en la arquitectura de datos y en los principios para crear una buena arquitectura de datos. Revisará estos principios a medida que tome decisiones de arquitectura en los próximos cursos. Concluimos esta cuarta semana reuniendo todo, en la que pasaste de recopilar los requisitos de varias partes interesadas a implementar un sistema de recomendación de productos. Si se siente un poco abrumado en este momento, no pasa nada, ya que este curso abordó muchas cosas y, en cierto sentido, fue más teoría que práctica. Por lo tanto, es comprensible que sientas que de repente tienes muchos conocimientos nuevos, pero aún no estás completamente seguro de cómo aplicarlos. Pero no se preocupe, los próximos tres cursos de la especialización tienen que ver con la aplicación de los fundamentos que ha estado aprendiendo en este curso. Por lo tanto, únase a mí en el próximo curso de esta especialización para adquirir experiencia práctica con los sistemas de origen, la ingestión de datos y las canalizaciones de datos. Te veré allí.
+
+
+
+

@@ -1,0 +1,28 @@
+Lab c4 w1 Features engineering:
+
+de-c4w2lab1-rds.cr2m64q066t6.us-east-1.rds.amazonaws.com
+
+Tables_in_classicmodels
+customers
+employees
+offices
+orderdetails
+orders
+payments
+productlines
+products
+ratings
+
+Tabla ratings
+
+customerNumber 	productCode 	productRating
+103 		S10_2016 		3
+103 		S18_1589 		3
+103 		S18_2625 		1
+103 		S18_2870 		5
+103 		S18_3685 		4
+103 		S24_1628 		3
+103 		S24_2022 		5
+112 		S18_1129 		5
+112 		S18_1342 		5
+112 		S18_1589 		3

@@ -1,0 +1,66 @@
+This week, we looked at the
+different approaches you can use to model your data for
+batch analytics use cases. In the labs, you implemented multiple normalization
+steps to turn denormalized data into
+third normal form, and you also model normalized data into a star
+schema using DBT. When it comes to modeling
+data for the data warehouse, we discussed the Inmon
+Modeling Approach, which focuses on using the
+highly normalized model or third normal form to model
+the data in the warehouse, as well as the Kimball
+Modeling Approach, which focuses on
+directly modeling the data as a star schema
+in the data warehouse, and the data vault model, which focuses on separating the structural information from the descriptive
+context of the data. We also went over the simple
+one big table approach. Let's go over a quick summary of each of these
+four approaches. The major benefit of an
+Inmon data modeling approach is that it makes
+the data warehouse into a single
+source of truth for the organization and ensures
+the integrity of the data. This is because when you model your data in third normal form, you avoid duplication and
+redundancy in the data, which makes it easier to ensure the consistency of the data when you add update or
+delete rows from the data. However, to perform
+analytical queries on data in third normal form, you often need complex queries
+that rely on many joins, which can result in
+slow query performance. Kimball's Modeling
+Approach enables faster iteration and
+modeling because you directly model the data in the data warehouse
+using star schemas. In a star schema, you
+collect the measures or facts of a business process
+or event in a fact table. Then to provide detailed contextual information
+about these facts, you surround the fact table
+with dimension tables. This allows a data analyst
+to aggregate the measures of the fact tables and use the dimension tables to group
+or filter their queries. However, to use this approach, you need to have a
+good understanding of the business requirements, which, in some cases, might not be well
+defined or very stable. The data fault model,
+on the other hand, offers a more flexible
+design that you can use in an agile environment or
+the business requirements or structure of
+the source systems might regularly be changing. The Data Vault Approach, you model the core business
+concepts and hub tables and represent the relationship between them using link tables. These tables only contain the business keys that
+identify the core concepts. To provide more
+meaningful context, you can connect the hub and
+link tables to satellite tables that contain
+the attributes of the parent hub or link. However, with this model, you still need to do some work downstream by
+modeling the data in the information
+delivery layer into star schemas or some
+other structure that makes the data
+easy to query. Finally, we looked
+at the One Big Table or OBT Approach, which is perhaps the simplest
+way to model your data. Which is to say, just throw all your data into
+one big table. This way, the data
+analyst doesn't need to perform
+any complex joins, so it's fast to perform
+analytical queries. However, with this
+approach, you lose the business logic in your
+analytics and might end up with a big table
+that contains duplicate information and
+occupies a lot of space. Each approach has its own
+strengths and weaknesses. In your work as a data engineer, there's a chance
+you might end up combining more than one
+of these approaches. Next week, we'll continue
+our discussion on data modeling but
+we'll focus on how you can model and
+transform your data for machine learning use
+cases, I'll see you there.

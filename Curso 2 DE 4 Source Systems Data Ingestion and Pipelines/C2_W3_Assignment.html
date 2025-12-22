@@ -1,0 +1,1326 @@
+<section id="testing-data-quality-with-great-expectations"
+class="cell markdown">
+<h1>Testing Data Quality with Great Expectations</h1>
+<p>In this lab, you will work on defining some expectations and
+validations over a dataset in a MySQL Database. You will implement your
+validation workflow using the different components of Great
+Expectations: Data Context, Data Sources, Expectations and suites, and
+Checkpoints.</p>
+</section>
+<div class="cell markdown">
+<ul>
+<li>Expectations store:</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">expectations_store</span><span class="kw">:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">class_name</span><span class="kw">:</span><span class="at"> ExpectationsStore</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">store_backend</span><span class="kw">:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">class_name</span><span class="kw">:</span><span class="at"> TupleS3StoreBackend</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">bucket</span><span class="kw">:</span><span class="at"> &lt;GX-ARTIFACTS-BUCKET&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">prefix</span><span class="kw">:</span><span class="at"> expectations/</span></span></code></pre></div>
+<ul>
+<li>Validations store:</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">validations_store</span><span class="kw">:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">class_name</span><span class="kw">:</span><span class="at"> ValidationsStore</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">store_backend</span><span class="kw">:</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">class_name</span><span class="kw">:</span><span class="at"> TupleS3StoreBackend</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">bucket</span><span class="kw">:</span><span class="at"> &lt;GX-ARTIFACTS-BUCKET&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">prefix</span><span class="kw">:</span><span class="at"> validations/</span></span></code></pre></div>
+<ul>
+<li>Checkpoint store:</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">checkpoint_store</span><span class="kw">:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">class_name</span><span class="kw">:</span><span class="at"> CheckpointStore</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">store_backend</span><span class="kw">:</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">class_name</span><span class="kw">:</span><span class="at"> TupleS3StoreBackend</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">suppress_store_backend_id</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">bucket</span><span class="kw">:</span><span class="at"> &lt;GX-ARTIFACTS-BUCKET&gt;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">prefix</span><span class="kw">:</span><span class="at"> checkpoints/</span></span></code></pre></div>
+</div>
+<section id="table-of-contents" class="cell markdown">
+<h1>Table of Contents</h1>
+<ul>
+<li><a href="#1">1 - Introduction and Setup</a></li>
+<li><a href="#2">2 - Data Context</a></li>
+<li><a href="#3">3 - Data Source</a></li>
+<li><a href="#4">4 - Batch Request</a>
+<ul>
+<li><a href="#ex01">Exercise 1</a></li>
+</ul></li>
+<li><a href="#5">5 - Expectation Suite and Validator</a>
+<ul>
+<li><a href="#ex02">Exercise 2</a></li>
+<li><a href="#ex03">Exercise 3</a></li>
+<li><a href="#ex04">Exercise 4</a></li>
+</ul></li>
+<li><a href="#6">6 - Creating the Batch Requests and the Validations
+List</a>
+<ul>
+<li><a href="#ex05">Exercise 5</a></li>
+</ul></li>
+<li><a href="#7">7 - Checkpoints and Computing Validations over the
+Dataset</a>
+<ul>
+<li><a href="#ex06">Exercise 6</a></li>
+</ul></li>
+</ul>
+</section>
+<div class="cell markdown">
+<p><a id='1'></a></p>
+<h2 id="1---introduction-and-setup">1 - Introduction and Setup</h2>
+<p><strong>Great Expectations (GX)</strong> enables you to define
+expectations for your data and to automatically validate your data
+against these expectations. It can also notify you of any
+inconsistencies detected, and you can use it to validate your data at
+any stage of your data pipeline. You can find GX documentation <a
+href="https://docs.greatexpectations.io/docs/home">here</a>.</p>
+</div>
+<div class="cell markdown">
+<p>1.1. Let's start by configuring GX. In the terminal, run the
+following command to set up the environment:</p>
+</div>
+<div class="cell markdown">
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> scripts/setup.sh</span></code></pre></div>
+</div>
+<div class="cell markdown">
+<p>Take the output that has the form:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">MYSQL_CONNECTION_STRING:</span> mysql+pymysql://<span class="op">&lt;</span>DBUSER<span class="op">&gt;</span>:<span class="op">&lt;</span>DBPASSWORD<span class="op">&gt;</span>@<span class="op">&lt;</span>DBHOST<span class="op">&gt;</span>:<span class="op">&lt;</span>DBPORT<span class="op">&gt;</span>/<span class="op">&lt;</span>DBNAME<span class="op">&gt;</span></span></code></pre></div>
+<p>and save it as you will use it later. Then, initialize your GX
+project with this command:</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">great_expectations</span> init</span></code></pre></div>
+</div>
+<div class="cell markdown">
+<p>You will be shown an output indicating the folder structure that the
+library is going to create in your local filesystem, which looks as
+follows:</p>
+</div>
+<div class="cell markdown">
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">great_expectations</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span><span class="ex">--</span> great_expectations.yml</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">|</span><span class="ex">--</span> expectations</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">|</span><span class="ex">--</span> checkpoints</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">|</span><span class="ex">--</span> plugins</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">|</span><span class="ex">--</span> .gitignore</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">|</span><span class="ex">--</span> uncommitted</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">|</span><span class="ex">--</span> config_variables.yml</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">|</span><span class="ex">--</span> data_docs</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">|</span><span class="ex">--</span> validations</span></code></pre></div>
+</div>
+<div class="cell markdown">
+<p>Type <code>Y</code> to proceed. Even though the output shows
+<code>great_expectations</code> as the root folder, you will find that
+the actual root folder is named <code>gx</code>.</p>
+</div>
+<div class="cell markdown">
+<p><strong>Configuring the Backend stores</strong></p>
+<p>The previous command initialized the data context object and created
+your backend stores, such as the checkpoints, expectations, data_docs
+and validations stores, as local directories. Let's configure these
+stores as <code>S3</code> buckets. For that, you are provided with two
+<code>S3</code> buckets:</p>
+<ul>
+<li><code>GXArtifactsS3Bucket</code>: you will use this bucket to store
+information about your expectations, validations and checkpoints;</li>
+<li><code>GXDocsS3Bucket</code>: you will use this bucket to store your
+DataDocs, which are human readable documentations that contain reports
+on Expectations, Checkpoints and Validation results.</li>
+</ul>
+<p>There are several advantages for storing your project metadata in an
+<code>S3</code> bucket. These advantages include:</p>
+<ul>
+<li>Accessibility: S3 buckets are highly accessible from various
+environments and by other team members or stakeholders.</li>
+<li>Scalability: You can continue storing your project metadata
+seamlessly as your metadata grows over time.</li>
+<li>Durability: Your metadata are reliably stored and protected.</li>
+</ul>
+</div>
+<div class="cell markdown">
+<p>1.2. Run the following code to get the link to the AWS console.</p>
+<p><em>Note</em>: For security reasons, the URL to access the AWS
+console will expire every 15 minutes, but any AWS resources you created
+will remain available for the 2 hour period. If you need to access the
+console after 15 minutes, please rerun this code cell to obtain a new
+active link.</p>
+</div>
+<div class="cell code" data-execution_count="1">
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&#39;../.aws/aws_console_url&#39;</span>, <span class="st">&#39;r&#39;</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    aws_url <span class="op">=</span> <span class="bu">file</span>.read().strip()</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>HTML(<span class="ss">f&#39;&lt;a href=&quot;</span><span class="sc">{</span>aws_url<span class="sc">}</span><span class="ss">&quot; target=&quot;_blank&quot;&gt;GO TO AWS CONSOLE&lt;/a&gt;&#39;</span>)</span></code></pre></div>
+<div class="output execute_result" data-execution_count="1">
+<a href="https://signin.aws.amazon.com/federation?Action=login&SigninToken=DWb7p67n3Id6LOScNdeZKWljPclnHothc63lGj9pUtt3aSF7_0jstnqWbXBC35FN6QTa7qqxOC2Q2ob6XPCymt3WmY9ja7roe5b9HqCEC8UA91oqSsBVxJkEjWwCxbETzA2bzU-mGB-OaaCVztJaw3Q7rwyXy8E899bWXLCSrH6w44Lgn-mGYKOhdSbU4Yls8-cVugBvAKKzPJtrgA0ujf4XG69kyZpq_eqkMRWUfIsS94RW5X3LTlikxl2ufmUDJ3bhN4Y_tXDE9wKoihf0yMHg9Jk92Dw_BC0O2iDHXmDjx-sRbpRbPa8K1iQOFmAzK2qf-Wp7ZgRUB0WMG_aSRyjEH6H2XflDInnQiE63xK1glrggdM6rEiGNlMliV75ve_x1deu0zxz3GQSV_W-JIoF42NRE2_1uB_6qhZM6_ehAH2NhmAL2WwooGIdQi3I_Ac0Okjfu29neC8AhFqNcGhmzSBOEUQDrJiXBSeh8ftbToQqbXGWcEF6PbrA-nGUfPzmpewsSDDH-Qy1aISSiCUvInnRz06LslwmSXZ1QPJaIl3TTnLA9JB6HpZjV15ozAAcH0HSB3yE1d_PD0lwjt5xQ3OsGIwmA4Jk-RpbS-aM0CopFU17BpzkG5U4swuoKMq7F8weeDB-pdQ1k8hbMylagkibrd8jgtOHrg9DglOrNP4jorxHvbt9lXNZ3acbBKfCAYbbB4xzFU00VVyMLy4WpKGciD_kXFRSp3-kivFqHgiQb9EBRAVxsdYrUN4QBz0ducmyCbVNkrrU7QqRDBdTnDsL7_9YE0Lfn29JPubv-6uhISgRk9fGkptMoc-JIFKzwWcUtYr4yd6Ltf6CkhmDQVUW0Kh9STzlQoqDA1JfarHw6Kmh19ndZbEZrW8IJYzsvm4tES66Edc7bSB_Fz2gAG2_0aqdN38hlvq8gcqsd-DpkAsHpuIccCM20tbfi3UajMSlKHQGUdlafgC8FOu1lPIhv0u5ZpFd_UWiR31pgfJrdfXBmAsGK275fE3pjLnheuCW0gEDdEMOyK18JSsSeyz5VYZHPeHcDFfTEYBa9gF_wbDK8KMioBMMFGG6G9dlJ0VsSOSiR9cnTy7Q7RrhLMH1ptM7eSbFF_6-hHAEIl3xE9IBZXdknw7YpkVcoRKFszcBlaDFPzGdsHK0tJZka7CdPMVaKaXAUUCiyq35B6Eo7RBcJyivVsVTyhYPWf2RK9NK_R8PmDKXNNgtHryccSgSuoX55a7uNMxMnf4ZskHmjQpZNVnhWYcCjWlXRnFIAYzkN5pnLK-1dCPYbKh1c2MXz3U7qJzH8FoKRTPbEqtoQ7vZLY5kaF_Erh8Whtti1w9fPJDbxpqVd431YU5g0TZzBaHjCZ5_vFQ4cVdHUgT1ZSsxnqfaJ9VYXHq_ImTR8Jjh7HH53Kh9aBkKV9cbJEZ5nwdbpuhMAkyUDFVP-nTDXGD0ptQ&Issuer=https%3A%2F%2Fapi.vocareum.com&Destination=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3Fregion%3Dus-east-1" target="_blank">GO TO AWS CONSOLE</a>
+</div>
+</div>
+<div class="cell markdown">
+<p><em>Note:</em> If you see the window like in the following
+printscreen, click on <strong>logout</strong> link, close the window and
+click on console link again.</p>
+<p><img src="images/AWSLogout.png" alt="AWSLogout" /></p>
+</div>
+<div class="cell markdown">
+<p>Go to the AWS console, and search for
+<strong>CloudFormation</strong>. Click on the alphanumeric stack name
+and then click on the <strong>Outputs</strong> tab. In the list of
+outputs, you will see the buckets with the CloudFormation <em>Key</em>
+<code>GXArtifactsS3Bucket</code> and <code>GXDocsS3Bucket</code>. You
+will need to copy the corresponding bucket names, that you can find
+under the column <em>Value</em>, in order to replace the placeholders
+below.</p>
+<p>Alternatively, you can also run the following command in the terminal
+to list all available S3 buckets and gather the information directly:
+<code>aws s3 ls</code> .</p>
+</div>
+<div class="cell markdown">
+<p>1.3. Open the file <code>gx/great_expectations.yml</code>. This YAML
+file represents the central configuration file used by GX, and contains
+various settings that control the behavior of your GX project. Search
+for the <code>stores</code> key; you will find several subkeys
+associated with each type of store. Replace the sections of the YAML
+file that correspond to the expectation, validations and checkpoint
+stores with the following configurations. Make sure to replace the
+placeholder <code>&lt;GX-ARTIFACTS-BUCKET&gt;</code> with the
+corresponding bucket name in those sections.</p>
+<p><em>Note</em>: the YAML file is indentation-sensitive, so make sure
+to keep the same indentation level when you replace the configuration
+information (otherwise you will get some errors when you run the command
+in 1.5).</p>
+</div>
+<div class="cell markdown">
+<p>1.4. Now, you will configure the storage for the documentation files
+Data Docs. In the same <code>YAML</code> file, search for the key
+<code>data_docs_sites</code> and replace the <code>local_site</code>
+subkey with the following configuration. Make sure to replace the
+placeholder <code>&lt;GX-DOCS-BUCKET&gt;</code> with the corresponding
+bucket name, using the name that is for the docs bucket not the
+artifacts bucket.</p>
+</div>
+<div class="cell markdown">
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">S3_site</span><span class="kw">:</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">class_name</span><span class="kw">:</span><span class="at"> SiteBuilder</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">store_backend</span><span class="kw">:</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">class_name</span><span class="kw">:</span><span class="at"> TupleS3StoreBackend</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">bucket</span><span class="kw">:</span><span class="at"> &lt;GX-DOCS-BUCKET&gt;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">site_index_builder</span><span class="kw">:</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">class_name</span><span class="kw">:</span><span class="at"> DefaultSiteIndexBuilder</span></span></code></pre></div>
+</div>
+<div class="cell markdown">
+<p>Save changes in the YAML file <code>Ctrl+S</code> or
+<code>Cmd+S</code>.</p>
+</div>
+<div class="cell markdown">
+<p>1.5. To check that your stores have been properly configured, execute
+the following command in the terminal:</p>
+</div>
+<div class="cell markdown">
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">great_expectations</span> store list</span></code></pre></div>
+</div>
+<div class="cell markdown">
+<p>This command lists the available Stores and shows information such as
+name, type, and location. Note that the Data Docs Sites is not listed by
+this command.</p>
+</div>
+<div class="cell markdown">
+<p>1.6. Load the required packages and set the variable
+<code>LAB_PREFIX</code> that will be used in the lab:</p>
+</div>
+<div class="cell code" data-execution_count="10">
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dotenv <span class="im">import</span> load_dotenv</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> boto3</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> great_expectations <span class="im">as</span> gx</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> great_expectations.checkpoint <span class="im">import</span> Checkpoint</span></code></pre></div>
+</div>
+<div class="cell code" data-execution_count="11">
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>LAB_PREFIX<span class="op">=</span><span class="st">&#39;de-c2w3a1&#39;</span></span></code></pre></div>
+</div>
+<div class="cell markdown">
+<p>Now you will you use the GX components to set up the validation
+workflow, starting with the Data Context.</p>
+</div>
+<div class="cell markdown">
+<p><a id='2'></a></p>
+<h2 id="2---data-context">2 - Data Context</h2>
+<p>The data context serves as the entry point for the Great Expectations
+API, which consists of classes and methods that allow you to create
+objects to connect to your data sources, create expectations and
+validate your data. So using the data context, you can connect to the
+Data source, define your expectations, create a validator, run your
+checkpoints, and access the metadata of your Great Expectations
+project.</p>
+<p>The Data Context can be ephemeral - existing only in memory and not
+persisting beyond the current Python session - or it can be backed by
+the configuration files so that it can persist between Python sessions
+and can be saved for later usage (File Data Context). In this lab, GX
+was set up so that your data context is a File Data Context backed by an
+AWS S3 Bucket.</p>
+</div>
+<div class="cell markdown">
+<p>2.1. Use the <code>get_context()</code> method of great expectations
+to load your Data Context.</p>
+</div>
+<div class="cell code" data-execution_count="12">
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>context <span class="op">=</span> gx.get_context()</span></code></pre></div>
+</div>
+<div class="cell markdown">
+<p>2.2. Inspect the content of the Data Context that you just created.
+You will see information about the stores you just configured.</p>
+</div>
+<div class="cell code" data-execution_count="13">
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>context</span></code></pre></div>
+<div class="output stream stderr">
+<pre><code>Something went wrong when trying to use SQLAlchemy to obfuscate URL: Could not parse SQLAlchemy URL from string &#39;${MYSQL_CONNECTION_STRING}&#39;
+</code></pre>
+</div>
+<div class="output execute_result" data-execution_count="13">
+<pre><code>{
+  &quot;anonymous_usage_statistics&quot;: {
+    &quot;usage_statistics_url&quot;: &quot;https://stats.greatexpectations.io/great_expectations/v1/usage_statistics&quot;,
+    &quot;enabled&quot;: true,
+    &quot;explicit_url&quot;: false,
+    &quot;explicit_id&quot;: true,
+    &quot;data_context_id&quot;: &quot;bb7edbc7-b702-465b-afbb-af638c91765b&quot;
+  },
+  &quot;checkpoint_store_name&quot;: &quot;checkpoint_store&quot;,
+  &quot;config_variables_file_path&quot;: &quot;uncommitted/config_variables.yml&quot;,
+  &quot;config_version&quot;: 3.0,
+  &quot;data_docs_sites&quot;: {
+    &quot;local_site&quot;: {
+      &quot;class_name&quot;: &quot;SiteBuilder&quot;,
+      &quot;store_backend&quot;: {
+        &quot;class_name&quot;: &quot;TupleS3StoreBackend&quot;,
+        &quot;bucket&quot;: &quot;de-c2w3a1-891377276567-us-east-1-gx-docs&quot;
+      },
+      &quot;site_index_builder&quot;: {
+        &quot;class_name&quot;: &quot;DefaultSiteIndexBuilder&quot;
+      }
+    },
+    &quot;S3_site&quot;: {
+      &quot;class_name&quot;: &quot;SiteBuilder&quot;,
+      &quot;store_backend&quot;: {
+        &quot;class_name&quot;: &quot;TupleS3StoreBackend&quot;,
+        &quot;bucket&quot;: &quot;de-c2w3a1-891377276567-us-east-1-gx-docs&quot;
+      },
+      &quot;site_index_builder&quot;: {
+        &quot;class_name&quot;: &quot;DefaultSiteIndexBuilder&quot;
+      }
+    }
+  },
+  &quot;datasources&quot;: {},
+  &quot;evaluation_parameter_store_name&quot;: &quot;evaluation_parameter_store&quot;,
+  &quot;expectations_store_name&quot;: &quot;expectations_store&quot;,
+  &quot;fluent_datasources&quot;: {
+    &quot;de-c2w3a1-db-datasource&quot;: {
+      &quot;type&quot;: &quot;sql&quot;,
+      &quot;assets&quot;: {
+        &quot;de-c2w3a1-trips&quot;: {
+          &quot;type&quot;: &quot;table&quot;,
+          &quot;order_by&quot;: [],
+          &quot;batch_metadata&quot;: {},
+          &quot;splitter&quot;: {
+            &quot;column_name&quot;: &quot;vendor_id&quot;,
+            &quot;method_name&quot;: &quot;split_on_column_value&quot;
+          },
+          &quot;table_name&quot;: &quot;trips&quot;
+        }
+      },
+      &quot;connection_string&quot;: &quot;://None:***@None${MYSQL_CONNECTION_STRING}&quot;
+    }
+  },
+  &quot;include_rendered_content&quot;: {
+    &quot;expectation_suite&quot;: false,
+    &quot;expectation_validation_result&quot;: false,
+    &quot;globally&quot;: false
+  },
+  &quot;plugins_directory&quot;: &quot;plugins/&quot;,
+  &quot;stores&quot;: {
+    &quot;expectations_store&quot;: {
+      &quot;class_name&quot;: &quot;ExpectationsStore&quot;,
+      &quot;store_backend&quot;: {
+        &quot;class_name&quot;: &quot;TupleS3StoreBackend&quot;,
+        &quot;bucket&quot;: &quot;de-c2w3a1-891377276567-us-east-1-gx-artifacts&quot;,
+        &quot;prefix&quot;: &quot;expectations/&quot;
+      }
+    },
+    &quot;validations_store&quot;: {
+      &quot;class_name&quot;: &quot;ValidationsStore&quot;,
+      &quot;store_backend&quot;: {
+        &quot;class_name&quot;: &quot;TupleS3StoreBackend&quot;,
+        &quot;bucket&quot;: &quot;de-c2w3a1-891377276567-us-east-1-gx-artifacts&quot;,
+        &quot;prefix&quot;: &quot;validations/&quot;
+      }
+    },
+    &quot;evaluation_parameter_store&quot;: {
+      &quot;class_name&quot;: &quot;EvaluationParameterStore&quot;
+    },
+    &quot;checkpoint_store&quot;: {
+      &quot;class_name&quot;: &quot;CheckpointStore&quot;,
+      &quot;store_backend&quot;: {
+        &quot;class_name&quot;: &quot;TupleS3StoreBackend&quot;,
+        &quot;suppress_store_backend_id&quot;: false,
+        &quot;bucket&quot;: &quot;de-c2w3a1-891377276567-us-east-1-gx-artifacts&quot;,
+        &quot;prefix&quot;: &quot;checkpoints/&quot;
+      }
+    },
+    &quot;profiler_store&quot;: {
+      &quot;class_name&quot;: &quot;ProfilerStore&quot;,
+      &quot;store_backend&quot;: {
+        &quot;class_name&quot;: &quot;TupleFilesystemStoreBackend&quot;,
+        &quot;suppress_store_backend_id&quot;: true,
+        &quot;base_directory&quot;: &quot;profilers/&quot;
+      }
+    }
+  },
+  &quot;validations_store_name&quot;: &quot;validations_store&quot;
+}</code></pre>
+</div>
+</div>
+<div class="cell markdown">
+<p>Additionally, in the content of the Artifacts S3 bucket, you will see
+a folder for each of the different stores that you have configured, one
+for the Expectations, another for Validations, and one for
+Checkpoints.</p>
+</div>
+<div class="cell markdown">
+<p><a id='3'></a></p>
+<h2 id="3---data-source">3 - Data Source</h2>
+<p>The next step is to configure your Data Source. In this lab, you are
+provided with a MySQL database labeled as <code>taxi_trips</code> which
+contains a sample of the <a
+href="https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page">TLC
+trip record data set</a>. The database contains one table named
+<code>trips</code>, which has the following schema:</p>
+<p><img src="./images/ER_diagram_trips.png"
+alt="ER Diagram trips" /></p>
+</div>
+<div class="cell markdown">
+<p>3.1. Now that you have a general understanding of the data schema you
+will use, let's connect to the database.</p>
+<p>Using the context object, you can connect to a SQL database using the
+method: <code>context.sources.add_sql()</code>. This method expects a
+name for your data source (which can be of your choice) and a connection
+string that consists of the database credentials that are needed to
+establish a connection to the database. GX supports passing Data Source
+<a
+href="https://docs.greatexpectations.io/docs/0.18/oss/guides/setup/configuring_data_contexts/how_to_configure_credentials/">connection
+credentials</a> through environment variables or setting them through
+the GX configuration files. In this lab, you will set the
+<code>config_variables.yml</code> configuration file.</p>
+<p>Open the <code>gx/uncommitted/config_variables.yml</code> file and at
+the end of the file, append the output that you got from the execution
+of the script located at <code>scripts/setup.sh</code>. Append it in the
+following way:</p>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">MYSQL_CONNECTION_STRING</span><span class="kw">:</span><span class="at"> mysql+pymysql://&lt;DBUSER&gt;:&lt;DBPASSWORD&gt;@&lt;DBHOST&gt;:&lt;DBPORT&gt;/&lt;DBNAME&gt;</span></span></code></pre></div>
+<p>Save changes. Then, run the following cell to create the data source
+object.</p>
+</div>
+<div class="cell code" data-execution_count="16">
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the data source to represent the data available in the MySQL DB</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>mysql_datasource <span class="op">=</span> context.sources.add_sql(</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    name<span class="op">=</span><span class="ss">f&quot;</span><span class="sc">{</span>LAB_PREFIX<span class="sc">}</span><span class="ss">-db-datasource&quot;</span>, connection_string<span class="op">=</span><span class="st">&quot;$</span><span class="sc">{MYSQL_CONNECTION_STRING}</span><span class="st">&quot;</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span></code></pre></div>
+</div>
+<div class="cell markdown">
+<p>3.2. Let's now define a Data Asset from your data source. Remember
+that a Data Asset represents collections of records stored within a Data
+Source. It could be a table in a SQL database or a file in a file
+system. It could be also a query asset that joins data from more than
+one table or it could be a collection of files matching a particular
+regular expressions pattern. In other words, by defining your data
+asset, you tell GX on which part of your data you want to focus on.</p>
+<p>Since the given database consists of only the <code>trips</code>
+table, you will create a <code>Table Data Asset</code> from your data
+source using the method <code>add_table_asset</code>. This method
+expects a name for the data asset (in this case, we used the lab prefix
+followed by the table name) and the actual name of the table in the
+source database.</p>
+<p>Run the following cell to create your data asset.</p>
+</div>
+<div class="cell code" data-execution_count="18">
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a Data Asset to represent a discrete set of data</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>trips <span class="op">=</span> mysql_datasource.add_table_asset(</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    name<span class="op">=</span><span class="ss">f&quot;</span><span class="sc">{</span>LAB_PREFIX<span class="sc">}</span><span class="ss">-trips&quot;</span>, table_name<span class="op">=</span><span class="st">&quot;trips&quot;</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co">#trips = mysql_datasource.get_asset(&quot;de-c2w3a1-trips&quot;)</span></span></code></pre></div>
+</div>
+<div class="cell markdown">
+<p><a id='4'></a></p>
+<h2 id="4---batch-request">4 - Batch Request</h2>
+<p>The next thing you need to create is the Batch Request, which
+represents the primary way to retrieve data from your data asset. It can
+retrieve your data asset as a single batch or as multiple batches. In
+this lab, you will define your data asset as batches based on the
+<code>vendor_id</code> column.</p>
+</div>
+<div class="cell markdown">
+<p><a id='ex01'></a></p>
+<h3 id="exercise-1">Exercise 1</h3>
+<ol>
+<li><p>To create batches on your Table Data Asset <code>trips</code>,
+call the method <code>add_splitter_column_value()</code> on your data
+asset, and pass the <code>"vendor_id"</code> column as the splitter
+column.</p>
+<p><em>Note</em>: GX offers several ways to split your data, according
+to different conditions.</p></li>
+<li><p>Create the batch request, using the
+<code>build_batch_request()</code> method of your Table Data
+Asset.</p></li>
+<li><p>To inspect the batches, get the batches using the
+<code>get_batch_list_from_batch_request()</code> method of your Table
+Data Asset. This method expects as input the batch request. You can
+inspect the information about each batch, such as the Table Data Asset
+name, the type of splitter used, and the batch identifier according to
+the column selected as the splitter.</p></li>
+</ol>
+</div>
+<div class="cell code" data-execution_count="19"
+data-exercise="[&quot;ex01&quot;]" data-tags="[&quot;graded&quot;]">
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">### START CODE HERE </span><span class="al">###</span><span class="co"> (~ 3 lines of code)</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the &quot;vendor_id&quot; column as splitter column</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>trips.add_splitter_column_value(<span class="st">&quot;vendor_id&quot;</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Build the batch request</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>batch_request <span class="op">=</span> trips.build_batch_request()</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the batches</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>batches <span class="op">=</span> trips.get_batch_list_from_batch_request(batch_request)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="co">### </span><span class="re">END</span><span class="co"> CODE HERE </span><span class="al">###</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> batch <span class="kw">in</span> batches:</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(batch.batch_spec)</span></code></pre></div>
+<div class="output stream stdout">
+<pre><code>{&#39;type&#39;: &#39;table&#39;, &#39;data_asset_name&#39;: &#39;de-c2w3a1-trips&#39;, &#39;table_name&#39;: &#39;trips&#39;, &#39;schema_name&#39;: None, &#39;batch_identifiers&#39;: {&#39;vendor_id&#39;: 1}, &#39;splitter_method&#39;: &#39;split_on_column_value&#39;, &#39;splitter_kwargs&#39;: {&#39;column_name&#39;: &#39;vendor_id&#39;}}
+{&#39;type&#39;: &#39;table&#39;, &#39;data_asset_name&#39;: &#39;de-c2w3a1-trips&#39;, &#39;table_name&#39;: &#39;trips&#39;, &#39;schema_name&#39;: None, &#39;batch_identifiers&#39;: {&#39;vendor_id&#39;: 2}, &#39;splitter_method&#39;: &#39;split_on_column_value&#39;, &#39;splitter_kwargs&#39;: {&#39;column_name&#39;: &#39;vendor_id&#39;}}
+{&#39;type&#39;: &#39;table&#39;, &#39;data_asset_name&#39;: &#39;de-c2w3a1-trips&#39;, &#39;table_name&#39;: &#39;trips&#39;, &#39;schema_name&#39;: None, &#39;batch_identifiers&#39;: {&#39;vendor_id&#39;: 4}, &#39;splitter_method&#39;: &#39;split_on_column_value&#39;, &#39;splitter_kwargs&#39;: {&#39;column_name&#39;: &#39;vendor_id&#39;}}
+</code></pre>
+</div>
+</div>
+<section id="expected-output" class="cell markdown">
+<h5><strong>Expected Output</strong></h5>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">&#39;type&#39;</span><span class="fu">:</span> <span class="er">&#39;table&#39;</span><span class="fu">,</span> <span class="er">&#39;data_asset_name&#39;</span><span class="fu">:</span> <span class="er">&#39;de-c2w3a1-trips&#39;</span><span class="fu">,</span> <span class="er">&#39;table_name&#39;</span><span class="fu">:</span> <span class="er">&#39;trips&#39;</span><span class="fu">,</span> <span class="er">&#39;schema_name&#39;</span><span class="fu">:</span> <span class="er">None</span><span class="fu">,</span> <span class="er">&#39;batch_identifiers&#39;</span><span class="fu">:</span> <span class="fu">{</span><span class="er">&#39;vendor_id&#39;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">},</span> <span class="er">&#39;splitter_method&#39;</span><span class="fu">:</span> <span class="er">&#39;split_on_column_value&#39;</span><span class="fu">,</span> <span class="er">&#39;splitter_kwargs&#39;</span><span class="fu">:</span> <span class="fu">{</span><span class="er">&#39;column_name&#39;</span><span class="fu">:</span> <span class="er">&#39;vendor_id&#39;</span><span class="fu">}}</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">&#39;type&#39;</span><span class="fu">:</span> <span class="er">&#39;table&#39;</span><span class="fu">,</span> <span class="er">&#39;data_asset_name&#39;</span><span class="fu">:</span> <span class="er">&#39;de-c2w3a1-trips&#39;</span><span class="fu">,</span> <span class="er">&#39;table_name&#39;</span><span class="fu">:</span> <span class="er">&#39;trips&#39;</span><span class="fu">,</span> <span class="er">&#39;schema_name&#39;</span><span class="fu">:</span> <span class="er">None</span><span class="fu">,</span> <span class="er">&#39;batch_identifiers&#39;</span><span class="fu">:</span> <span class="fu">{</span><span class="er">&#39;vendor_id&#39;</span><span class="fu">:</span> <span class="dv">2</span><span class="fu">},</span> <span class="er">&#39;splitter_method&#39;</span><span class="fu">:</span> <span class="er">&#39;split_on_column_value&#39;</span><span class="fu">,</span> <span class="er">&#39;splitter_kwargs&#39;</span><span class="fu">:</span> <span class="fu">{</span><span class="er">&#39;column_name&#39;</span><span class="fu">:</span> <span class="er">&#39;vendor_id&#39;</span><span class="fu">}}</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="er">&#39;type&#39;</span><span class="fu">:</span> <span class="er">&#39;table&#39;</span><span class="fu">,</span> <span class="er">&#39;data_asset_name&#39;</span><span class="fu">:</span> <span class="er">&#39;de-c2w3a1-trips&#39;</span><span class="fu">,</span> <span class="er">&#39;table_name&#39;</span><span class="fu">:</span> <span class="er">&#39;trips&#39;</span><span class="fu">,</span> <span class="er">&#39;schema_name&#39;</span><span class="fu">:</span> <span class="er">None</span><span class="fu">,</span> <span class="er">&#39;batch_identifiers&#39;</span><span class="fu">:</span> <span class="fu">{</span><span class="er">&#39;vendor_id&#39;</span><span class="fu">:</span> <span class="dv">4</span><span class="fu">},</span> <span class="er">&#39;splitter_method&#39;</span><span class="fu">:</span> <span class="er">&#39;split_on_column_value&#39;</span><span class="fu">,</span> <span class="er">&#39;splitter_kwargs&#39;</span><span class="fu">:</span> <span class="fu">{</span><span class="er">&#39;column_name&#39;</span><span class="fu">:</span> <span class="er">&#39;vendor_id&#39;</span><span class="fu">}}</span></span></code></pre></div>
+</section>
+<div class="cell markdown">
+<p>You can see in the output a key named
+<code>'batch_identifiers'</code> with a dictionary as a value. The
+dictionary contains the splitter column name as a key and the value of
+the column that identifies the batch. Now, let's create a batch request
+list for each of the batches generated before.</p>
+</div>
+<div class="cell code" data-execution_count="20">
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>batch_request_list <span class="op">=</span> [batch.batch_request <span class="cf">for</span> batch <span class="kw">in</span> batches]</span></code></pre></div>
+</div>
+<div class="cell markdown">
+<p><a id='5'></a></p>
+<h2 id="5---expectation-suite-and-validator">5 - Expectation Suite and
+Validator</h2>
+<h3 id="expectation-suite">Expectation Suite</h3>
+<p>In order to define expectations for your data, you need to create an
+Expectation Suite which is a collection of expectations or assertions
+about your data.</p>
+</div>
+<div class="cell markdown">
+<p><a id='ex02'></a></p>
+<h3 id="exercise-2">Exercise 2</h3>
+<p>Use the <code>add_or_update_expectation_suite()</code> method of the
+<code>context</code> object to create a new Expectation Suite. Pass the
+name stored in the variable <code>expectation_suite_name</code> to the
+parameter <code>expectation_suite_name</code> in the same method.</p>
+</div>
+<div class="cell code" data-execution_count="21"
+data-exercise="[&quot;ex02&quot;]" data-tags="[&quot;graded&quot;]">
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add an expectation suite name to the context</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>expectation_suite_name <span class="op">=</span> <span class="ss">f&quot;</span><span class="sc">{</span>LAB_PREFIX<span class="sc">}</span><span class="ss">-expectation-suite-trips-taxi-db&quot;</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co">### START CODE HERE </span><span class="al">###</span><span class="co"> (~ 1 line of code)</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>context.add_or_update_expectation_suite(expectation_suite_name<span class="op">=</span>expectation_suite_name)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="co">### </span><span class="re">END</span><span class="co"> CODE HERE </span><span class="al">###</span></span></code></pre></div>
+<div class="output execute_result" data-execution_count="21">
+<pre><code>{
+  &quot;expectation_suite_name&quot;: &quot;de-c2w3a1-expectation-suite-trips-taxi-db&quot;,
+  &quot;ge_cloud_id&quot;: null,
+  &quot;expectations&quot;: [],
+  &quot;data_asset_type&quot;: null,
+  &quot;meta&quot;: {
+    &quot;great_expectations_version&quot;: &quot;0.18.22&quot;
+  }
+}</code></pre>
+</div>
+</div>
+<section id="expected-output" class="cell markdown">
+<h5><strong>Expected Output</strong></h5>
+<div class="sourceCode" id="cb26"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;expectation_suite_name&quot;</span><span class="fu">:</span> <span class="st">&quot;de-c2w3a1-expectation-suite-trips-taxi-db&quot;</span><span class="fu">,</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;ge_cloud_id&quot;</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;expectations&quot;</span><span class="fu">:</span> <span class="ot">[]</span><span class="fu">,</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;data_asset_type&quot;</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;meta&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;great_expectations_version&quot;</span><span class="fu">:</span> <span class="st">&quot;0.18.22&quot;</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+</section>
+<section id="validator" class="cell markdown">
+<h3>Validator</h3>
+<p>In GX, a Validator is the component responsible for validating your
+data against your expectations. You can directly interact with the
+validator to manually validate your data. OR you can streamline the
+validation process using checkpoints. For now, let's directly interact
+with the validator to explore the manual process of validating your
+data.</p>
+</section>
+<div class="cell markdown">
+<p><a id='ex03'></a></p>
+<h3 id="exercise-3">Exercise 3</h3>
+<p>Instantiate the validator by calling the <code>get_validator()</code>
+method of the <code>context</code> object; store it in the
+<code>validator</code> variable. Make sure to pass the following
+parameters:</p>
+<ul>
+<li><code>batch_request_list</code> as the list with batch requests you
+generated previously, which is stored in
+<code>batch_request_list</code>.</li>
+<li><code>expectation_suite_name</code> as the Expectation Suite name
+you used in the previous cell.</li>
+</ul>
+</div>
+<div class="cell code" data-execution_count="22">
+<div class="sourceCode" id="cb27"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">### START CODE HERE </span><span class="al">###</span><span class="co"> (~ 4 lines of code)</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>validator <span class="op">=</span> context.get_validator(</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    batch_request_list<span class="op">=</span> batch_request_list,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    expectation_suite_name<span class="op">=</span> expectation_suite_name,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>) </span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co">### </span><span class="re">END</span><span class="co"> CODE HERE </span><span class="al">###</span></span></code></pre></div>
+</div>
+<section id="setting-the-expectations" class="cell markdown">
+<h3>Setting the Expectations</h3>
+<p>Now you have the expectation suite and the validator objects both
+ready. But you still did not define any expectations for your data. An
+Expectation is a statement about your data that can be validated,
+serving to improve data quality and facilitating clearer communication
+about data features. Similar to assertions in Python unit tests,
+Expectations offer a descriptive language for specifying the conditions
+the data should meet. However, unlike conventional unit tests, GX
+applies these Expectations directly to your data rather than to code.
+There are several types of expectations, such as</p>
+<ul>
+<li><code>expect_column_values_to_not_be_null</code></li>
+<li><code>expect_column_values_to_be_unique</code></li>
+<li><code>expect_table_row_count_to_be_between</code></li>
+<li><code>expect_column_values_to_be_between</code></li>
+</ul>
+<p>And so on. You will use only a pair of those expectations for this
+lab. You can also check the <a
+href="https://greatexpectations.io/expectations/">Expectations
+Gallery</a> to see the available expectations depending on the type of
+Data Source you are using.</p>
+</section>
+<div class="cell markdown">
+<p><a id='ex04'></a></p>
+<h3 id="exercise-4">Exercise 4</h3>
+<p>Using the validator, add three expectations:</p>
+<ol>
+<li>First, check that in the dataset, the <code>"pickup_datetime"</code>
+does not contain any <code>Null</code> values. Call the
+<code>expect_column_values_to_not_be_null()</code> method of the
+<code>validator</code> and pass the <code>"pickup_datetime"</code>
+column to the <code>column</code> parameter.</li>
+<li>Check that the <code>"passenger_count"</code> column does not
+contain nulls. Use the same approach as in the previous step.</li>
+<li>Check that the column <code>"congestion_surcharge"</code> has values
+between 0 and 1000. Use the
+<code>expect_column_values_to_be_between()</code> method to add this
+expectation.</li>
+</ol>
+<p>These expectations will be automatically added to your expectation
+suite and evaluated on your current Data Asset.</p>
+<p>When running the following cell you may get a pop-up like the one
+shown in the image</p>
+<p><img src="./images/enable_downlad_vscode.png"
+alt="img &gt;&lt;" /></p>
+<p>Just click on <code>Enable Downloads</code>. The cell should run
+without any issues.</p>
+</div>
+<div class="cell code" data-execution_count="23">
+<div class="sourceCode" id="cb28"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">### START CODE HERE </span><span class="al">###</span><span class="co"> (~ 3 lines of code)</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>validator.expect_column_values_to_not_be_null(column<span class="op">=</span><span class="st">&quot;pickup_datetime&quot;</span>)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>validator.expect_column_values_to_not_be_null(column<span class="op">=</span><span class="st">&quot;passenger_count&quot;</span>)</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>validator.expect_column_values_to_be_between(column<span class="op">=</span><span class="st">&quot;congestion_surcharge&quot;</span>, min_value<span class="op">=</span><span class="dv">0</span>, max_value<span class="op">=</span><span class="dv">1000</span>)</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co">### </span><span class="re">END</span><span class="co"> CODE HERE </span><span class="al">###</span></span></code></pre></div>
+<div class="output display_data">
+<div class="sourceCode" id="cb29"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">&quot;model_id&quot;</span><span class="fu">:</span><span class="st">&quot;7e0e5cb766734dc1b63c02e0ba38ee1a&quot;</span><span class="fu">,</span><span class="dt">&quot;version_major&quot;</span><span class="fu">:</span><span class="dv">2</span><span class="fu">,</span><span class="dt">&quot;version_minor&quot;</span><span class="fu">:</span><span class="dv">0</span><span class="fu">}</span></span></code></pre></div>
+</div>
+<div class="output display_data">
+<div class="sourceCode" id="cb30"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">&quot;model_id&quot;</span><span class="fu">:</span><span class="st">&quot;abafaf6bf7f047089108aeb0a5e1df8d&quot;</span><span class="fu">,</span><span class="dt">&quot;version_major&quot;</span><span class="fu">:</span><span class="dv">2</span><span class="fu">,</span><span class="dt">&quot;version_minor&quot;</span><span class="fu">:</span><span class="dv">0</span><span class="fu">}</span></span></code></pre></div>
+</div>
+<div class="output display_data">
+<div class="sourceCode" id="cb31"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">&quot;model_id&quot;</span><span class="fu">:</span><span class="st">&quot;f0f0d00796b84c3bbfb04424a6064af3&quot;</span><span class="fu">,</span><span class="dt">&quot;version_major&quot;</span><span class="fu">:</span><span class="dv">2</span><span class="fu">,</span><span class="dt">&quot;version_minor&quot;</span><span class="fu">:</span><span class="dv">0</span><span class="fu">}</span></span></code></pre></div>
+</div>
+<div class="output execute_result" data-execution_count="23">
+<pre><code>{
+  &quot;success&quot;: true,
+  &quot;result&quot;: {
+    &quot;element_count&quot;: 96,
+    &quot;unexpected_count&quot;: 0.0,
+    &quot;unexpected_percent&quot;: 0.0,
+    &quot;partial_unexpected_list&quot;: [],
+    &quot;missing_count&quot;: 0.0,
+    &quot;missing_percent&quot;: 0.0,
+    &quot;unexpected_percent_total&quot;: 0.0,
+    &quot;unexpected_percent_nonmissing&quot;: 0.0
+  },
+  &quot;meta&quot;: {},
+  &quot;exception_info&quot;: {
+    &quot;raised_exception&quot;: false,
+    &quot;exception_traceback&quot;: null,
+    &quot;exception_message&quot;: null
+  }
+}</code></pre>
+</div>
+</div>
+<section id="expected-output" class="cell markdown">
+<h5><strong>Expected Output</strong></h5>
+<p><em>Note</em>: The actual values in the output may change.</p>
+<div class="sourceCode" id="cb33"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;result&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;element_count&quot;</span><span class="fu">:</span> <span class="dv">96</span><span class="fu">,</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;unexpected_count&quot;</span><span class="fu">:</span> <span class="dv">0</span><span class="er">.</span><span class="dv">0</span><span class="fu">,</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;unexpected_percent&quot;</span><span class="fu">:</span> <span class="dv">0</span><span class="er">.</span><span class="dv">0</span><span class="fu">,</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;partial_unexpected_list&quot;</span><span class="fu">:</span> <span class="ot">[]</span><span class="fu">,</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;missing_count&quot;</span><span class="fu">:</span> <span class="dv">0</span><span class="er">.</span><span class="dv">0</span><span class="fu">,</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;missing_percent&quot;</span><span class="fu">:</span> <span class="dv">0</span><span class="er">.</span><span class="dv">0</span><span class="fu">,</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;unexpected_percent_total&quot;</span><span class="fu">:</span> <span class="dv">0</span><span class="er">.</span><span class="dv">0</span><span class="fu">,</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;unexpected_percent_nonmissing&quot;</span><span class="fu">:</span> <span class="dv">0</span><span class="er">.</span><span class="dv">0</span></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;meta&quot;</span><span class="fu">:</span> <span class="fu">{},</span></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;exception_info&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;raised_exception&quot;</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;exception_traceback&quot;</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;exception_message&quot;</span><span class="fu">:</span> <span class="kw">null</span></span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+</section>
+<div class="cell markdown">
+<p>This corresponds to the output of the last batch that the validator
+has taken. Don't worry, GX actually has validated the other batches but
+only shows the output of the last one.</p>
+<p>Run the following cell to save your Expectation Suite to the S3
+bucket (expectation store), so you can use the expectations you just
+defined in another session.</p>
+</div>
+<div class="cell code" data-execution_count="24">
+<div class="sourceCode" id="cb34"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>validator.save_expectation_suite(discard_failed_expectations<span class="op">=</span><span class="va">False</span>)</span></code></pre></div>
+</div>
+<div class="cell markdown">
+<p>You can inspect your artifacts bucket. Inside the
+<code>expectations/</code> folder you will find a <code>json</code> file
+named as your Expectation Suite
+(<code>de-c2w3a1-expectation-suite-trips-taxi-db</code>). If you
+download it, you will see the expectations you have added, which will
+look as follows:</p>
+<div class="sourceCode" id="cb35"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;data_asset_type&quot;</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;expectation_suite_name&quot;</span><span class="fu">:</span> <span class="st">&quot;de-c2w3a1-expectation-suite-trips-taxi-db&quot;</span><span class="fu">,</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;expectations&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;expectation_type&quot;</span><span class="fu">:</span> <span class="st">&quot;expect_column_values_to_not_be_null&quot;</span><span class="fu">,</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;kwargs&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;column&quot;</span><span class="fu">:</span> <span class="st">&quot;pickup_datetime&quot;</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">},</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;meta&quot;</span><span class="fu">:</span> <span class="fu">{}</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;expectation_type&quot;</span><span class="fu">:</span> <span class="st">&quot;expect_column_values_to_not_be_null&quot;</span><span class="fu">,</span></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;kwargs&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;column&quot;</span><span class="fu">:</span> <span class="st">&quot;passenger_count&quot;</span></span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>      <span class="fu">},</span></span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;meta&quot;</span><span class="fu">:</span> <span class="fu">{}</span></span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;expectation_type&quot;</span><span class="fu">:</span> <span class="st">&quot;expect_column_values_to_be_between&quot;</span><span class="fu">,</span></span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;kwargs&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;column&quot;</span><span class="fu">:</span> <span class="st">&quot;congestion_surcharge&quot;</span><span class="fu">,</span></span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;max_value&quot;</span><span class="fu">:</span> <span class="dv">1000</span><span class="fu">,</span></span>
+<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;min_value&quot;</span><span class="fu">:</span> <span class="dv">0</span></span>
+<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a>      <span class="fu">},</span></span>
+<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;meta&quot;</span><span class="fu">:</span> <span class="fu">{}</span></span>
+<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;ge_cloud_id&quot;</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
+<span id="cb35-30"><a href="#cb35-30" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;meta&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb35-31"><a href="#cb35-31" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;great_expectations_version&quot;</span><span class="fu">:</span> <span class="st">&quot;0.18.9&quot;</span></span>
+<span id="cb35-32"><a href="#cb35-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb35-33"><a href="#cb35-33" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+</div>
+<div class="cell markdown">
+<p><a id='6'></a></p>
+<h2 id="6---creating-the-batch-requests-and-the-validations-list">6 -
+Creating the Batch Requests and the Validations List</h2>
+<p>Now in a production environment, you can't manually validate your
+data the way you did in the previous exercise. What you can instead do,
+is to load into your new environment the expectation suite that you
+stored, and then pass it with your batch requests to a Checkpoint
+object. The checkpoint will automatically create a validator to validate
+your data against your expectations.</p>
+<p><em>Optional Notes</em></p>
+<p>You may be wondering why you need to compute the validations
+independently of the creation of the expectations; some of the
+advantages of that approach are:</p>
+<ul>
+<li><p>Modularity and Reusability: Separating the creation and
+computation of expectations allows you to modularize your workflow. You
+can create a set of reusable expectation definitions that can be applied
+across different batches of your dataset rewriting them each
+time.</p></li>
+<li><p>Workflow Flexibility: Separating expectation creation and
+computation provides flexibility in how you orchestrate your data
+quality pipeline. You can trigger expectation computation based on
+different events or schedules, integrate it with other data processing
+steps, or parallelize computations across multiple
+environments.</p></li>
+<li><p>Resource Optimization: Running and computing expectations may
+require different computational resources or environments compared to
+expectation creation. Separating these processes allows you to optimize
+resource allocation and scale each part of the workflow independently
+based on its specific requirements.</p></li>
+<li><p>Error Isolation and Debugging: If errors occur during expectation
+computation, separating the creation process makes it easier to isolate
+and debug issues. You can focus on troubleshooting the computation step
+without affecting the expectation definitions themselves.</p></li>
+</ul>
+<p><em>End of optional Notes</em></p>
+<p>A checkpoint object expects a collection of data batches and their
+corresponding expectation suite. We will call this collection a
+validations list. So before you create the checkpoint object, let's
+first create the validations list.</p>
+<p>First, create a batch request from your Data Asset as you did in <a
+href="#ex01">Exercise 1</a>. Call the <code>build_batch_request()</code>
+in your Data Asset and store it in the variable
+<code>batch_request</code>. Then, create the <code>batches</code> from
+your Data Asset by using the
+<code>get_batch_list_from_batch_request()</code> method and passing the
+<code>batch_request</code> as a parameter.</p>
+</div>
+<div class="cell code" data-execution_count="25">
+<div class="sourceCode" id="cb36"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Build the batch request</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>batch_request <span class="op">=</span> trips.build_batch_request() </span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create your batches using the batch_request from the previous cell</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>batches <span class="op">=</span> trips.get_batch_list_from_batch_request(batch_request)</span></code></pre></div>
+</div>
+<div class="cell markdown">
+<p>For the expectation suite, run the following cell to retrieve the
+Expectation Suite's name from the context object. In this case you only
+have one expectation suite that you can access from the list of
+Expectations Suite returned by the
+<code>list_expectation_suite_names()</code> method.</p>
+</div>
+<div class="cell code" data-execution_count="26">
+<div class="sourceCode" id="cb37"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>expectation_suite_name <span class="op">=</span> context.list_expectation_suite_names()[<span class="dv">0</span>]</span></code></pre></div>
+</div>
+<div class="cell markdown">
+<p><a id='ex05'></a></p>
+<h3 id="exercise-5">Exercise 5</h3>
+<p>Let's now create the validations list. This list consists of a
+collection of a batch request and expectation suite pairs. In other
+words, each element in the validations list is a dictionary that defines
+the batch request and its expectation suite.</p>
+<p>To create the validations list, you are given a list comprehension
+that you will use to iterate over each batch in the <code>batches</code>
+list. For each batch, define a dictionary with two keys:</p>
+<ul>
+<li><code>"batch_request"</code>: use the <code>batch_request</code>
+property of the current batch to define the value for this key</li>
+<li><code>"expectation_suite_name"</code>: use the name of the
+expectation suite you just retrieved. This value is the same for all
+elements.</li>
+</ul>
+</div>
+<div class="cell code" data-execution_count="27"
+data-exercise="[&quot;ex05&quot;]" data-tags="[&quot;graded&quot;]">
+<div class="sourceCode" id="cb38"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">### START CODE HERE </span><span class="al">###</span><span class="co"> (~ 4 lines of code)</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>validations <span class="op">=</span> [ </span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    {<span class="st">&quot;batch_request&quot;</span>: batche.batch_request, <span class="st">&quot;expectation_suite_name&quot;</span>: expectation_suite_name}</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> batche <span class="kw">in</span> batches</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>] </span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a><span class="co">### </span><span class="re">END</span><span class="co"> CODE HERE </span><span class="al">###</span></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>validations</span></code></pre></div>
+<div class="output execute_result" data-execution_count="27">
+<pre><code>[{&#39;batch_request&#39;: BatchRequest(datasource_name=&#39;de-c2w3a1-db-datasource&#39;, data_asset_name=&#39;de-c2w3a1-trips&#39;, options={&#39;vendor_id&#39;: 1}),
+  &#39;expectation_suite_name&#39;: &#39;de-c2w3a1-expectation-suite-trips-taxi-db&#39;},
+ {&#39;batch_request&#39;: BatchRequest(datasource_name=&#39;de-c2w3a1-db-datasource&#39;, data_asset_name=&#39;de-c2w3a1-trips&#39;, options={&#39;vendor_id&#39;: 2}),
+  &#39;expectation_suite_name&#39;: &#39;de-c2w3a1-expectation-suite-trips-taxi-db&#39;},
+ {&#39;batch_request&#39;: BatchRequest(datasource_name=&#39;de-c2w3a1-db-datasource&#39;, data_asset_name=&#39;de-c2w3a1-trips&#39;, options={&#39;vendor_id&#39;: 4}),
+  &#39;expectation_suite_name&#39;: &#39;de-c2w3a1-expectation-suite-trips-taxi-db&#39;}]</code></pre>
+</div>
+</div>
+<section id="expected-output" class="cell markdown">
+<h5><strong>Expected Output</strong></h5>
+<p><code>[{'batch_request': BatchRequest(datasource_name='de-c2w3a1-db-datasource', data_asset_name='de-c2w3a1-trips', options={'vendor_id': 1}),   'expectation_suite_name': 'de-c2w3a1-expectation-suite-trips-taxi-db'},  {'batch_request': BatchRequest(datasource_name='de-c2w3a1-db-datasource', data_asset_name='de-c2w3a1-trips', options={'vendor_id': 2}),   'expectation_suite_name': 'de-c2w3a1-expectation-suite-trips-taxi-db'},  {'batch_request': BatchRequest(datasource_name='de-c2w3a1-db-datasource', data_asset_name='de-c2w3a1-trips', options={'vendor_id': 4}),   'expectation_suite_name': 'de-c2w3a1-expectation-suite-trips-taxi-</code>db'}]</p>
+</section>
+<div class="cell markdown">
+<p><a id='7'></a></p>
+<h2 id="7---checkpoints-and-computing-validations-over-the-dataset">7 -
+Checkpoints and Computing Validations over the Dataset</h2>
+<p>Let's create a Checkpoint to validate the expectations you created
+over your dataset. Use the <code>Checkpoint</code> instantiation and
+pass the following parameters:</p>
+<ul>
+<li><code>name</code> as the <code>checkpoint_name</code> variable. Take
+a look at how the checkpoint name is created, taking into account the
+current timestamp. Using a way to differentiate checkpoints will be
+helpful to avoid overwriting the results of the validation
+executions</li>
+<li><code>data_context</code>: Use the data context object
+<code>context</code> that you already loaded.</li>
+<li><code>expectation_suite_name</code>: The expectation suite name that
+you loaded.</li>
+<li><code>validations</code>: Pass the <code>validations</code> list
+that you generated for each of your batch requests.</li>
+</ul>
+<p>Take a look at the <code>action_list</code> parameter. You will see a
+list of different actions that will be performed after the validations
+are computed. Check the values associated with the
+<code>"class_name"</code> key:</p>
+<ul>
+<li><code>StoreValidationResultAction</code>: This action stores the
+validation results in your Validation Store. Remember that this has been
+set up to be saved in S3.</li>
+<li><code>UpdateDataDocsAction</code>: This action updates the data docs
+with the result of the validations.</li>
+</ul>
+<p>You can see more Actions in the documentation.</p>
+</div>
+<div class="cell code" data-execution_count="28">
+<div class="sourceCode" id="cb40"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the Checkpoint configuration that uses your Data Context</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>timestamp <span class="op">=</span> time.time()</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>checkpoint_name <span class="op">=</span> <span class="ss">f&quot;</span><span class="sc">{</span>LAB_PREFIX<span class="sc">}</span><span class="ss">-checkpoint-trips-</span><span class="sc">{</span>timestamp<span class="sc">}</span><span class="ss">&quot;</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>checkpoint <span class="op">=</span> Checkpoint(</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>    name<span class="op">=</span>checkpoint_name,</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    run_name_template<span class="op">=</span><span class="st">&quot;trips %Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M:%S&quot;</span>,</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>    data_context<span class="op">=</span>context,</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>    expectation_suite_name<span class="op">=</span>expectation_suite_name,</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>    validations<span class="op">=</span>validations,</span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>    action_list<span class="op">=</span>[</span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>        {</span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;name&quot;</span>: <span class="st">&quot;store_validation_result&quot;</span>,</span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;action&quot;</span>: {<span class="st">&quot;class_name&quot;</span>: <span class="st">&quot;StoreValidationResultAction&quot;</span>},</span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>        },</span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>        {<span class="st">&quot;name&quot;</span>: <span class="st">&quot;update_data_docs&quot;</span>, <span class="st">&quot;action&quot;</span>: {<span class="st">&quot;class_name&quot;</span>: <span class="st">&quot;UpdateDataDocsAction&quot;</span>}},        </span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div class="cell markdown">
+<p><a id='ex06'></a></p>
+<h3 id="exercise-6">Exercise 6</h3>
+<p>Add the created checkpoint to the data context by using the
+<code>add_or_update_checkpoint()</code> method and passing the
+<code>checkpoint</code> object that you created.</p>
+</div>
+<div class="cell code" data-execution_count="29">
+<div class="sourceCode" id="cb41"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">### START CODE HERE </span><span class="al">###</span><span class="co"> (~ 1 line of code)</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>context.add_or_update_checkpoint(checkpoint<span class="op">=</span>checkpoint)</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="co">### </span><span class="re">END</span><span class="co"> CODE HERE </span><span class="al">###</span></span></code></pre></div>
+<div class="output execute_result" data-execution_count="29">
+<pre><code>{
+  &quot;action_list&quot;: [
+    {
+      &quot;name&quot;: &quot;store_validation_result&quot;,
+      &quot;action&quot;: {
+        &quot;class_name&quot;: &quot;StoreValidationResultAction&quot;
+      }
+    },
+    {
+      &quot;name&quot;: &quot;update_data_docs&quot;,
+      &quot;action&quot;: {
+        &quot;class_name&quot;: &quot;UpdateDataDocsAction&quot;
+      }
+    }
+  ],
+  &quot;batch_request&quot;: {},
+  &quot;class_name&quot;: &quot;Checkpoint&quot;,
+  &quot;config_version&quot;: 1.0,
+  &quot;evaluation_parameters&quot;: {},
+  &quot;expectation_suite_name&quot;: &quot;de-c2w3a1-expectation-suite-trips-taxi-db&quot;,
+  &quot;module_name&quot;: &quot;great_expectations.checkpoint&quot;,
+  &quot;name&quot;: &quot;de-c2w3a1-checkpoint-trips-1753304949.8075445&quot;,
+  &quot;profilers&quot;: [],
+  &quot;run_name_template&quot;: &quot;trips %Y-%m-%d %H:%M:%S&quot;,
+  &quot;runtime_configuration&quot;: {},
+  &quot;validations&quot;: [
+    {
+      &quot;batch_request&quot;: {
+        &quot;datasource_name&quot;: &quot;de-c2w3a1-db-datasource&quot;,
+        &quot;data_asset_name&quot;: &quot;de-c2w3a1-trips&quot;,
+        &quot;options&quot;: {
+          &quot;vendor_id&quot;: 1
+        }
+      },
+      &quot;expectation_suite_name&quot;: &quot;de-c2w3a1-expectation-suite-trips-taxi-db&quot;
+    },
+    {
+      &quot;batch_request&quot;: {
+        &quot;datasource_name&quot;: &quot;de-c2w3a1-db-datasource&quot;,
+        &quot;data_asset_name&quot;: &quot;de-c2w3a1-trips&quot;,
+        &quot;options&quot;: {
+          &quot;vendor_id&quot;: 2
+        }
+      },
+      &quot;expectation_suite_name&quot;: &quot;de-c2w3a1-expectation-suite-trips-taxi-db&quot;
+    },
+    {
+      &quot;batch_request&quot;: {
+        &quot;datasource_name&quot;: &quot;de-c2w3a1-db-datasource&quot;,
+        &quot;data_asset_name&quot;: &quot;de-c2w3a1-trips&quot;,
+        &quot;options&quot;: {
+          &quot;vendor_id&quot;: 4
+        }
+      },
+      &quot;expectation_suite_name&quot;: &quot;de-c2w3a1-expectation-suite-trips-taxi-db&quot;
+    }
+  ]
+}</code></pre>
+</div>
+</div>
+<section id="expected-output" class="cell markdown">
+<h5><strong>Expected Output</strong></h5>
+<div class="sourceCode" id="cb43"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;action_list&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;store_validation_result&quot;</span><span class="fu">,</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;action&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;class_name&quot;</span><span class="fu">:</span> <span class="st">&quot;StoreValidationResultAction&quot;</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;update_data_docs&quot;</span><span class="fu">,</span></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;action&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;class_name&quot;</span><span class="fu">:</span> <span class="st">&quot;UpdateDataDocsAction&quot;</span></span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span></span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;batch_request&quot;</span><span class="fu">:</span> <span class="fu">{},</span></span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;class_name&quot;</span><span class="fu">:</span> <span class="st">&quot;Checkpoint&quot;</span><span class="fu">,</span></span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;config_version&quot;</span><span class="fu">:</span> <span class="fl">1.0</span><span class="fu">,</span></span>
+<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;evaluation_parameters&quot;</span><span class="fu">:</span> <span class="fu">{},</span></span>
+<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;expectation_suite_name&quot;</span><span class="fu">:</span> <span class="st">&quot;de-c2w3a1-expectation-suite-trips-taxi-db&quot;</span><span class="fu">,</span></span>
+<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;module_name&quot;</span><span class="fu">:</span> <span class="st">&quot;great_expectations.checkpoint&quot;</span><span class="fu">,</span></span>
+<span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;de-c2w&lt;TIMESTAMP&gt;ps-1710883980.7753274&quot;</span><span class="fu">,</span></span>
+<span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;profilers&quot;</span><span class="fu">:</span> <span class="ot">[]</span><span class="fu">,</span></span>
+<span id="cb43-24"><a href="#cb43-24" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;run_name_template&quot;</span><span class="fu">:</span> <span class="st">&quot;trips %Y-%m-%d %H:%M:%S&quot;</span><span class="fu">,</span></span>
+<span id="cb43-25"><a href="#cb43-25" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;runtime_configuration&quot;</span><span class="fu">:</span> <span class="fu">{},</span></span>
+<span id="cb43-26"><a href="#cb43-26" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;validations&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb43-27"><a href="#cb43-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb43-28"><a href="#cb43-28" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;batch_request&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb43-29"><a href="#cb43-29" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;datasource_name&quot;</span><span class="fu">:</span> <span class="st">&quot;de-c2w3a1-db-datasource&quot;</span><span class="fu">,</span></span>
+<span id="cb43-30"><a href="#cb43-30" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;data_asset_name&quot;</span><span class="fu">:</span> <span class="st">&quot;de-c2w3a1-trips&quot;</span><span class="fu">,</span></span>
+<span id="cb43-31"><a href="#cb43-31" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;options&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb43-32"><a href="#cb43-32" aria-hidden="true" tabindex="-1"></a>          <span class="dt">&quot;vendor_id&quot;</span><span class="fu">:</span> <span class="dv">1</span></span>
+<span id="cb43-33"><a href="#cb43-33" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span></span>
+<span id="cb43-34"><a href="#cb43-34" aria-hidden="true" tabindex="-1"></a>      <span class="fu">},</span></span>
+<span id="cb43-35"><a href="#cb43-35" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;expectation_suite_name&quot;</span><span class="fu">:</span> <span class="st">&quot;de-c2w3a1-expectation-suite-trips-taxi-db&quot;</span></span>
+<span id="cb43-36"><a href="#cb43-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb43-37"><a href="#cb43-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb43-38"><a href="#cb43-38" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;batch_request&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb43-39"><a href="#cb43-39" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;datasource_name&quot;</span><span class="fu">:</span> <span class="st">&quot;de-c2w3a1-db-datasource&quot;</span><span class="fu">,</span></span>
+<span id="cb43-40"><a href="#cb43-40" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;data_asset_name&quot;</span><span class="fu">:</span> <span class="st">&quot;de-c2w3a1-trips&quot;</span><span class="fu">,</span></span>
+<span id="cb43-41"><a href="#cb43-41" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;options&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb43-42"><a href="#cb43-42" aria-hidden="true" tabindex="-1"></a>          <span class="dt">&quot;vendor_id&quot;</span><span class="fu">:</span> <span class="dv">2</span></span>
+<span id="cb43-43"><a href="#cb43-43" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span></span>
+<span id="cb43-44"><a href="#cb43-44" aria-hidden="true" tabindex="-1"></a>      <span class="fu">},</span></span>
+<span id="cb43-45"><a href="#cb43-45" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;expectation_suite_name&quot;</span><span class="fu">:</span> <span class="st">&quot;de-c2w3a1-expectation-suite-trips-taxi-db&quot;</span></span>
+<span id="cb43-46"><a href="#cb43-46" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb43-47"><a href="#cb43-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb43-48"><a href="#cb43-48" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;batch_request&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb43-49"><a href="#cb43-49" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;datasource_name&quot;</span><span class="fu">:</span> <span class="st">&quot;de-c2w3a1-db-datasource&quot;</span><span class="fu">,</span></span>
+<span id="cb43-50"><a href="#cb43-50" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;data_asset_name&quot;</span><span class="fu">:</span> <span class="st">&quot;de-c2w3a1-trips&quot;</span><span class="fu">,</span></span>
+<span id="cb43-51"><a href="#cb43-51" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;options&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb43-52"><a href="#cb43-52" aria-hidden="true" tabindex="-1"></a>          <span class="dt">&quot;vendor_id&quot;</span><span class="fu">:</span> <span class="dv">4</span></span>
+<span id="cb43-53"><a href="#cb43-53" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span></span>
+<span id="cb43-54"><a href="#cb43-54" aria-hidden="true" tabindex="-1"></a>      <span class="fu">},</span></span>
+<span id="cb43-55"><a href="#cb43-55" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;expectation_suite_name&quot;</span><span class="fu">:</span> <span class="st">&quot;de-c2w3a1-expectation-suite-trips-taxi-db&quot;</span></span>
+<span id="cb43-56"><a href="#cb43-56" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb43-57"><a href="#cb43-57" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
+<span id="cb43-58"><a href="#cb43-58" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+</section>
+<div class="cell markdown">
+<p>Take a look at your Artifacts S3 bucket in the
+<code>checkpoints/</code> folder. After this command run, there should
+be a subfolder with the same name as your checkpoint, like
+<code>de-c2w3a1-checkpoint-trips-&lt;TIMESTAMP&gt;</code> and inside of
+it, you will find a YAML file that contains the same configuration that
+you saw in the previous output:</p>
+<div class="sourceCode" id="cb44"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> de-c2w3a1-checkpoint-trips-&lt;TIMESTAMP&gt;</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">config_version</span><span class="kw">:</span><span class="at"> </span><span class="fl">1.0</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">template_name</span><span class="kw">:</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="fu">module_name</span><span class="kw">:</span><span class="at"> great_expectations.checkpoint</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class_name</span><span class="kw">:</span><span class="at"> Checkpoint</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="fu">run_name_template</span><span class="kw">:</span><span class="at"> trips %Y-%m-%d %H:%M:%S</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="fu">expectation_suite_name</span><span class="kw">:</span><span class="at"> de-c2w3a1-expectation-suite-trips-taxi-db</span></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="fu">batch_request</span><span class="kw">:</span><span class="at"> </span><span class="kw">{}</span></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a><span class="fu">action_list</span><span class="kw">:</span></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> store_validation_result</span></span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">action</span><span class="kw">:</span></span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">class_name</span><span class="kw">:</span><span class="at"> StoreValidationResultAction</span></span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> update_data_docs</span></span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">action</span><span class="kw">:</span></span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">class_name</span><span class="kw">:</span><span class="at"> UpdateDataDocsAction</span></span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a><span class="fu">evaluation_parameters</span><span class="kw">:</span><span class="at"> </span><span class="kw">{}</span></span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a><span class="fu">runtime_configuration</span><span class="kw">:</span><span class="at"> </span><span class="kw">{}</span></span>
+<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a><span class="fu">validations</span><span class="kw">:</span></span>
+<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">batch_request</span><span class="kw">:</span></span>
+<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">datasource_name</span><span class="kw">:</span><span class="at"> de-c2w3a1-db-datasource</span></span>
+<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">data_asset_name</span><span class="kw">:</span><span class="at"> de-c2w3a1-trips</span></span>
+<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">options</span><span class="kw">:</span></span>
+<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">vendor_id</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">expectation_suite_name</span><span class="kw">:</span><span class="at"> de-c2w3a1-expectation-suite-trips-taxi-db</span></span>
+<span id="cb44-25"><a href="#cb44-25" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">batch_request</span><span class="kw">:</span></span>
+<span id="cb44-26"><a href="#cb44-26" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">datasource_name</span><span class="kw">:</span><span class="at"> de-c2w3a1-db-datasource</span></span>
+<span id="cb44-27"><a href="#cb44-27" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">data_asset_name</span><span class="kw">:</span><span class="at"> de-c2w3a1-trips</span></span>
+<span id="cb44-28"><a href="#cb44-28" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">options</span><span class="kw">:</span></span>
+<span id="cb44-29"><a href="#cb44-29" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">vendor_id</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
+<span id="cb44-30"><a href="#cb44-30" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">expectation_suite_name</span><span class="kw">:</span><span class="at"> de-c2w3a1-expectation-suite-trips-taxi-db</span></span>
+<span id="cb44-31"><a href="#cb44-31" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">batch_request</span><span class="kw">:</span></span>
+<span id="cb44-32"><a href="#cb44-32" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">datasource_name</span><span class="kw">:</span><span class="at"> de-c2w3a1-db-datasource</span></span>
+<span id="cb44-33"><a href="#cb44-33" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">data_asset_name</span><span class="kw">:</span><span class="at"> de-c2w3a1-trips</span></span>
+<span id="cb44-34"><a href="#cb44-34" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">options</span><span class="kw">:</span></span>
+<span id="cb44-35"><a href="#cb44-35" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">vendor_id</span><span class="kw">:</span><span class="at"> </span><span class="dv">4</span></span>
+<span id="cb44-36"><a href="#cb44-36" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">expectation_suite_name</span><span class="kw">:</span><span class="at"> de-c2w3a1-expectation-suite-trips-taxi-db</span></span>
+<span id="cb44-37"><a href="#cb44-37" aria-hidden="true" tabindex="-1"></a><span class="fu">profilers</span><span class="kw">:</span><span class="at"> </span><span class="kw">[]</span></span>
+<span id="cb44-38"><a href="#cb44-38" aria-hidden="true" tabindex="-1"></a><span class="fu">ge_cloud_id</span><span class="kw">:</span></span>
+<span id="cb44-39"><a href="#cb44-39" aria-hidden="true" tabindex="-1"></a><span class="fu">expectation_suite_ge_cloud_id</span><span class="kw">:</span></span></code></pre></div>
+</div>
+<div class="cell markdown">
+<p>Now, it is time to run your validations. Execute the following
+command to compute the expectations over your dataset. This step can
+take some time as validations are computed for all batches, so you will
+see a progress bar showing the computation of the metrics for each of
+the batches.</p>
+</div>
+<div class="cell code" data-execution_count="30">
+<div class="sourceCode" id="cb45"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>checkpoint_result <span class="op">=</span> checkpoint.run()</span></code></pre></div>
+<div class="output display_data">
+<div class="sourceCode" id="cb46"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">&quot;model_id&quot;</span><span class="fu">:</span><span class="st">&quot;5d81ed0bac994c6aaf12d23b054d6a03&quot;</span><span class="fu">,</span><span class="dt">&quot;version_major&quot;</span><span class="fu">:</span><span class="dv">2</span><span class="fu">,</span><span class="dt">&quot;version_minor&quot;</span><span class="fu">:</span><span class="dv">0</span><span class="fu">}</span></span></code></pre></div>
+</div>
+<div class="output display_data">
+<div class="sourceCode" id="cb47"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">&quot;model_id&quot;</span><span class="fu">:</span><span class="st">&quot;c7bb47de246d41ce9d2ac739acafd718&quot;</span><span class="fu">,</span><span class="dt">&quot;version_major&quot;</span><span class="fu">:</span><span class="dv">2</span><span class="fu">,</span><span class="dt">&quot;version_minor&quot;</span><span class="fu">:</span><span class="dv">0</span><span class="fu">}</span></span></code></pre></div>
+</div>
+<div class="output display_data">
+<div class="sourceCode" id="cb48"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">&quot;model_id&quot;</span><span class="fu">:</span><span class="st">&quot;127932f8534b4f008084825c03e909de&quot;</span><span class="fu">,</span><span class="dt">&quot;version_major&quot;</span><span class="fu">:</span><span class="dv">2</span><span class="fu">,</span><span class="dt">&quot;version_minor&quot;</span><span class="fu">:</span><span class="dv">0</span><span class="fu">}</span></span></code></pre></div>
+</div>
+</div>
+<div class="cell markdown">
+<p>Once the checkpoint has run the validations, go to your artifacts
+bucket. Open the <code>validations</code> folder and you will find a
+folder with the expectation suite name and then a folder named with the
+same <code>run_time_template</code> format that was set in the
+checkpoint: <code>trips %Y-%m-%d %H:%M:%S</code>. Open such a folder,
+inside there will be another subfolder with a Datetime format and
+finally some json files. The format of the name is composed of the Data
+Source, Data Asset, and will end with the column name used to perform
+the splits for the batches and the value for the batch itself. You can
+download one of them to inspect it.</p>
+</div>
+<div class="cell markdown">
+<p>After your validations have run, remember that the data docs have
+been updated as part of the actions that are executed as a later
+process. Run the following command to build your data docs.</p>
+</div>
+<div class="cell code" data-execution_count="31">
+<div class="sourceCode" id="cb49"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>context.build_data_docs()</span></code></pre></div>
+<div class="output execute_result" data-execution_count="31">
+<pre><code>{&#39;local_site&#39;: &#39;https://s3.amazonaws.com/de-c2w3a1-891377276567-us-east-1-gx-docs/index.html&#39;,
+ &#39;S3_site&#39;: &#39;https://s3.amazonaws.com/de-c2w3a1-891377276567-us-east-1-gx-docs/index.html&#39;}</code></pre>
+</div>
+</div>
+<div class="cell markdown">
+<p>To see the data docs, click on the link in the output.</p>
+<p><em>Note - alternative way to find the URL</em>: This URL can be also
+found in the properties of the docs S3 bucket. Go to the docs S3 bucket
+in the AWS console and then click on the <strong>Properties</strong>
+tab. Scroll down until you find the <strong>Static website
+hosting</strong> section and copy the URL that you will find in that
+section. Paste it into a new browser tab.</p>
+<p>You will be redirected to the validation results which will look like
+the following image:</p>
+<p><img src="./images/GX_data_docs_validations.png"
+alt="GX Data docs" /></p>
+</div>
+<div class="cell markdown">
+<p>You will have two tabs, one for the Validation Results and another
+one for the Expectation Suites. If you click the Expectation Suites tab,
+you will find the Expectation Suite name that you created, click on it
+and you will find an overview of the expectations that belong to that
+Suite, such as in the following image:</p>
+<p><img src="./images/GX_expectation_suite_overview.png"
+alt="GX Data docs Expectation Suite" /></p>
+</div>
+<div class="cell markdown">
+<p>In the upper part, click on <strong>Home</strong> and click again on
+the Validation Results tab. In that tab, you will find the results of
+the validations performed over each batch. At this point, the Status of
+all your results should be <strong>Succeeded</strong>, indicating that
+all batches passed the proposed data quality expectation checks. Click
+on any of the rows shown to see a view with the results of the
+expectations over a particular batch. You should see something similar
+to this image:</p>
+<p><img src="./images/GX_validation_results.png"
+alt="GX Data docs validation results" /></p>
+</div>
+<div class="cell markdown">
+<p>You will find some statistics about the evaluated expectations, and
+successful and unsuccessful expectations. If you click on
+<strong><code>Show more info...</code></strong> you will see some
+metadata about the Checkpoint execution and the batch used. After that
+section, you will see each of the expectations and the result of the
+validation of each of them.</p>
+<p>Now that you have explored the Data docs and realized that your
+expectations have run successfully, you will insert some data that
+violates one of the expectations. Go to the terminal and make sure you
+are located at <code>~/project</code>. Run the command to get the
+database endpoint:</p>
+<div class="sourceCode" id="cb51"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> rds describe-db-instances <span class="at">--db-instance-identifier</span> de-c2w3a1-rds <span class="at">--output</span> text <span class="at">--query</span> <span class="st">&quot;DBInstances[].Endpoint.Address&quot;</span></span></code></pre></div>
+</div>
+<div class="cell markdown">
+<p>Then connect to the database replacing the
+<code>&lt;RDS-DBHOST&gt;</code> with the previous output:</p>
+<div class="sourceCode" id="cb52"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mysql</span> <span class="at">--host</span><span class="op">=&lt;</span>RDS-DBHOST<span class="op">&gt;</span> --user=admin <span class="at">--port</span><span class="op">=</span>3306 <span class="at">--password</span><span class="op">=</span>adminpwrd <span class="at">--database</span><span class="op">=</span>taxi_trips</span></code></pre></div>
+</div>
+<div class="cell markdown">
+<p>Then, use the following command to insert some data that will violate
+one of the expectations:</p>
+</div>
+<div class="cell markdown">
+<div class="sourceCode" id="cb53"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> trips (vendor_id, pickup_datetime, dropoff_datetime, passenger_count, trip_distance, rate_code_id, store_and_fwd_flag, pickup_location_id, dropoff_location_id, payment_type, fare_amount, extra, mta_tax, tip_amount, tolls_amount, improvement_surcharge, total_amount, congestion_surcharge)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="kw">values</span> (<span class="dv">2</span>,<span class="st">&#39;2022-03-11 17:48:59&#39;</span>,<span class="st">&#39;2022-03-11 18:03:01&#39;</span>,<span class="dv">6</span>,<span class="fl">2.44</span>,<span class="dv">1</span>,<span class="st">&#39;N&#39;</span>,<span class="dv">161</span>,<span class="dv">236</span>,<span class="dv">2</span>,<span class="fl">11.0</span>,<span class="fl">0.0</span>,<span class="fl">0.5</span>,<span class="fl">0.0</span>,<span class="fl">0.0</span>,<span class="fl">0.3</span>,<span class="fl">11.5</span>,<span class="dv">1001</span>) ;</span></code></pre></div>
+</div>
+<div class="cell markdown">
+<p>Now, back to the notebook, execute again the validation's
+computation:</p>
+</div>
+<div class="cell code" data-execution_count="34">
+<div class="sourceCode" id="cb54"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>checkpoint_bad_result <span class="op">=</span> checkpoint.run()</span></code></pre></div>
+<div class="output display_data">
+<div class="sourceCode" id="cb55"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">&quot;model_id&quot;</span><span class="fu">:</span><span class="st">&quot;af3139ecb2614183a9c2116b1c9524e0&quot;</span><span class="fu">,</span><span class="dt">&quot;version_major&quot;</span><span class="fu">:</span><span class="dv">2</span><span class="fu">,</span><span class="dt">&quot;version_minor&quot;</span><span class="fu">:</span><span class="dv">0</span><span class="fu">}</span></span></code></pre></div>
+</div>
+<div class="output display_data">
+<div class="sourceCode" id="cb56"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">&quot;model_id&quot;</span><span class="fu">:</span><span class="st">&quot;1c77fc5476ab47ad9a80e1039b154d0c&quot;</span><span class="fu">,</span><span class="dt">&quot;version_major&quot;</span><span class="fu">:</span><span class="dv">2</span><span class="fu">,</span><span class="dt">&quot;version_minor&quot;</span><span class="fu">:</span><span class="dv">0</span><span class="fu">}</span></span></code></pre></div>
+</div>
+<div class="output display_data">
+<div class="sourceCode" id="cb57"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">&quot;model_id&quot;</span><span class="fu">:</span><span class="st">&quot;b550191bc4aa4e70819f849e951b59b2&quot;</span><span class="fu">,</span><span class="dt">&quot;version_major&quot;</span><span class="fu">:</span><span class="dv">2</span><span class="fu">,</span><span class="dt">&quot;version_minor&quot;</span><span class="fu">:</span><span class="dv">0</span><span class="fu">}</span></span></code></pre></div>
+</div>
+</div>
+<div class="cell markdown">
+<p>Inspect again the Data docs, you will see three additional rows as
+shown in the image:</p>
+<p><img src="./images/GX_data_docs_validation_bad.png"
+alt="GX Data docs validation bad" /></p>
+</div>
+<div class="cell markdown">
+<p>You will see that one of the last 3 batch runs has a Failed Status.
+Click on it, you will see that the expectation over the column
+<code>"congestion_surcharge"</code> has failed, as shown in the
+image:</p>
+<p><img src="./images/GX_validation_bad_results.png"
+alt="GX Data docs validation bad results" /></p>
+</div>
+<div class="cell markdown">
+<p>You see the <strong>Failed</strong> status and that there is 1
+Unsuccessful expectation. You can also see that the row of data that you
+inserted manually has a <code>"congestion_surcharge"</code> value of
+1001, which violates your established expectation that the values of
+that particular column should be between 0 and 1000. The other two
+expectations were successful. That way, you can assess the quality of
+your data and the characteristics of those data rows that do not hold
+the expectations you have set.</p>
+<p>In this lab, you worked with some of the core components of GX,
+configured the Data Context stores by modifying the
+<code>gx/great_expectations.yml</code> file, and created a SQL Data
+Source and the corresponding Table Data Asset from which you saw you can
+create your data batches. Then, you created an Expectation Suite and a
+Validator and added some Expectations to your Expectation Suite. Then,
+you created a validation list with the batch requests for each of your
+data batches and created a GX Checkpoint to run your expectations.
+Finally, you interacted with the Data Docs stored in your S3 bucket and
+assessed the quality of your data set.</p>
+</div>
+<div class="cell code">
+<div class="sourceCode" id="cb58"><pre
+class="sourceCode python"><code class="sourceCode python"></code></pre></div>
+</div>

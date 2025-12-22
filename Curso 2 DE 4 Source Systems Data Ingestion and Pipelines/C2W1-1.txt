@@ -1,0 +1,260 @@
+Bienvenido al segundo curso de la especialización en ingeniería de datos. En el primer curso, obtendrá una visión general de alto nivel del campo de la ingeniería de datos, los principios de una buena arquitectura de datos y cómo traducir las necesidades de las partes interesadas en requisitos y herramientas para sus sistemas de datos. En este curso, aprenderá más sobre la ingestión de datos de los sistemas de origen, así como sobre DataOps y la orquestación de la canalización de datos de extremo a extremo. Estoy aquí nuevamente con su instructor, Joe Reis, quien también es coautor del superventas Fundamentals of Data Engineering. Joe, ¿podemos ver un poco sobre lo que verán los alumnos en este curso? Claro que sí, Andrew. Este curso, como ha dicho, incluye un enfoque en las dos primeras etapas del ciclo de vida de la ingeniería de datos, que son la generación y los sistemas fuente de datos y la ingestión de datos de esos sistemas fuente. Empezaremos por analizar los diferentes tipos de sistemas fuente, tal vez cosas como bases de datos o sistemas de almacenamiento y transmisión de objetos. Analizaremos en detalle cómo interactuará con los sistemas fuente en su trabajo como ingeniero de datos. Después de eso, analizaremos la ingesta de datos de los sistemas de origen, así como los aspectos de DataOps y orquestación de la creación de canalizaciones de datos. Eso suena genial. Para muchos sistemas de IA, la ingeniería de datos o la ingesta de datos representan aproximadamente el 80% del trabajo, y luego el modelado del aprendizaje automático representa quizás el 20% del trabajo. Sin embargo, la atención de las personas sobre estos dos temas suele cambiar, ya que el 80% de la atención se centra en el modelado de la IA y no se presta suficiente atención , ni en las mejores prácticas, y, francamente, también en la ingestión de datos. De hecho, en algunos de mis trabajos anteriores, cuando trabajaba en una gran empresa de tecnología, era responsable del almacén de datos de los usuarios de la empresa, por lo que cada dato que afectaba a un usuario individual debía entrar en mi almacén de datos, lo que creaba mucho valor para la empresa. Pero ese trabajo intelectual para diseñar la base de datos, el esquema de la base de datos, el sistema de ingesta, los datos para mantenerla, resultó ser una tarea bastante ingente. Es una empresa enorme. Siempre he descubierto que cuando hablamos de ingerir datos de los sistemas fuente, esto lo es todo. Si no puede obtener los datos, no hay mucho más que pueda hacer con ellos. Esto debería parecer bastante simple, pero como usted señala, parece que, muchas veces, se ignora la ingestión o se centra en otras cosas. Así que esto es algo fundamental que debes corregir. Si no puede obtener los datos, realmente no puede hacer nada más. En esta parte del curso, sin duda, hablaremos sobre la comprensión de los sistemas de origen de los que va a obtener sus datos y las diferentes formas de ingerirlos. Además de las diferentes formas de organizar estos flujos de trabajo de canalización de datos y supervisarlos para garantizar que se preserva la calidad de los datos, así como la ingestión, el rendimiento y otras características, etc., son muy importantes para su trabajo como ingeniero de datos. De hecho, creo que esto es válido para muchos flujos de trabajo de datos diferentes, desde los datos de las tablas de estructura hasta los datos estructurados, como textos e imágenes, a medida que la palabra procesa más datos estructurados. Esto parece haber permanecido igual. De hecho, incluso cuando hablo con mis amigos que entrenan a los grandes modelos lingüísticos y cuando se trata de liderar equipos de IA, gran parte del tiempo, no todo, pero sí mucho tiempo, lo dedico a pensar en los datos. También hay algo relacionado con el entrenamiento de modelos, pero la ingesta de datos ocupa mucho tiempo para todas estas cargas de trabajo de IA. Es muy interesante. Supongo que lo que ven en términos de las complejidades de la ingesta de datos, porque me imagino que eso funciona a una escala enorme. De hecho, hay muchos datos de Internet. Cosas como Common Crawl contienen muchos datos. Pero teniendo en cuenta los datos, ¿cómo se ingieren, se procesan y se filtran para que sean de alta calidad? Además, si tiene lagunas en los datos, si observa que su modelo no tiene éxito en estos temas, ¿cómo puede averiguar en qué lugares no le va tan bien y en qué parte de la Tierra va a obtener datos, si es que existen para llenar esos vacíos? Por lo tanto, estas son muchas de las cosas intelectualmente desafiantes por las que la gente que se entrena sobre el terreno, incluso algunos de los principales OM, MM, grandes modelos multimodales y otros grandes modelos básicos, dedican tiempo a preocuparse. Eso es fascinante. Una de las cosas de las que hablamos en este curso y que aprenderás es la ingestión de datos de varios tipos de sistemas de origen. Obviamente, vamos a hablar de la ingesta de datos tabulares, pero hoy en día ese es un subconjunto muy pequeño del universo total de datos. Cuando hablamos de conjuntos de datos no estructurados, desde texto hasta imágenes y vídeos, este universo se está convirtiendo cada vez más en un universo mucho más grande. Yo diría que tradicionalmente hemos utilizado o pensado en el mundo de los datos. Una de las cosas que trataremos en este curso, una vez más, no es solo los conjuntos de datos estructurados de las bases de datos, sino que también comenzaremos a trabajar con texto , datos de imágenes, etc. Esto lo ayudará a prepararse como ingeniero de datos, no solo para las cargas de trabajo actuales, tal vez si trabaja en un almacén de datos, sino también para las cargas de trabajo del futuro. La mayor parte del valor de los datos probablemente haya sido información estructurada hasta este momento. Sin embargo, a medida que crezca nuestra capacidad para procesar datos no estructurados, veremos si eso cambia. Quizá ya esté cambiando. El volumen de datos no estructurados en el mundo es mucho mayor que el volumen de datos estructurados en el mundo. Creo que esto supondría aún más desafíos e incluso más puestos de trabajo para los ingenieros de datos. Exactamente. Esperamos que esta sea una introducción muy interesante al ciclo de vida de la ingeniería de datos. Una vez más, la ingestión de los sistemas de origen , la organización de estas cargas de trabajo y la supervisión de estas cargas de trabajo son fundamentales para su trabajo como ingeniero de datos. Una vez más, como señaló Andrew, solo se volverá más interesante, más emocionante y mucho más grande. Muchas cosas interesantes. Pasemos al siguiente vídeo para profundizar en todos estos temas.
+
+Programa
+Estado: Traducido automáticamente del Inglés
+Traducido automáticamente del Inglés
+Información:
+Este elemento incluye contenido que aún no se tradujo a tu idioma preferido.
+¿De qué trata este programa?
+
+Este programa fue diseñado por Joe Reis en colaboración con DeepLearning.IA y AWS para cubrir los fundamentos de la ingeniería de datos, tanto en términos de la teoría subyacente y marcos para pensar como un ingeniero de datos, así como habilidades prácticas para la construcción de soluciones de ingeniería de datos en la nube.
+¿A quién va dirigido este programa?
+
+Este programa está diseñado para cualquier persona interesada en seguir una carrera en o adyacente a la ingeniería de datos. Puede que seas estudiante o que ya trabajes profesionalmente en un campo relacionado con los datos. En cualquiera de los casos, le interesa adquirir habilidades y conocimientos de ingeniería de datos para respaldar sus objetivos profesionales. Incluso si ya está trabajando como ingeniero de datos, encontrará valor en la combinación de conocimientos teóricos y aplicaciones técnicas que se presenta aquí. 
+¿Qué conocimientos previos necesito para realizar este curso?
+
+    Se requierenconocimientos intermedios de programación en Python, incluida la familiaridad con la sintaxis, las estructuras de datos, las funciones y las clases de Python. También puede ser útil estar familiarizado con los dataframes de Pandas, aunque no es obligatorio. Para aprender los conceptos básicos de Pandas, recomendamos los tutoriales de Pandas de la Escuela W3
+
+ o los tutoriales de Pandas de Kaggle
+
+. 
+
+También puede ser útilestar familiarizado con SQL , pero no es necesario. No dudes en consultar el curso SQLBolt Tutorials
+
+ si quieres aprender los fundamentos de SQL.
+
+Lafamiliaridad básica con los fundamentos técnicos de la nube de AWS será útil pero no necesaria. Para aprender los fundamentos de AWS recomendamos los cursos AWS Cloud Practitioner Essentials
+ y AWS Cloud Technical Essentials
+
+    .
+
+¿Qué tiene de especial este programa?
+
+    Este programa leenseña a pensar como un ingeniero de datos
+    Este programa le enseñará a pensar como un ingeniero de datos a la hora de diseñar, crear y mantener sistemas que toman datos sin procesar, los convierten en algo útil y los ponen a disposición de las partes interesadas. No se trata sólo de herramientas y tecnologías En primer lugar, aprenderá a recopilar las necesidades de las partes interesadas y a comprender los problemas empresariales que intentan resolver con los datos. A continuación, traducirá esas necesidades en requisitos del sistema y elegirá las herramientas y tecnologías adecuadas para las soluciones que pretende crear. Al final de este programa, dispondrá de un sólido marco mental que podrá aplicar a cualquier proyecto de ingeniería de datos.
+
+    Práctica
+    Tendrás muchas oportunidades de practicar la aplicación del marco mental para pensar como un ingeniero de datos a través de actividades prácticas. Participará en conversaciones simuladas con las partes interesadas y se le pedirá que reúna requisitos para sus sistemas de datos. Diseñará e implementará canalizaciones de datos de streaming y por lotes de extremo a extremo en la nube de AWS, solucionará problemas comunes a los que se enfrentan muchos nuevos ingenieros de datos, utilizará herramientas populares de código abierto para orquestar y monitorizar sus canalizaciones de datos, creará arquitecturas de almacenamiento de lago de datos y data lakehouse, consultará, modelará y transformará sus datos utilizando varios marcos de procesamiento, y servirá datos a las partes interesadas aguas abajo para casos de uso de análisis empresarial y aprendizaje automático. Este programa adopta un enfoque justo a tiempo para presentarle las herramientas y tecnologías que necesitará para cada ejercicio, y se le guiará a través de cada paso de los laboratorios con instrucciones detalladas y guías en vídeo.
+
+Libro de texto y lecturas
+
+    Fundamentos de la ingeniería de datos
+
+    A lo largo del curso se proporcionará material de lectura complementario
+
+Esquema del programa
+
+Este programa está estructurado en 4 cursos.
+
+Curso 1 - Introducción a la ingeniería de datos
+
+Este curso consta de 4 semanas de contenido y cubre estos objetivos principales de aprendizaje:
+
+    Identificar los principales colaboradores y partes interesadas para los ingenieros de datos
+
+    Articular un marco mental para construir soluciones de ingeniería de datos
+
+    Identificar algunas de las consideraciones necesarias para la recopilación de requisitos al inicio de un nuevo proyecto
+
+    Describir la estructura del ciclo de vida de la ingeniería de datos y sus corrientes subyacentes, y cómo pensar en los problemas de ingeniería de datos a través de esta lente
+
+    Identificar algunas de las tecnologías clave que pueden emplearse en las distintas fases del ciclo de vida de la ingeniería de datos
+
+    Evaluar tecnologías y herramientas en el contexto de los requisitos y una buena arquitectura de datos
+
+    Diseñar una arquitectura de datos en AWS basada en los requisitos de las partes interesadas
+
+    Implementar una canalización por lotes y de streaming en AWS para respaldar un sistema de recomendación de productos
+
+Curso 2 - Sistemas de origen, ingestión de datos y canalizaciones
+
+Este curso consta de 4 semanas de contenido y cubre estos objetivos de aprendizaje principales:
+
+    Identificar diferentes formatos de datos y determinar los sistemas de origen apropiados para generar cada tipo de datos
+
+    Explicar a alto nivel cómo se generan, almacenan y recuperan los datos en varios sistemas fuente, incluyendo bases de datos relacionales, bases de datos NoSQL, almacenamiento de objetos y sistemas de streaming
+
+    Explicar los fundamentos de las redes en la nube
+
+    Solucionar errores de conexión a bases de datos
+
+    Explicar la diferencia entre las ingestas por lotes y por flujo e identificar casos de uso para cada patrón
+
+    Diferenciar entre los dos patrones de ingesta por lotes: Extracción-Transformación-Carga (ETL) y Extracción-Carga-Transformación (ELT)
+
+    Crear un script para ingestar datos desde una API REST
+
+    Describir los componentes básicos de una plataforma de flujo de eventos
+
+    Interactuar con una plataforma de transmisión de eventos como sistema de origen y como herramienta de ingestión
+
+    Utilizar Terraform para aprovisionar recursos de AWS para su canalización de datos
+
+    Identificar herramientas para monitorizar sus sistemas de datos y la calidad de los datos
+
+    Identificar y monitorizar métricas de calidad de datos relevantes
+
+    Explicar cómo se puede aplicar la orquestación a un canal de datos y enumerar sus beneficios
+
+    Construir canalizaciones de datos con DAGs en Airflow utilizando funciones como Taskflow API, operadores, variables XCom, etc.
+
+Curso 3 - Almacenamiento de datos y consultas
+
+Este curso consta de 3 semanas de contenido y cubre estos objetivos de aprendizaje principales:
+
+    Explicar cómo se almacenan físicamente los datos en el disco y en la memoria
+
+    Comparar cómo se almacenan y consultan los datos en sistemas de almacenamiento de objetos, bloques y archivos
+
+    Explicar cómo se almacenan los datos en bases de datos orientadas a filas frente a bases de datos orientadas a columnas
+
+    Explicar cómo almacenan y recuperan datos las bases de datos gráficas y vectoriales
+
+    Explicar las características arquitectónicas clave de los almacenes de datos, los lagos de datos y los data lakehouses
+
+    Implementar un lago de datos con AWS Glue
+
+    Implementar un lago de datos con una arquitectura tipo medallón utilizando Lake Formation e Iceberg
+
+    Explicar las etapas de la vida de una consulta
+
+    Implementar consultas SQL avanzadas
+
+    Explicar el papel de un índice y su impacto en el rendimiento de la consulta
+
+    Resumir los enfoques para procesar consultas agregadas y join
+
+    Comparar los tiempos de ejecución de consultas agregadas entre almacenamiento en filas y en columnas
+
+    Enumerar algunas estrategias para mejorar el rendimiento de las consultas
+
+    Agregación y unión de flujos de datos
+
+Curso 4 - Modelamiento de datos, Transformación y Servicio de Datos
+
+Este curso consta de 4 semanas de contenido y cubre estos objetivos principales de aprendizaje:
+
+    Definir el Modelamiento de datos y su rol en reflejar la lógica del negocio
+
+    Aplicar las etapas de normalización a una tabla desnormalizada
+
+    Describir las tablas de hechos y dimensiones de un esquema en estrella y transformar datos en tercera forma normal a un esquema en estrella
+
+    Describir los enfoques de modelado de almacenes de datos como Inmon, Kimball, Data Vault y One Big Table
+
+    Utilizar la Ingeniería de características para convertir un conjunto de datos en una forma tabular esperada por los algoritmos clásicos de Aprendizaje automático
+
+    Preprocesar y vectorizar datos textuales
+
+    Enumerar técnicas para procesar y aumentar los datos de imágenes
+
+    Comparar un marco de procesamiento en memoria como Spark y un marco de procesamiento basado en disco como Hadoop
+
+    Describir las consideraciones técnicas para elegir un marco de procesamiento distribuido, como Spark, frente a un marco no distribuido como Pandas dataframes
+
+    Describir las consideraciones técnicas para utilizar Spark SQL frente a Spark DataFrames al transformar datos utilizando PySpark
+
+    Describir cómo funciona la transformación de flujo con un motor de procesamiento casi en tiempo real como Spark Structured Streaming
+
+    Identificar diferentes formas de servir datos para casos de uso de analítica y aprendizaje automático
+
+    Describir el propósito de una capa semántica que se asienta sobre el modelo de datos
+
+    Creación de vistas y vistas materializadas
+
+    Describir los beneficios e inconvenientes de servir datos utilizando vistas y vistas materializadas
+
+Actividades de aprendizaje utilizadas en este programa
+
+    Vídeos de conferencias: Una colección de videos cortos que cubren la teoría subyacente, así como demostraciones de herramientas y tecnologías importantes que necesita para cada semana. También hay vídeos "Lab Walkthrough" que le dan una visión general de alto nivel de los laboratorios antes de sumergirse en ellos. Algunos de los vídeos están etiquetados como "[Opcional]", y están diseñados para complementar su experiencia de aprendizaje, pero no será evaluado en este contenido. Algunos de estos vídeos opcionales están protagonizados por expertos del sector y su objetivo es proporcionarle información práctica de veteranos en el campo de opciones.
+
+    Laboratorios: Ejercicios prácticos que le permitirán aplicar lo aprendido en los vídeos de las clases. Están diseñados para ayudarle a desarrollar habilidades para determinadas tecnologías de código abierto o AWS que se utilizan habitualmente al crear soluciones de ingeniería de datos. Hay dos tipos de laboratorios:
+
+        Tareas de programación calificadas: Estas tareas de laboratorio cubren conceptos críticos para esa semana, y por lo general representan un mayor porcentaje de su calificación.
+
+        Laboratorios de práctica: Estos laboratorios no se califican. Los conceptos cubiertos en estos laboratorios siguen siendo importantes. Sin embargo, para reducir la presión de tener que sobresalir en todos los laboratorios, hemos decidido designar algunos de ellos como "prácticas". De esta manera, usted puede centrarse en el aprendizaje de los laboratorios en lugar de simplemente completarlos para obtener una calificación. Te animamos a que pruebes todos los laboratorios, tanto si se califican como si son prácticos
+
+    Cuestionarios: Una colección de preguntas para ayudarle a reforzar su aprendizaje sobre los conceptos cubiertos en cada semana. Encontrará un cuestionario calificado al final de cada semana, y la calificación que obtenga en esos cuestionarios contribuirá a su calificación general para cada curso. Ocasionalmente encontrará cuestionarios de práctica que contienen preguntas de reflexión o breves cuestionarios calificados que contienen preguntas para comprobar su comprensión a lo largo de la semana. Después de completar cada cuestionario, asegúrese de leer atentamente los comentarios.
+
+    Lectura: Contenido presentado en formato textual para que pueda consultar la información más adelante con mayor facilidad. Algunos de estos elementos de lectura incluirán enlaces adicionales para que pueda obtener más información sobre el tema. A menos que se especifique lo contrario, no es necesario que revise los materiales de estos enlaces externos para tener éxito en este programa. Algunas de estas lecturas están etiquetadas como "[Opcional]" y cubren material secundario que no es crítico para el programa. Usted puede revisar estas lecturas si está interesado, pero no será evaluado en este contenido.
+
+¿Cómo se califican las evaluaciones?
+
+Se requiere una calificación de 80% o más para aprobar todos los elementos de evaluación (cuestionarios, laboratorios de práctica y tareas de programación calificadas). Por favor, consulte la pestaña"Calificaciones" de la página principal del curso para ver sus calificaciones para cada evaluación.
+Obtener y dar ayuda
+
+Preguntas relacionadas con el contenido del curso: Se le anima a unirse a la comunidad DeepLearning.IA donde se puede llegar a los mentores del curso y compañeros de clase para obtener ayuda con cualquier problema relacionado con el contenido del curso. ¡Puedes hacer clic 🔗 este enlace
+
+ para crear tu cuenta gratuita y conectarte con la comunidad global de IA!
+
+Preguntas relacionadas con la plataforma Coursera: Puedes consultar el Centro de ayuda al alumno
+ para encontrar información relacionada con problemas técnicos específicos. Por ejemplo, los problemas técnicos incluirían mensajes de error, dificultad para enviar tareas o problemas con la reproducción de vídeos.
+
+Bienvenido a la primera semana de este curso sobre sistemas de origen, ingestión y canalizaciones de datos. Esta semana, vamos a empezar por analizar los diferentes tipos de sistemas fuente y cómo puedes interactuar con estos sistemas. Como vio en el primer curso de la especialización, la generación de datos en los sistemas fuente es la primera etapa del ciclo de vida de la ingeniería de datos. Y como ingeniero de datos, normalmente no es responsable de generar estos datos usted mismo ni de mantener estos sistemas de origen. Sin embargo, la ingestión desde los sistemas fuente es donde comenzarán todas sus canalizaciones de datos. Por lo tanto, es importante que comprenda cómo se generan estos datos, dónde y cómo se almacenan. Y algunas de sus características permiten crear canalizaciones de datos sólidas con estos sistemas ascendentes como fuente de datos. Por eso, en esta primera semana de este curso, profundizaremos en algunos de los detalles de algunos sistemas fuente comunes, incluidos los diferentes tipos de bases de datos, almacenamiento de objetos y fuentes de streaming. En los laboratorios, podrá trabajar con estos sistemas fuente en AWS. Luego, en la segunda semana, nos centraremos en configurar diferentes tipos de ingestión desde los sistemas fuente. Después de eso, en la semana 3 de este curso, analizaremos las DataOps actuales. Utilizará la infraestructura como código para automatizar algunas de las tareas de canalización y utilizará varias herramientas para supervisar la calidad de los datos. Y, por último, en la cuarta y última semana del curso, nos ocuparemos de la organización para coordinar las tareas de sus canalizaciones de datos. Configurará gráficos acíclicos dirigidos, o DAG, mediante el flujo de aire, trabajará con la infraestructura como marcos de código e implementará soluciones de monitoreo para sus canalizaciones de datos. Así que vamos a cubrir mucho terreno en este curso. Acompáñeme en el siguiente vídeo para empezar a analizar más de cerca los diferentes tipos de sistemas fuente.
+
+Los sistemas fuente específicos con los que trabajará como ingeniero de datos suelen variar según el tipo de datos que ingiera de esos sistemas. El tipo de datos más común con el que trabajará son los datos estructurados, es decir, los datos organizados como tablas de filas y columnas. Lo más probable es que hayas trabajado con datos estructurados en el pasado, ya sea en una hoja de cálculo o en una base de datos relacional, o tal vez incluso hayas usado Python para leer un archivo CSV. Los otros tipos de datos que encontrará como ingeniero de datos son los datos semiestructurados y no estructurados. Los datos semiestructurados son datos que no están en forma tabular, por lo que no se componen de filas y columnas, pero aún tienen cierta estructura. Un formato de datos semiestructurados común con el que te encontrarás es lo que se conoce como notación de objetos de JavaScript o JSON. Un archivo JSON contiene una serie de pares clave-valor. En este ejemplo, la primera clave es FirstName con el valor correspondiente Joe. La siguiente clave es LastName con el valor correspondiente Reis. Y con el formato JSON, todos estos pares clave-valor se enumeran entre llaves como este. Y puedo tener más pares clave-valor, incluida la información que quiera registrar en este formato. Cada valor puede adoptar un tipo de datos diferente, por ejemplo, un número, una cadena o una matriz. De hecho, el valor de un par clave-valor puede ser incluso otra serie de pares clave-valor. Y como puedes ver en este ejemplo, el valor de dirección tiene una clave: ciudad , código postal y país con los valores correspondientes. Esto crea lo que se denomina un formato JSON anidado. Por lo tanto, como puede ver, aunque los datos no se presenten como una tabla, estos datos todavía tienen cierta estructura. Los datos no estructurados, por otro lado, no tienen una estructura predefinida. Por ejemplo, el texto, el vídeo, el audio y las imágenes son ejemplos de datos no estructurados. Sin embargo, observará que cosas como el vídeo, el audio y las imágenes tienen una estructura inherente detrás de escena, en el sentido de que hay dimensiones de píxeles y colores como el rojo, el azul y el verde. A lo largo de este curso, profundizaremos en los datos no estructurados. Cuando se trata de ingerir estos diferentes tipos de datos, me gustaría clasificar los sistemas fuente relevantes que puede encontrar en tres tipos generales: bases de datos, archivos y sistemas de transmisión. Si bien estos tres tipos de sistemas fuente no se corresponden necesariamente uno a uno con los tres tipos de datos que acabo de mencionar, se podría decir que de las bases de datos la mayoría de las veces se ingieren datos estructurados y semiestructurados. Desde los sistemas de streaming, con frecuencia ingerirás mensajes semiestructurados en formato de datos. Y los archivos, bueno, los archivos pueden ser cualquier cosa, desde texto hasta imágenes , audio, vídeo o incluso filas y columnas antiguas normales de datos tabulares. Empecemos por echar un vistazo más de cerca a las bases de datos. Las bases de datos almacenan la información de forma organizada que permite buscar, recuperar, actualizar y eliminar datos. Esto funciona mediante un patrón transaccional conocido como CRUD, que significa crear, leer, actualizar y eliminar. La C es lo primero porque, por supuesto, los datos deben crearse antes de poder leerlos, actualizarlos o eliminarlos. Tiene sentido, ¿verdad? Por lo general, hay una interfaz de software llamada sistema de administración de bases de datos, o DBMS, que se encuentra entre el almacenamiento de la base de datos física y la persona o la aplicación que interactúa con la base de datos. El DBMS es lo que le permite acceder y manipular los datos almacenados en la base de datos. Hay dos tipos de bases de datos que analizaremos esta semana. Bases de datos relacionales, que almacenan información en tablas con filas y columnas, y bases de datos no relacionales, también conocidas como NoSQL o no solo SQL, que almacenan datos no tabulares. Analizaremos más de cerca estos dos tipos de bases de datos a finales de esta semana. Además de las bases de datos, el siguiente tipo de sistema fuente más común con el que interactuará son los archivos. Sin duda, ya tiene mucha experiencia trabajando con archivos de varios tipos. Pueden ser documentos que almacenas en tu computadora, imágenes o videos que grabas con tu teléfono, o incluso un archivo CSV que recibes en un correo electrónico de un compañero de trabajo. Puede parecer extraño pensar en los archivos antiguos normales como un sistema fuente para la ingeniería de datos, pero en esencia, un archivo es solo una secuencia de bytes que representan información. Las aplicaciones de todo tipo escriben datos en los archivos, por lo que los archivos son un medio universal de intercambio de datos. Y aunque no lo crea, son uno de los sistemas fuente más comunes con los que trabajará como ingeniero de datos. Los archivos, al igual que los datos, pueden estar estructurados como una hoja de cálculo, semiestructurados como un archivo JSON o XML, o desestructurados como un archivo de texto, imagen, vídeo o audio. Es posible que recibas estos archivos o accedas a ellos desde un sistema de archivos como Google Drive o un sistema de almacenamiento de objetos como Amazon S3, o simplemente como un archivo adjunto a un correo electrónico. El tercer tipo de sistema fuente del que es probable que ingieras datos son los sistemas de streaming. Y puede pensar que los sistemas de streaming proporcionan un flujo continuo de datos, grabados como mensajes que contienen información sobre eventos. Y esos eventos incluyen algo que ocurrió en el mundo o un cambio en el estado de un sistema. En la práctica, es posible que interactúes con una secuencia de eventos a través de colas de mensajes u otras plataformas de transmisión. Por ejemplo, un dispositivo de IoT, como un termostato inteligente, puede registrar un evento que contenga la lectura de temperatura más reciente y publicar ese evento como un mensaje en una plataforma de transmisión como Kinesis o Kafka. Luego, como ingeniero de datos, puede configurar otro servicio para incorporar este mensaje y enviar una actualización a un panel de análisis integrado. En este caso, puedes pensar en la plataforma de streaming como un sistema fuente del que estás extrayendo datos sin procesar. En las últimas semanas de este curso, verá cómo estos sistemas de transmisión también pueden abarcar todo el ciclo de vida de la ingeniería de datos y usarse en las etapas de ingestión y transformación para procesar datos para varios casos de uso posteriores. De hecho, puede ver lo mismo en todos los tipos de sistemas fuente, ya sea que se trate de bases de datos, archivos o sistemas de transmisión. Pueden ser sistemas de los que está ingiriendo datos sin procesar o pueden ser sistemas que incorpore a sus canalizaciones de datos en otra etapa del ciclo de vida. En resumen, como ingeniero de datos, extraerá datos sin procesar de diferentes sistemas de origen. Estos datos sin procesar pueden estar estructurados, semiestructurados o no estructurados, y los sistemas fuente pueden ser bases de datos, archivos o sistemas de transmisión. En la próxima serie de vídeos, profundizaré un poco más en las características de cada uno de estos diferentes tipos de sistemas fuente. Empezaremos con las bases de datos, después veremos cómo funciona el almacenamiento de objetos como fuente de datos para los archivos y, a continuación, profundizaremos en las colas de mensajes, los registros y las plataformas de streaming con más detalle. Acompáñeme en el siguiente vídeo para empezar a echar un vistazo a las bases de datos relacionales.
+
+Como ingeniero de datos, el tipo de sistema fuente más común con el que interactuará es una base de datos relacional, y esto se debe a que las bases de datos relacionales están en todas partes. Muchas aplicaciones web y móviles utilizan bases de datos relacionales en el backend, y usted también las encontrará. En muchos sistemas corporativos, como los sistemas de gestión de relaciones con los clientes , recursos humanos y planificación de recursos empresariales, también se suelen utilizar para lo que se denomina procesamiento de transacciones en línea o sistemas OLTP, en los que es necesario ejecutar un gran volumen de transacciones de forma simultánea, como en el caso de las reservas bancarias o en línea. El nombre base de datos relacional proviene del hecho de que este tipo de base de datos se usa con mayor frecuencia para almacenar datos en diferentes tablas que están relacionadas entre sí a través de un conjunto de claves o atributos comunes. Estas tablas suelen organizarse en función de cómo se estructura la información en la empresa. Por ejemplo, como ingeniero de datos que trabaja en una empresa de comercio electrónico, es posible que esté trabajando con una base de datos relacional en la que una tabla captura la información de los clientes, otra tabla captura la información de los productos y una tercera tabla captura la información de los pedidos. Estructurar una base de datos de esta manera reduce la redundancia y facilita la administración de los datos al no tener la misma información duplicada en varias filas o tablas de la base de datos. Para tener una idea de lo que quiero decir con eso, imagine por un momento que, en lugar de varias tablas, creó una tabla grande para almacenar los datos de cada pedido individual de un cliente. En este caso, la tabla puede contener un gran número de columnas, incluyendo todo lo relacionado con el cliente, como su nombre, dirección, número de teléfono, etc. Y luego tendrías toda la información sobre el producto que compraron, como la marca, el número de SKU, la descripción del producto y otros detalles, así como los detalles del pedido, como la fecha y la hora, el importe de la compra y cuánto pagaron. Por lo tanto, en este escenario, si un cliente hiciera un pedido de tres productos diferentes, esto se registraría como tres filas independientes en tu base de datos y tendrías tres filas en la tabla que contienen todos los mismos datos del cliente. O si tres clientes diferentes compraron el mismo producto, entonces tendrías tres filas en la base de datos que contienen información idéntica para ese producto. En resumen, la información se duplicaría en varias filas de la tabla y, además, podría haber incoherencias con los datos de las distintas filas. Por ejemplo, si un cliente cambiara su dirección, habría una incoherencia entre las filas, a menos que volvieras y actualizaras todas las filas que contienen su dirección anterior, o si cambiaran los detalles de un producto en particular, tendrías que volver y actualizar todas las filas que contienen la información anterior. Si, en cambio, separas la información de los clientes , los productos y los pedidos en varias tablas, una fila de la tabla de clientes representa a un solo cliente y una fila de la tabla de productos contiene información sobre un solo producto. Si un cliente cambia su dirección o cambian los detalles de un producto, solo tienes que actualizar la única fila que contiene la información sobre ese cliente o producto. La forma en que una base de datos se organiza en tablas relacionadas como esta se denomina esquema de base de datos. Las bases de datos relacionales representan estas relaciones entre tablas mediante el uso de claves. Una clave principal es una columna especial o un conjunto de columnas que identifican de forma exclusiva cada fila de una tabla. Para la tabla del cliente, la clave principal podría ser esta columna denominada Id. La relación entre el cliente y el pedido se puede establecer haciendo que la columna Customer_id y la tabla de pedidos hagan referencia a la columna id de la tabla de clientes. En este caso, la columna de identificador de cliente de la tabla de pedidos se denomina clave externa y hace referencia a la columna de clave principal o identificador de la tabla de clientes. Más allá de la estructura de filas de una base de datos relacional, cada columna tiene un nombre único y un tipo de datos específico. Por ejemplo, en la tabla de clientes puede tener columnas como ID, nombre y apellidos que contienen cadenas, y otra columna llamada edad que contiene un entero. A continuación, cada nueva fila de una tabla debe seguir la misma estructura de columnas, es decir, la misma secuencia de columnas y tipos de datos. Esto también forma parte del esquema de la base de datos. Ahora, en una base de datos con un esquema como este, para registrar información sobre un nuevo pedido de un cliente existente, puedes crear un nuevo registro en la tabla de pedidos e indicar el identificador del cliente de la tabla del cliente y el identificador del producto de la tabla de productos y los detalles del pedido, como la fecha, la hora y el pago, etc. Además, si ese cliente cambia su dirección o cambia el número de SKU del producto que ha pedido, esos cambios solo afectarán a una fila de la tabla de clientes o productos, y la información se mantendrá coherente. Como puede imaginar, hay muchas maneras diferentes de establecer relaciones entre tablas, y aquí es donde entra en juego el concepto de normalización de datos. La normalización de datos es un enfoque que se desarrolló en la década de 1970 para minimizar la redundancia y garantizar la integridad de los datos mediante el almacenamiento de datos en tablas de forma lógica. Pero ahora creo que vale la pena hacer una pausa para preguntarnos: ¿por qué preocuparse tanto por la redundancia o la información duplicada en primer lugar? Parece lógico y ordenado estructurar los datos como lo he estado describiendo. Pero, ¿hay algún inconveniente? Bueno, resulta que, si bien una estructura de base de datos relacional normalizada proporciona un alto grado de integridad y minimiza la redundancia, en realidad puede resultar lenta a la hora de consultar los datos. Hoy en día, el almacenamiento es relativamente barato y la velocidad suele ser fundamental. La integridad de los datos es fundamental, por supuesto, pero la respuesta a la forma exacta en que se almacenan los datos tabulares podría depender del objetivo para el que se esté intentando optimizar. Como ingeniero de datos, es posible que esté ingiriendo datos normalizados de un sistema de base de datos relacional, pero según el caso de uso final que esté atendiendo, puede decidir organizar los datos según un modelo diferente en sus propios sistemas de almacenamiento. Hoy en día, incluso hay algunos casos de uso en los que los ingenieros de datos eligen adoptar el denominado enfoque de una gran tabla u OBT, en el que todos los datos se registran en una sola tabla para un procesamiento más rápido de lo que sería posible si se unieran varias tablas en una base de datos relacional tradicional. Profundizaremos en los detalles del modelado de datos en el Curso 4, especialización. Cuando se trata de interactuar con la base de datos, utilizará un sistema de administración de bases de datos relacionales (RDBMS). Es una capa de software que se encuentra en la parte superior de una base de datos relacional. Existen muchos RDBM populares, incluidos MySQL, PostgreSQL, Oracle y SQL Server. La mayoría de los RDBMS admiten el lenguaje de consulta estructurado, también conocido como secuela o SQL para abreviar. Algunas personas dicen SQL, otras dicen SQL. Puedes elegir lo que prefieras. A veces digo ambas cosas. Lo importante que debe saber es que SQL proporciona un conjunto de comandos para realizar diversas operaciones en las bases de datos relacionales. Y como ingeniero de datos, SQL formará parte de su trabajo diario. En el siguiente vídeo, te explicaré algunos de los comandos SQL que necesitarás para el laboratorio. Luego, en el laboratorio, tendrá la oportunidad de practicar la consulta de datos en una base de datos relacional mediante consultas SQL. Después de eso, únase a mí en el siguiente vídeo, eche un vistazo a las bases de datos NoSQL.
+
+En el laboratorio, trabajará con una base de datos transaccional para una empresa ficticia de alquiler de DVD llamada Rentio. Esta base de datos incluye tablas que contienen información sobre las tiendas, el personal, los clientes, el inventario de DVD y las transacciones de alquiler de Rentio. Escribirás sentencias o consultas SQL en un Jupyter Notebook para recuperar información de esta base de datos con el fin de responder a preguntas empresariales. Para consultar los datos, tendrá que entender el esquema de la base de datos. En otras palabras, tendrá que saber los nombres de las tablas, las columnas que contienen y cómo se relacionan las tablas entre sí a través de claves principales y externas. Esta base de datos está normalizada, lo que significa que los datos, como las direcciones de las tiendas, el personal y los clientes, se almacenan en tablas separadas para reducir la redundancia y facilitar la actualización de los datos cuando cambian. Del mismo modo, los datos sobre las películas y las propias transacciones de alquiler también se almacenan en tablas separadas. Puede consultar este modelo de relaciones entre entidades que muestra las relaciones y los atributos de las tablas de la base de datos de Rentio. Para explicarte los conceptos básicos de SQL, solo me centraré en tres tablas. La tabla de películas que contiene información como el título y la duración de una lista de películas, la tabla de categorías que contiene una lista de categorías de películas y la tabla film_category que muestra los films_id, junto con sus correspondientes category_id de película. La sentencia SQL más básica comienza con una cláusula SELECT, en la que se especifican los datos que se desean, seguida de una cláusula FROM, en la que se especifica de qué tabla se desean recuperar estos datos. Por ejemplo, supongamos que quiero explorar los títulos y los años de estreno sin tener en cuenta la mesa cinematográfica. Puedo escribir SELECT title, release_year FROM film. Una vez que ejecute esta consulta, obtendré una lista de todos los títulos y años de lanzamiento. Resulta que hay 1000 películas en esta mesa de filmación. Si no quiero ver la lista completa, puedo limitar el número de resultados devueltos mediante una cláusula LIMIT. Por ejemplo, si añado LIMIT 10 al final de esta consulta, solo obtendré los 10 primeros títulos y los años de estreno de la tabla de películas. Pero, ¿qué sucede si desea recuperar datos de todas las columnas de una tabla? Bueno, puedes enumerar todos los nombres de las columnas en la cláusula SELECT de esta manera, o puedes usar un atajo y escribir SELECT * FROM film. Esto recuperará los datos de todas las filas y columnas de la tabla de películas. En el próximo curso, aprenderá cómo se ejecutan las canteras entre bastidores. Pero por ahora, ten en cuenta que recuperar todos los datos de todas las columnas puede requerir muchos recursos de procesamiento, especialmente si tu conjunto de datos es muy grande. Recomiendo usar SELECT * únicamente para recuperar todos los datos de una tabla, donde puede filtrar los resultados con alguna condición booleana. Por ejemplo, supongamos que solo te interesa explorar películas de menos de 60 minutos de duración. Puede añadir una cláusula WHERE después de la cláusula FROM para filtrar los resultados en función de la longitud de la columna. Escribiré SELECT * FROM película cuya duración sea inferior a 60. Esto devolverá una lista de las 96 películas que tienen menos de una hora de duración. También puedes ordenar los resultados por cualquier columna que desees. Por ejemplo, puedo añadir ORDER BY length después de la cláusula WHERE para almacenar los resultados en orden ascendente según la duración de la película. Si quiero ver los resultados en orden descendente por duración de la película, puedo añadir la palabra clave D-E-S-C o DESC al final de la cláusula ORDER BY. Si quisiera limitar los resultados a, digamos, 10 registros, puedo agregar un LÍMITE 10 al final de esta consulta. Acabas de ver cómo puedes recuperar datos de una sola tabla usando las cláusulas SELECT, FROM, WHERE, ORDER BY y LIMIT. ¿Qué sucede si desea explorar los datos de más de una tabla? Puede usar la cláusula JOIN para combinar registros de dos o más tablas en función de las columnas compartidas entre esas tablas. Por ejemplo, supongamos que quiero obtener una lista de títulos de películas y su correspondiente categoría_película para todas las películas de menos de 60 minutos de duración. Modifiquemos la consulta anterior, donde seleccioné una estrella de una película cuya longitud es inferior a 60. Quiero combinar las filas de la tabla de películas con las filas de la tabla film_category en función de los identificadores de películas coincidentes. Al final de la cláusula FROM, escribiré JOIN film_category ON film.film_id = film_category.film_id. De esta forma, los resultados devueltos incluirán todas las columnas de la tabla de películas, junto con las columnas de la tabla film_category para cada par de film_id coincidentes en ambas tablas. Tenga en cuenta que la tabla film_category solo incluye el category_id, pero no el nombre de la categoría. Por lo tanto, necesitamos hacer otra combinación para combinar estos registros con las filas de la tabla de categorías en función de los category_id. Añadiré la categoría JOIN ON film_category.category _id = category.category_id. Ahora los resultados incluirán todas las columnas de la tabla de películas, todas las columnas de la tabla film_category y todas las columnas de la tabla de categorías. Como solo quiero el título de la película y la categoría de película correspondiente, puedo modificar la instrucción SELECT para especificar que solo quiero la columna film.title en la columna category.name. Tenga en cuenta que, de forma predeterminada, la cláusula JOIN combina solo los registros de ambas tablas que tienen un valor de columna coincidente especificado en la instrucción ON. No incluirá ningún registro de ninguna de las tablas que no tenga valores coincidentes. Por ejemplo, si la tabla de películas tiene una fila con film_id que no aparece en la tabla film_category, esa fila no se incluirá en los resultados. Este tipo de unión también se conoce como INNER JOIN, y puede pensar en los resultados de la unión como la parte central superpuesta de un diagrama de Venn. Los otros tipos de combinaciones incluyen LEFT JOIN, que devuelve todos los registros de la primera tabla, junto con los registros coincidentes de la segunda tabla, RIGHT JOIN, que devuelve todos los registros de la segunda tabla, junto con los registros coincidentes de la primera tabla, y FULL JOIN, que devuelve todos los registros de ambas tablas y combina los que tienen valores coincidentes. Volviendo a los resultados de la última consulta, puedo ver que bastantes de los cortometrajes pertenecen a la categoría infantil o documental. Digamos que quiero saber con certeza cuál es la categoría más popular de cortometrajes. Puedo usar el comando GROUP BY para agrupar las filas según la categoría_película. A continuación, utilice el comando COUNT para contar el número de registros de cada una de las categorías de películas. El comando GROUP BY se escribe después de la cláusula WHERE. Aquí añadiré GRUPO POR CATEGORÍA.nombre. Luego modificaré la instrucción SELECT para seleccionar category.name y COUNT (*), que cuenta todas las filas de cada categoría. También usaré el comando AS para dar a la salida de este recuento el nombre de alias film_count. Por último, ordenaré los resultados según el recuento de películas en orden descendente. Como puede ver, la categoría más popular para cortometrajes de menos de una hora es la de documental, seguida de acción y luego de niños. Estos son algunos de los comandos SQL más comunes. Ahora está listo para empezar con el laboratorio. El laboratorio también cubre algunas operaciones de manipulación de datos, como CREATE, INSERT INTO, UPDATE y DELETE. Asegúrese de leer las instrucciones detenidamente cuando intente cada uno de los ejercicios. Cuando termine el laboratorio, únase a mí para echar un vistazo a las bases de datos NoSQL.
+
+Pautas antes de empezar los laboratorios de este curso
+Estado: Traducido automáticamente del Inglés
+Traducido automáticamente del Inglés
+Información:
+Este elemento incluye contenido que aún no se tradujo a tu idioma preferido.
+
+Por favor, consulte las siguientes indicaciones importantes al iniciar cualquier laboratorio en este curso.
+
+    No utilice una cuenta personal de AWS. Los laboratorios serán aprovisionados para usted sin costo alguno en este curso. Si tiene una cuenta personal de AWS, asegúrese de cerrar la sesión de esa cuenta antes de comenzar los laboratorios para evitar que se le cobren los servicios de AWS utilizados durante los laboratorios.
+
+    En la medida de lo posible, evite utilizar ordenadores portátiles proporcionados por la empresa o conectarse a Internet en su lugar de trabajo para trabajar en los laboratorios. Estos pueden tener configuraciones de seguridad que inadvertidamente bloqueen el tráfico a los recursos que usted utilizará. Varios alumnos han informado de problemas que no hemos podido reproducir, y la solución ha sido simplemente cambiar de un portátil de trabajo a un dispositivo personal.
+
+    Si encuentras algún problema con los laboratorios, puedes buscar o crear un tema en esta categoría
+
+ en nuestro Foro de la Comunidad. Nuestro personal y nuestros mentores estarán encantados de ayudarte. ¿Aún no eres miembro? Puedes hacer clic en este enlace
+
+     para crear tu cuenta gratuita. Si no puedes acceder al laboratorio o a sus recursos, consulta el párrafo siguiente.
+
+    Por favor, evita utilizar la opción "Informar de un problema" de Coursera en la parte inferior de la página cuando tengas problemas con los laboratorios. Esto no se controla con tanta frecuencia como el Foro, por lo que la respuesta puede ser más lenta.
+
+Problemas para acceder a los laboratorios
+
+Si te encuentras con alguno de los siguientes problemas (enumerados a continuación) y no puedes acceder al laboratorio, rellena este formulario de google
+
+. Tu cuenta de AWS se actualizará en un plazo de 2 días laborables.
+
+Si su problema no es ninguno de los que se indican a continuación, cree o busque un tema en la plataforma de la Comunidad en lugar de utilizar el formulario (puede hacer clic en este enlace
+
+ para crear su cuenta). Enviar el formulario para otros problemas puede no ayudar a resolverlos.
+
+    El laboratorio se bloquea en la página de carga durante más de 20 minutos: intente primero actualizar la página web. Si el problema persiste, rellena el formulario
+
+    .
+
+    El enlace a la consola de AWS está vacío: En algunos de los laboratorios, se le pedirá que ejecute este comando para obtener el enlace a la consola de AWS. Si recibes un enlace vacío, rellena el formulario
+
+    .
+
+    Si ejecutas un comando en el terminal para obtener el endpoint/dirección de una base de datos u otro recurso y no obtienes ningún recurso, por favor rellena el formulario
+
+.
+
+Problemas de formación de lagos insuficientes (este es un problema temporal en el que estamos trabajando para solucionarlo, pero por ahora rellena el formulario
+
+    ).
+
+Cuando rellenes el formulario, se te guiará para que introduzcas la siguiente información:
+
+    La dirección de correo electrónico de tu cuenta de Coursera y tu nombre de usuario en la comunidad DeepLeaning.IA (Puedes hacer clic en este enlace
+
+     para crear tu cuenta).
+
+    ID del laboratorio: puedes obtener el ID del laboratorio haciendo clic en el signo de interrogación (ayuda del laboratorio) y luego copiando el ID del laboratorio.
+
+ 3.  Si puede acceder al terminal de VS Code, deberá ejecutar este comando en el terminal:
+
+cat /home/coder/vocapi_logger > vocapi_logger
+
+Este comando creará el archivo vocapi_logger que contiene la información de registro. Tendrás que copiar el texto de este archivo y pegarlo en el lugar correspondiente del formulario.
+

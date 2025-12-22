@@ -1,0 +1,16 @@
+cat ../.aws/aws_console_url
+
+    username: postgres
+    password: postgrespwrd o adminpwrd
+
+
+aws rds describe-db-instances --db-instance-identifier de-c2w1a1-rds --output text --query "de-c2w1a1-rds.ct4yggiam6pg.us-east-1.rds.amazonaws.com" --region us-east-1
+
+de-c2w1a1-rds.ch668gmkcdla.us-east-1.rds.amazonaws.com
+de-c2w1a1-rds.ct4yggiam6pg.us-east-1.rds.amazonaws.com
+
+psql --host=de-c2w1a1-rds.ct4yggiam6pg.us-east-1.rds.amazonaws.com --username=postgres --password --port=5432
+
+s3
+de-c2w1a1-395639430833-us-east-1-data
+
