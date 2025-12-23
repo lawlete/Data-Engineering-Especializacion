@@ -1,0 +1,52 @@
+# 1️⃣ Ignorar TODO
+*
+
+# 2️⃣ Permitir carpetas
+!*/
+
+# 3️⃣ Código y notebooks
+!*.py
+!*.ipynb
+!*.sql
+!*.zpln
+
+# 4️⃣ Configuración
+!*.yml
+!*.yaml
+!*.json
+!*.cfg
+!*.conf
+!*.ini
+!*.toml
+!*.env.example
+
+# 5️⃣ Docs útiles
+!README.md
+!requirements.txt
+
+# 6️⃣ Exclusiones específicas (aunque entren por extensión)
+**/.ipynb_checkpoints/
+**/__pycache__/
+**/*.pyc
+
+# dbt
+**/target/
+**/dbt_packages/
+**/logs/
+
+# Airflow
+**/logs/
+**/airflow.db
+
+# Spark
+**/metastore_db/
+**/spark-warehouse/
+**/*.jar
+
+# Superset
+**/uploads/
+**/cache/
+
+# OS
+.DS_Store
+Thumbs.db
